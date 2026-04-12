@@ -9,20 +9,23 @@ export function SiteHeader() {
       >
         <Link
           href="/"
-          className="text-[15px] text-[var(--text)] transition-opacity hover:opacity-70"
+          className="text-base font-medium tracking-tight text-foreground transition-opacity hover:opacity-[0.88] md:text-[17px]"
         >
-          Your Name
+          Megan LeClair
         </Link>
-        <ul className="flex items-center gap-10 text-[15px] text-[var(--text-muted)]">
+        <ul className="flex items-center gap-9 text-[15px] font-medium text-foreground/55 md:gap-10 md:text-base">
           <li>
-            <Link href="/" className="transition-colors hover:text-[var(--text)]">
+            <Link
+              href="/"
+              className="transition-colors duration-200 hover:text-foreground"
+            >
               Work
             </Link>
           </li>
           <li>
             <Link
               href="/about"
-              className="transition-colors hover:text-[var(--text)]"
+              className="transition-colors duration-200 hover:text-foreground"
             >
               About
             </Link>

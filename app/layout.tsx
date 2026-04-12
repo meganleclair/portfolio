@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -9,12 +9,20 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Your Name",
-    template: "%s — Your Name",
+    default: "Megan LeClair",
+    template: "%s — Megan LeClair",
   },
-  description: "Product designer. Selected work and writing.",
+  description:
+    "Product designer. Design through build—systems, interfaces, shipped software.",
 };
 
 export default function RootLayout({
@@ -23,7 +31,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${instrumentSerif.variable} dark h-full`}
+    >
       <body className="flex min-h-full flex-col font-sans antialiased">
         <SiteHeader />
         <main className="flex-1">{children}</main>

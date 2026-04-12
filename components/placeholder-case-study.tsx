@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CaseStudySection } from "@/components/case-study-section";
+import { CaseStudySignalLink } from "@/components/case-study-signal";
 
 type PlaceholderCaseStudyProps = {
   title: string;
@@ -10,15 +11,14 @@ export function PlaceholderCaseStudy({ title, intro }: PlaceholderCaseStudyProps
   return (
     <article className="page-wrap py-16 md:py-24">
       <header className="read-width">
-        <h1 className="text-3xl font-semibold tracking-tight text-[var(--text)] md:text-4xl lg:text-[2.75rem]">
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
           {title}
         </h1>
-        <p className="mt-8 text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
+        <p className="mt-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
           {intro}
         </p>
-        <p className="mt-8 text-sm leading-relaxed text-[var(--text-muted)]">
-          Draft case study—screens, narrative, and links will land here as this
-          project is documented.
+        <p className="mt-8 text-sm font-medium leading-snug text-muted-foreground">
+          Write-up in progress—full case study and visuals next.
         </p>
       </header>
 
@@ -54,14 +54,17 @@ export function PlaceholderCaseStudy({ title, intro }: PlaceholderCaseStudyProps
         </CaseStudySection>
       </div>
 
-      <p className="read-width mt-28 md:mt-36">
-        <Link
-          href="/"
-          className="text-base text-[var(--text)] underline decoration-[var(--text-muted)] underline-offset-[6px] transition-colors hover:decoration-[var(--text)]"
-        >
-          Back home
-        </Link>
-      </p>
+      <div className="read-width mt-28 md:mt-36 space-y-8">
+        <CaseStudySignalLink />
+        <p>
+          <Link
+            href="/"
+            className="text-base text-foreground underline decoration-muted-foreground underline-offset-[6px] transition-colors hover:decoration-foreground"
+          >
+            Back home
+          </Link>
+        </p>
+      </div>
     </article>
   );
 }

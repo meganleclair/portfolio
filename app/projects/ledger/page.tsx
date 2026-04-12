@@ -9,7 +9,7 @@ export default function LedgerPage() {
   return (
     <PlaceholderCaseStudy
       title="Ledger"
-      intro="Placeholder project—high-stakes flows where clarity and restraint matter more than novelty."
+      intro="Money-adjacent flows where every state has to be legible under pressure."
     />
   );
 }

@@ -9,7 +9,7 @@ export default function MeridianPage() {
   return (
     <PlaceholderCaseStudy
       title="Meridian"
-      intro="Placeholder project—navigation, context, and calm defaults for something people open often."
+      intro="Navigation and context for something people open daily—maps, defaults, and cutting noise."
     />
   );
 }

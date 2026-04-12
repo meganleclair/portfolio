@@ -9,7 +9,7 @@ export default function HarborPage() {
   return (
     <PlaceholderCaseStudy
       title="Harbor"
-      intro="Placeholder project—shared spaces, permissions, and a softer path for new people."
+      intro="Shared space, roles, and onboarding that respects the user’s time."
     />
   );
 }
