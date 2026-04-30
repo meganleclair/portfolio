@@ -42,22 +42,12 @@ export default function RelayPage() {
         <p className="mt-3 text-xs font-medium text-muted-foreground">
           No public deployment yet—browse the repo to run it locally.
         </p>
-        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm font-medium text-muted-foreground">
-          <span>
-            <span className="text-muted-foreground/80">Role:</span> Product
-            Design, Engineering
-          </span>
-          <span>
-            <span className="text-muted-foreground/80">Scope:</span>{" "}
-            End-to-end concept + build
-          </span>
-        </div>
       </header>
 
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection
           title="Overview"
-          trailVisual={<CaseStudyMedia shot={shots.tableView} />}
+          leadVisual={<CaseStudyMedia shot={shots.tableView} />}
         >
           <p>
             Relay Task Tracker is a workflow tool for teams to track, review, and

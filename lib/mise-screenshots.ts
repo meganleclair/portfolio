@@ -61,6 +61,33 @@ const SPECS = {
     width: 1440,
     height: 900,
   },
+  recipeDetail: {
+    files: ["recipe-detail.webp", "recipe-detail.png", "06-recipe-detail.webp"],
+    alt: "Mise recipe detail page showing ingredients, prep tasks, and cook button",
+    caption: "Recipe detail — ingredients, prep checklist, and a single action to start cooking.",
+    placeholderLabel: "Recipe detail — add recipe-detail.webp to public/mise/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  cookModeSwap: {
+    files: ["cook-mode-swap.webp", "cook-mode-swap.png", "07-cook-mode-swap.webp"],
+    alt: "Mise cook mode with swap sheet open for an ingredient",
+    caption: "Swap in cook mode — Claude's suggestions surface without losing your step.",
+    placeholderLabel: "Cook mode with swap open — add cook-mode-swap.webp to public/mise/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  importFlow: {
+    files: ["import-flow.webp", "import-flow.png", "08-import-flow.webp"],
+    alt: "Mise URL import flow — paste a recipe URL to import",
+    caption: "Import — paste any recipe URL; the three-tier pipeline handles the rest.",
+    placeholderLabel: "Import URL flow — add import-flow.webp to public/mise/",
+    variant: "compact" as const,
+    width: 1200,
+    height: 800,
+  },
 } satisfies Record<string, ShotSpec>;
 
 function resolveShot(spec: ShotSpec): ResolvedCaseStudyMedia {
@@ -95,5 +122,8 @@ export function getMiseShots(): Record<keyof typeof SPECS, ResolvedCaseStudyMedi
     ingredientSwap: resolveShot(SPECS.ingredientSwap),
     prepEditor: resolveShot(SPECS.prepEditor),
     kitchen: resolveShot(SPECS.kitchen),
+    recipeDetail: resolveShot(SPECS.recipeDetail),
+    cookModeSwap: resolveShot(SPECS.cookModeSwap),
+    importFlow: resolveShot(SPECS.importFlow),
   };
 }

@@ -56,7 +56,7 @@ export default function MisePage() {
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection
           title="The problem"
-          trailVisual={<CaseStudyMedia shot={shots.editorialHome} />}
+          leadVisual={<CaseStudyMedia shot={shots.editorialHome} />}
         >
           <p>
             Recipe websites are built for traffic, not cooking. You get five
@@ -76,7 +76,10 @@ export default function MisePage() {
           </p>
         </CaseStudySection>
 
-        <CaseStudySection title="Two modes, one session">
+        <CaseStudySection
+          title="Two modes, one session"
+          trailVisual={<CaseStudyMedia shot={shots.recipeDetail} />}
+        >
           <p>
             The core architecture decision: Editorial and Cook are distinct
             modes with different demands.
@@ -201,6 +204,7 @@ export default function MisePage() {
           trailVisual={
             <>
               <CaseStudyMedia shot={shots.cookMode} />
+              <CaseStudyMedia shot={shots.cookModeSwap} />
               <CaseStudyMedia shot={shots.ingredientSwap} />
             </>
           }
@@ -237,6 +241,7 @@ export default function MisePage() {
             <>
               <CaseStudyMedia shot={shots.prepEditor} />
               <CaseStudyMedia shot={shots.kitchen} />
+              <CaseStudyMedia shot={shots.importFlow} />
             </>
           }
         >
