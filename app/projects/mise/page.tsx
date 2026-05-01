@@ -157,18 +157,6 @@ export default function MisePage() {
             </li>
             <li>
               <strong className="font-semibold text-foreground">
-                AI-generated recipe descriptions (Claude)
-              </strong>{" "}
-              — Recipe APIs return description fields that are often marketing
-              copy—nutrition stats, spoonacular scores, social proof counts.
-              At import time, Claude Haiku reads the title and ingredient list
-              and writes a 2-sentence description in plain home-cook language:
-              what the dish is, what makes it worth making, when you'd reach
-              for it. Existing recipes have a one-click "Rewrite with Claude"
-              button on the recipe detail page.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">
                 Three-tier recipe import pipeline
               </strong>{" "}
               — Spoonacular handles enriched imports when a key is configured.
@@ -302,12 +290,11 @@ export default function MisePage() {
               <strong className="font-semibold text-foreground">
                 Claude Haiku (Anthropic)
               </strong>{" "}
-              — Used in three distinct integrations via{" "}
+              — Used in two distinct integrations via{" "}
               <code className="text-foreground/90">@anthropic-ai/sdk</code>:{" "}
               per-ingredient swap suggestions (Route Handler, authenticated +
-              rate-limited), batch dietary goal shifts (Server Action, reads the
-              full ingredient list in a single pass), and recipe description
-              generation at import time. Each integration has its own
+              rate-limited) and batch dietary goal shifts (Server Action, reads the
+              full ingredient list in a single pass). Each integration has its own
               prompt-engineering constraints: scope guards, quality rules, and
               structured JSON output requirements.
             </li>
@@ -421,12 +408,11 @@ export default function MisePage() {
             <li>
               Mise is where architecture, AI integration, and UX deliberateness
               all had to work together. Claude isn&apos;t a single bolt-on
-              feature—it runs in three separate places, each with a different
-              job: describing what a dish is at import time, swapping individual
-              ingredients on demand, and shifting an entire recipe toward a
-              dietary goal in one pass. Each integration is scoped, prompt-engineered,
-              and quality-controlled at the model level rather than post-processed
-              in code.
+              feature—it runs in two separate places, each with a different
+              job: swapping individual ingredients on demand, and shifting an
+              entire recipe toward a dietary goal in one pass. Each integration
+              is scoped, prompt-engineered, and quality-controlled at the model
+              level rather than post-processed in code.
             </li>
             <li>
               The import pipeline handles real-world failure gracefully at every
