@@ -139,6 +139,36 @@ export default function MisePage() {
             </li>
             <li>
               <strong className="font-semibold text-foreground">
+                Batch dietary goal shifts (Claude)
+              </strong>{" "}
+              — A second, distinct Claude integration separate from per-ingredient
+              swaps. The user selects one or more dietary goals (higher protein,
+              lower carb, dairy-free, etc.) and Claude reads the full ingredient
+              list at once, applies the most practical combination of swaps for
+              the actual dish, and writes all results in a single pass. Claude
+              resolves goal conflicts natively—if two goals disagree on the same
+              ingredient, it picks the swap that serves the most goals
+              simultaneously rather than surfacing a mechanical priority-order
+              dialog. Batch-shifted lines are tagged in{" "}
+              <code className="text-foreground/90">recipe_modifications</code>{" "}
+              so they can be cleared independently of manual swaps. A static
+              swap catalog serves as a zero-latency fallback if the API is
+              unavailable.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                AI-generated recipe descriptions (Claude)
+              </strong>{" "}
+              — Recipe APIs return description fields that are often marketing
+              copy—nutrition stats, spoonacular scores, social proof counts.
+              At import time, Claude Haiku reads the title and ingredient list
+              and writes a 2-sentence description in plain home-cook language:
+              what the dish is, what makes it worth making, when you'd reach
+              for it. Existing recipes have a one-click "Rewrite with Claude"
+              button on the recipe detail page.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
                 Three-tier recipe import pipeline
               </strong>{" "}
               — Spoonacular handles enriched imports when a key is configured.
@@ -162,8 +192,10 @@ export default function MisePage() {
               fetches with a browser User-Agent and sets{" "}
               <code className="text-foreground/90">Referer</code> to the source
               hostname—bypassing hotlink protection silently. Private IP ranges
-              are blocked. Images are validated by content-type, capped at 8MB,
-              and cached for 7 days.
+              are blocked. Images are validated by content-type, capped at 8 MB,
+              and served with{" "}
+              <code className="text-foreground/90">Cache-Control: private</code>{" "}
+              to prevent CDN-level caching.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Prep editor</strong>{" "}
@@ -185,16 +217,20 @@ export default function MisePage() {
             </li>
             <li>
               <strong className="font-semibold text-foreground">My Kitchen</strong>{" "}
-              — A quiet list of imports and favorites with star ratings inline.
-              A "continue cooking" banner surfaces when an active session exists—
-              no badge, just context when you need it.
+              — Import recipes, toggle favorites, and search your collection
+              without leaving the page. A "continue cooking" banner surfaces
+              when an active session exists—no badge, just context when you need it.
+              The list paginates client-side from a larger server-fetched set
+              so the initial render stays fast.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Auth</strong>{" "}
+              <strong className="font-semibold text-foreground">Auth &amp; security</strong>{" "}
               — Supabase SSR with cookie-aware server and client boundaries.
               Middleware enforces session requirements on Editorial and Cook
               routes; RLS on all tables means no row is accessible outside its
-              owner.
+              owner. The Claude-powered swap endpoint requires a valid session
+              and applies a sliding-window rate limit per user to prevent
+              API cost abuse.
             </li>
           </ul>
         </CaseStudySection>
@@ -266,12 +302,14 @@ export default function MisePage() {
               <strong className="font-semibold text-foreground">
                 Claude Haiku (Anthropic)
               </strong>{" "}
-              — AI swap suggestions via{" "}
-              <code className="text-foreground/90">@anthropic-ai/sdk</code> in a
-              Next.js Route Handler. Prompt engineering controls scope (only
-              swappable ingredient types), quality (no cheap neutral oils,
-              honest tradeoffs), and format (valid JSON array, no markdown
-              wrapper).
+              — Used in three distinct integrations via{" "}
+              <code className="text-foreground/90">@anthropic-ai/sdk</code>:{" "}
+              per-ingredient swap suggestions (Route Handler, authenticated +
+              rate-limited), batch dietary goal shifts (Server Action, reads the
+              full ingredient list in a single pass), and recipe description
+              generation at import time. Each integration has its own
+              prompt-engineering constraints: scope guards, quality rules, and
+              structured JSON output requirements.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Next.js 15</strong>{" "}
@@ -330,6 +368,24 @@ export default function MisePage() {
               dish—not just whether it's chemically similar.
             </li>
             <li>
+              <strong className="font-semibold text-foreground">
+                CDN cache collisions are silent and maddening.
+              </strong>{" "}
+              The image proxy shipped with{" "}
+              <code className="text-foreground/90">Cache-Control: public</code>.
+              In production on Netlify, every imported recipe started displaying
+              the same image—the first one ever fetched. The CDN was caching the
+              proxy response by path alone, ignoring the{" "}
+              <code className="text-foreground/90">?url=</code> query parameter
+              entirely. The fix was{" "}
+              <code className="text-foreground/90">Cache-Control: private</code>
+              —browser-only caching, no edge layer. Unsplash URLs were also
+              moved to bypass the proxy entirely since their CDN is already
+              public. The symptom (all images identical) was obvious; the root
+              cause (edge cache keying behavior) took careful reading of Netlify's
+              caching docs to confirm.
+            </li>
+            <li>
               The timer's clock-based model (fixed{" "}
               <code className="text-foreground/90">endsAt</code> timestamp vs. a
               countdown counter) was a small decision with real UX consequences.
@@ -364,11 +420,21 @@ export default function MisePage() {
           <ul className="list-none space-y-3 pl-0 text-[15px] font-medium leading-snug md:text-base">
             <li>
               Mise is where architecture, AI integration, and UX deliberateness
-              all had to work together. The Claude-powered swap feature isn't a
-              bolt-on—it's scoped, prompt-engineered, context-aware, and quality-controlled
-              at the model level. The import pipeline handles real-world failure
-              gracefully at every tier. The session model means you can set down
-              your phone mid-recipe and come back without losing your place.
+              all had to work together. Claude isn&apos;t a single bolt-on
+              feature—it runs in three separate places, each with a different
+              job: describing what a dish is at import time, swapping individual
+              ingredients on demand, and shifting an entire recipe toward a
+              dietary goal in one pass. Each integration is scoped, prompt-engineered,
+              and quality-controlled at the model level rather than post-processed
+              in code.
+            </li>
+            <li>
+              The import pipeline handles real-world failure gracefully at every
+              tier. The session model means you can set down your phone mid-recipe
+              and come back without losing your place. The image proxy was
+              simple until it wasn&apos;t—and debugging the CDN cache collision
+              required understanding how Netlify&apos;s edge layer keys its
+              cache, not just reading error logs.
             </li>
             <li>
               The separation between Editorial and Cook turned out to be the
