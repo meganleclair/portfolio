@@ -6,9 +6,9 @@ import { CaseStudySignalLink } from "@/components/case-study-signal";
 import { getRelayShots } from "@/lib/relay-screenshots";
 
 export const metadata: Metadata = {
-  title: "Relay Task Tracker",
+  title: "Relay — Cyber Insurance Ops",
   description:
-    "A workflow tool for tracking, reviewing, and resolving work items in insurance operations—with clear ownership, inline editing, and activity-driven focus.",
+    "A purpose-built ops tool for cyber insurance underwriting teams—tracking ransomware assessments, breach evaluations, and renewals with clear ownership and inline editing.",
 };
 
 const REPO = "https://github.com/meganleclair/relay-task-tracker";
@@ -20,15 +20,15 @@ export default function RelayPage() {
     <article className="page-wrap py-16 md:py-24">
       <header className="read-width">
         <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
-          Relay Task Tracker
+          Relay
         </h1>
         <p className="mt-3 max-w-2xl text-sm font-medium text-muted-foreground/90 md:text-[15px]">
-          Workflow &amp; decision tracking · insurance operations
+          Cyber insurance operations · workflow &amp; decision tracking
         </p>
         <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed">
-          A purpose-built internal tool for insurance teams to track, review,
-          and resolve work items—with clear ownership, inline editing, and
-          activity-driven prioritization.
+          A purpose-built ops tool for cyber insurance underwriting teams—tracking
+          ransomware assessments, breach evaluations, and renewals with clear
+          ownership, inline editing, and activity-driven prioritization.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
@@ -48,49 +48,51 @@ export default function RelayPage() {
           leadVisual={<CaseStudyMedia shot={shots.tableView} />}
         >
           <p>
-            Insurance operations teams move large volumes of structured work
-            through defined review stages—application reviews, renewals, risk
-            assessments, coverage requests. Each item has an owner, a deadline,
-            and a chain of decisions. The work is predictable in shape but
-            pressure-sensitive: a blocked item can hold up a policy; a missed
-            due date can mean a lapsed renewal.
+            Cyber insurance underwriting teams move high-stakes work through
+            defined review stages—ransomware assessments, data breach
+            evaluations, sublimit reviews, and annual renewals. Each item has
+            an owner, a regulatory deadline, and a chain of decisions that need
+            to be traceable. A blocked sublimit endorsement can stall a policy
+            bind. A missed HIPAA breach notification window can create coverage
+            disputes.
           </p>
           <p>
-            Relay is designed for exactly this context. It gives teams a single
-            surface to see what's in flight, who owns it, what's blocked, and
-            what closed recently—without the overhead of a full project
-            management suite.
+            Relay is built for this context: 12–50 active work items across
+            5 owners, all with different urgency and status. It gives the team
+            a single surface to see what's in flight, who owns it, what's
+            blocked, and what closed recently—without the overhead of a general
+            project management tool.
           </p>
         </CaseStudySection>
 
         <CaseStudySection title="The problem">
           <p>
-            Most generic task tools force a tradeoff: either high visibility
-            with low flexibility (Kanban boards that don't support dense item
-            lists), or high flexibility with low structure (spreadsheets where
-            ownership and status drift over time). Neither fits a team running
-            50–100 work items across five owners with regulatory deadlines
-            attached.
+            Cyber insurance ops teams often track work across email threads,
+            shared spreadsheets, and ticketing systems that weren't built for
+            this domain. The result is predictable: ownership drifts, status
+            goes stale, and decisions made in a quick call disappear before
+            the next renewal cycle.
           </p>
           <ul className="list-disc space-y-2 pl-5 marker:text-foreground/40">
             <li>
-              <strong className="font-semibold text-foreground">Ownership</strong>{" "}
-              gets blurry when items are triaged in email and tracked in a
-              spreadsheet.
+              <strong className="font-semibold text-foreground">Blocked items</strong>{" "}
+              are invisible — a sublimit review waiting on network architecture
+              docs looks identical to one actively in underwriting.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Status</strong>{" "}
-              is either stale or absent — people stop updating what they can't
-              see.
+              <strong className="font-semibold text-foreground">Activity history</strong>{" "}
+              doesn't exist — who approved the BEC sublimit adjustment and why
+              isn't captured anywhere auditable.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Prioritization</strong>{" "}
-              becomes manual archaeology: which items need attention right now?
+              is manual — figuring out what's due this week requires sorting a
+              spreadsheet, not scanning a live queue.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Decisions</strong>{" "}
-              leave no trace — a call that unblocked an item is forgotten by
-              the next renewal cycle.
+              <strong className="font-semibold text-foreground">Generic tools don't fit</strong>{" "}
+              — Kanban boards don't support dense item lists with regulatory
+              deadlines; project tools add overhead the team doesn't need.
             </li>
           </ul>
         </CaseStudySection>
@@ -227,9 +229,12 @@ export default function RelayPage() {
             </li>
             <li>
               <strong className="font-semibold text-foreground">Mock data layer</strong>{" "}
-              — 12 seeded items across all statuses and owners, plus a scripted
-              live-update sequence that fires every 30 s to simulate a live
-              team queue. No backend needed.
+              — 12 seeded items reflecting real cyber underwriting work:
+              ransomware assessments, HIPAA breach evaluations, BEC reviews,
+              SOC-2 renewals, sublimit endorsements. A scripted live-update
+              sequence fires every 30 s—real notes and status changes, not just
+              badge animation. No backend needed; state resets on refresh by
+              design.
             </li>
             <li>
               <strong className="font-semibold text-foreground">FontAwesome</strong>{" "}
@@ -332,11 +337,13 @@ export default function RelayPage() {
               demo queue stays fresh without a backend.
             </li>
             <li>
-              The domain specificity is intentional. Insurance operations teams
-              deal with a specific shape of work — regulated deadlines, defined
-              review stages, client-level ownership. Designing for that context
-              rather than a generic "task tracker" produces a tool with sharper
-              opinions and fewer modes to explain.
+              The domain specificity is intentional. Cyber insurance ops teams
+              deal with a specific shape of work: regulated notification
+              deadlines, sublimit endorsements that need CAT sign-off,
+              breach evaluations that require an auditable decision trail.
+              Designing for that context—rather than a generic task tracker—
+              produces a tool that knows what a blocked item means and why
+              the activity log matters.
             </li>
             <li>
               Code lives here:{" "}
