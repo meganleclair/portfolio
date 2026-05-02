@@ -4,59 +4,62 @@ export type ProjectListItem = {
   description: string;
   /** Home featured CTA: opens in new tab when set. */
   liveUrl?: string;
-  /** Renders the large glass card on the homepage (same layout as Wanderlist). */
+  /** Renders the large glass card on the homepage. */
   featuredCard?: boolean;
   /** Right column teaser on the featured card; falls back to description if omitted. */
   cardTeaser?: string;
+  /** Shown in More Work list as a coming-soon teaser. */
+  comingSoon?: boolean;
 };
 
 /** Order: featured cards first (in display order), then list-only projects. */
 export const projects: ProjectListItem[] = [
   {
+    slug: "mise",
+    title: "Mise Intelligent Chef",
+    description:
+      "Import any recipe URL, prep with a checklist, then cook one clear step at a time—with Claude-powered ingredient swaps that stay honest.",
+    liveUrl: "https://miseintelligentchef.netlify.app",
+    featuredCard: true,
+    cardTeaser:
+      "Two modes, one session—Editorial for discovery and Cook for the kitchen, with AI-powered swaps, timer state, and persistence across refreshes.",
+  },
+  {
     slug: "wanderlist",
     title: "Wanderlist",
     description:
-      "Search a city, explore real places, and save them into trips. Built on live data with persistence for signed-in users.",
+      "Search a city, explore real places, and save them into trips. Built on live data with auth, RLS, and persistence for signed-in users.",
     liveUrl: "https://wanderwanderlist.netlify.app/",
     featuredCard: true,
     cardTeaser:
-      "Stack, tradeoffs, and what broke once the database stopped being hypothetical.",
+      "Full-stack travel app—stack, security model, and what broke once the database stopped being hypothetical.",
   },
   {
     slug: "relay",
     title: "Relay Task Tracker",
     description:
-      "Workflow and decision tracking—ownership, status, and history for teams moving work forward.",
+      "A task tracker for teams that need to know who owns what and where it stands—ownership, status, and inline edits in one table.",
     featuredCard: true,
     cardTeaser:
-      "End-to-end concept and build—filtering, inline edits, and what stood out once the workflow went live.",
+      "Task lifecycle from intake to resolved—filtering, inline edits, and the detail panel that kept the main view clean.",
   },
   {
     slug: "signal-work-management",
     title: "Signal Work Management",
     description:
-      "Triage incoming work by workspace, urgency, and source—a focused feed with clear priorities.",
+      "An inbound triage surface for work that arrives from Slack, email, and beyond—grouped by urgency, scoped by team workspace.",
     featuredCard: true,
     cardTeaser:
-      "Workspaces, triage views, and an urgency-grouped feed—what worked once filtering and the panel went live.",
+      "Turning a noisy inbound into a legible feed—workspaces, urgency grouping, source filters, and what sharpened once triage felt real.",
   },
   {
-    slug: "meridian",
-    title: "Meridian",
-    description: "Maps and daily navigation—fewer modes, sharper defaults.",
-  },
-  {
-    slug: "harbor",
-    title: "Harbor",
-    description: "Shared space and permissions—onboarding without hand-holding.",
-  },
-  {
-    slug: "ledger",
-    title: "Ledger",
-    description: "Money-adjacent flows—audit trails, zero ornament.",
+    slug: "system-sidekick",
+    title: "System Sidekick",
+    description:
+      "An AI design assistant living inside the Figma panel—answers UX and UI questions in context, without leaving your file.",
+    comingSoon: true,
   },
 ];
 
 export const homeFeaturedCards = projects.filter((p) => p.featuredCard);
-
 export const additionalProjects = projects.filter((p) => !p.featuredCard);

@@ -26,10 +26,13 @@ export default function WanderlistPage() {
         <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
           Wanderlist
         </h1>
+        <p className="mt-3 max-w-2xl text-sm font-medium text-muted-foreground/90 md:text-[15px]">
+          City search · live place data · trips &amp; sharing
+        </p>
         <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl">
-          Search a city, explore real places, and save them into trips. Built on
-          live data with persistence for signed-in users—end to end from API
-          routes to auth and RLS.
+          A full-stack travel app — search any city, get curated places from live
+          data, build trips, and share them. Design through database, shipped and
+          live.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
@@ -53,23 +56,31 @@ export default function WanderlistPage() {
 
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection
-          title="Context"
+          title="What it does"
           leadVisual={<CaseStudyShot shot={shots.contextHero} />}
         >
           <ul className="list-none space-y-3 pl-0 text-[15px] font-medium leading-snug md:text-base">
             <li>
-              Wanderlist turns a city name into a structured, browsable set of
-              real venues—split into headline attractions and smaller “hidden
-              gem” style picks so the results feel curated, not generic.
+              Type any city. Wanderlist geocodes it, pulls live place data from
+              Geoapify, layers in Unsplash photography, and returns a curated
+              split of headline attractions and hidden gems — no content team, no
+              manual curation.
             </li>
             <li>
-              It pairs live Geoapify data with persistence: recent searches land
-              in Supabase for everyone, and signed-in users get full itineraries,
-              saves, sharing, and maps.
+              Signed-in users get the full product: save places to named
+              itineraries, see an estimated trip budget, view everything on a
+              map, and share a read-only trip link with anyone.
             </li>
             <li>
-              The point is scale without a content team—one search flow that
-              works for any city the API can resolve.
+              Not sure where to start? The Trip Quiz asks five questions — vibe,
+              duration, exploration style, landscape, pace — and returns a ranked
+              list of personalized itinerary matches. Or browse the Discover page
+              for curated trips filterable by type and interest, and copy any of
+              them to your account in one click.
+            </li>
+            <li>
+              Anonymous users still get full search and recent history — the auth
+              layer adds persistence, it doesn't gate the core experience.
             </li>
           </ul>
         </CaseStudySection>
@@ -79,84 +90,64 @@ export default function WanderlistPage() {
           trailVisual={
             <>
               <CaseStudyShot shot={shots.builtResults} />
+              <CaseStudyShot shot={shots.quizVibe} />
+              <CaseStudyShot shot={shots.quizResult} />
+              <CaseStudyShot shot={shots.discover} />
+              <CaseStudyShot shot={shots.builtTripsClosed} />
               <CaseStudyShot shot={shots.builtTrips} />
               <CaseStudyShot shot={shots.builtStates} />
             </>
           }
         >
-          <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
+          <ul className="list-disc space-y-3 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
-              <strong className="font-semibold text-foreground">Search flow</strong>{" "}
-              — Client posts to <code className="text-foreground/90">/api/places</code>{" "}
-              with a city string; UI states: empty, loading, success, error (
-              <code className="text-foreground/90">EmptyState</code>,{" "}
-              <code className="text-foreground/90">LoadingState</code>,{" "}
-              <code className="text-foreground/90">ErrorState</code>).
+              <strong className="font-semibold text-foreground">Server-side API pipeline</strong>{" "}
+              — geocoding, dual place queries (top spots + hidden gems), retry
+              logic, timeouts, and optional Unsplash enrichment all live in a
+              single Route Handler. The client gets clean, normalized results or
+              a clear error — never a partial state.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Geoapify</strong>{" "}
-              — Geocode city → coordinates; two place queries (separate category
-              sets for “top” vs “gems”) with retry and timeouts in the route
-              handler.
+              <strong className="font-semibold text-foreground">Auth with row-level security</strong>{" "}
+              — Supabase email/password auth with password reset flow. Every
+              private route validates the user's JWT before touching the
+              database; RLS policies enforce ownership at the data layer so the
+              app is secure even if API logic has a gap.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Unsplash</strong>{" "}
-              — When <code className="text-foreground/90">UNSPLASH_ACCESS_KEY</code>{" "}
-              is set, the API layers in a city hero plus per-place photos; the
-              client also has a smart category/name fallback grid so the UI
-              stays polished either way.
+              <strong className="font-semibold text-foreground">Trip Quiz & personalization</strong>{" "}
+              — a 5-question flow that matches users to itineraries by vibe,
+              duration, exploration style, landscape, and pace. Results are
+              ranked by match score with destination photography, duration, and
+              budget — then immediately copyable into the user's trips.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Recent searches</strong>{" "}
-              — <code className="text-foreground/90">GET /api/searches</code> reads
-              the <code className="text-foreground/90">searches</code> table (last
-              20, newest first).
+              <strong className="font-semibold text-foreground">Discover & curated itineraries</strong>{" "}
+              — a pre-built library of trips, filterable by type (City, Country,
+              Multi-Country) and interest tag (Culture, Food, Beach, and more).
+              One click clones any itinerary into the user's account, ready to
+              customize — no blank-slate friction.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Auth</strong>{" "}
-              — Supabase email/password via{" "}
-              <code className="text-foreground/90">AuthContext</code>{" "}
-              (<code className="text-foreground/90">signUp</code>,{" "}
-              <code className="text-foreground/90">signInWithPassword</code>,{" "}
-              <code className="text-foreground/90">resetPasswordForEmail</code>{" "}
-              → <code className="text-foreground/90">/auth/reset-password</code>
-              , <code className="text-foreground/90">NEXT_PUBLIC_SITE_URL</code>{" "}
-              when <code className="text-foreground/90">window</code> isn’t
-              available).
+              <strong className="font-semibold text-foreground">Itineraries, saves, and sharing</strong>{" "}
+              — users create named trips, save places into them, set a budget,
+              and generate shareable links. Shared trips are served read-only
+              using the Supabase service role — no auth required for the
+              recipient, no data leakage.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Trips</strong>{" "}
-              — Logged-in users create itineraries and save places through{" "}
-              <code className="text-foreground/90">/api/itineraries</code> and{" "}
-              <code className="text-foreground/90">/api/saved-places</code>{" "}
-              (Bearer access token);{" "}
-              <code className="text-foreground/90">SavePlaceModal</code> lists
-              trips or creates one, then POSTs the place.
+              <strong className="font-semibold text-foreground">Resilient UI states</strong>{" "}
+              — every async path has a designed state: loading, success, empty,
+              and error. The app never shows a spinner with no resolution, and
+              search results return even if the history write fails — discovery
+              is never blocked by a secondary operation.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Share</strong>{" "}
-              — <code className="text-foreground/90">PATCH /api/itineraries</code>{" "}
-              generates a <code className="text-foreground/90">share_id</code>;{" "}
-              <code className="text-foreground/90">/api/shared-trip</code> serves
-              read-only trip views by link, using the service role when
-              configured for clean public reads.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">More routes</strong>{" "}
-              — <code className="text-foreground/90">/api/place-search</code>{" "}
-              (Geoapify autocomplete for “add your own” place),{" "}
-              <code className="text-foreground/90">/discover</code> and{" "}
-              <code className="text-foreground/90">/quiz</code> with in-file
-              sample content, <code className="text-foreground/90">/trips</code>{" "}
-              with Leaflet map (dynamic import, no SSR), place detail modal,
-              budgets/helpers in <code className="text-foreground/90">lib/</code>.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">Hardening</strong>{" "}
-              — Rate limits on sensitive routes, strict city input sanitization
-              and validation (<code className="text-foreground/90">lib/security.ts</code>
-              ), and JWT validation before trusted Supabase operations—baseline
-              production hygiene on a public-facing API.
+              <strong className="font-semibold text-foreground">Production hardening</strong>{" "}
+              — rate limiting on sensitive routes, input sanitization, JWT
+              validation before any trusted Supabase operation. The kind of
+              security setup you'd ship to production at a company, not bolted
+              on after the fact.
             </li>
           </ul>
         </CaseStudySection>
@@ -165,34 +156,34 @@ export default function WanderlistPage() {
           <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
               <strong className="font-semibold text-foreground">Next.js 14</strong>{" "}
-              (App Router) — client-heavy pages under <code className="text-foreground/90">app/</code>
-              , Route Handlers under <code className="text-foreground/90">app/api/</code>.
+              (App Router) — client components for interactive search and maps,
+              Route Handlers for the API layer.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Supabase</strong>{" "}
-              — JS client for auth + anon queries; per-request clients in API
-              routes with the user’s <code className="text-foreground/90">Authorization</code>{" "}
-              header for private data.
+              — auth, Postgres with RLS, and per-request clients scoped to the
+              user's session for private data.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Geoapify</strong>{" "}
-              — Geocoding, places, autocomplete (<code className="text-foreground/90">GEOAPIFY_API_KEY</code>
-              , server-only).
+              — geocoding, places, and autocomplete. All calls are server-side;
+              the key never touches the client.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Unsplash API</strong>{" "}
-              — Search endpoint for city and place images when configured.
+              — city hero and per-place photography when configured; the UI
+              degrades gracefully to category-based fallback imagery when it's
+              not.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Cursor</strong>{" "}
-              — Used end to end to move faster on API design, types, and refactors
-              without sacrificing reviewability.
+              <strong className="font-semibold text-foreground">Leaflet</strong>{" "}
+              — dynamically imported map on the trips page (no SSR), with place
+              pins pulled from saved itinerary data.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Deploy</strong>{" "}
-              — Documented for <strong className="text-foreground">Vercel</strong>{" "}
-              with a clear env contract (<code className="text-foreground/90">.env.example</code>
-              ); portable to any host that runs Next.js and the same secrets.
+              <strong className="font-semibold text-foreground">Netlify</strong>{" "}
+              — deployed with a clean environment contract; portable to any
+              Next.js-compatible host.
             </li>
           </ul>
         </CaseStudySection>
@@ -203,141 +194,60 @@ export default function WanderlistPage() {
         >
           <ul className="list-none space-y-4 pl-0 text-[15px] font-medium leading-snug md:text-base">
             <li>
-              <span className="font-semibold text-foreground">Places search</span>
+              <span className="font-semibold text-foreground">Search</span>
               <br />
-              Browser → <code className="text-foreground/90">POST /api/places</code>{" "}
-              → Geoapify (geocode + 2× places) → normalize to{" "}
-              <code className="text-foreground/90">PlaceResult</code> → optional
-              Unsplash enrichment →{" "}
-              <strong className="text-foreground">insert row into</strong>{" "}
-              <code className="text-foreground/90">searches</code>{" "}
-              (<code className="text-foreground/90">top_results_json</code>,{" "}
-              <code className="text-foreground/90">hidden_gems_json</code>) via the
-              shared Supabase client → JSON response to the client for immediate
-              render. If persistence fails, the route still returns results—users
-              never get blocked by a secondary write; failures are logged for
-              follow-up.
+              Client posts a city string → server geocodes it → fires two
+              parallel place queries (categories tuned for "top" vs "gems") →
+              normalizes results → optionally enriches with Unsplash photos →
+              writes to search history → returns JSON. If the history write
+              fails, results still return. The client never sees a partial or
+              inconsistent payload.
             </li>
             <li>
-              <span className="font-semibold text-foreground">Recent searches</span>
+              <span className="font-semibold text-foreground">Private data</span>
               <br />
-              Browser → <code className="text-foreground/90">GET /api/searches</code>{" "}
-              → Supabase select on <code className="text-foreground/90">searches</code>{" "}
-              (schema ships with RLS allowing anon access for that table).
+              Every authenticated request carries the user's access token.
+              Server-side route handlers call{" "}
+              <code className="text-foreground/90">getUser()</code> before any
+              database write; Supabase RLS policies enforce row ownership as a
+              second layer. No auth = no data, at the DB level.
             </li>
             <li>
-              <span className="font-semibold text-foreground">Saved places</span>
+              <span className="font-semibold text-foreground">Shared trips</span>
               <br />
-              Browser (session) → API routes with{" "}
-              <code className="text-foreground/90">Bearer</code> token →{" "}
-              <code className="text-foreground/90">createClient</code> +{" "}
-              <code className="text-foreground/90">getUser()</code> → RLS on{" "}
-              <code className="text-foreground/90">itineraries</code> /{" "}
-              <code className="text-foreground/90">saved_places</code> (policies
-              in <code className="text-foreground/90">supabase/</code> SQL files).
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Transforms</span>
-              <br />
-              Geoapify categories → readable labels; a Latin-script pass on names
-              keeps the default UI legible for the product’s primary locales;
-              sequential top/gem fetches respect provider limits; the client
-              merges streams into one scannable grid.
-            </li>
-          </ul>
-        </CaseStudySection>
-
-        <CaseStudySection title="What shipping surfaced">
-          <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
-            <li>
-              Real Geoapify payloads vary wildly—script systems, sparse fields,
-              uneven photo coverage. The places route normalizes aggressively:
-              caps, filters, retries, and optional Unsplash so the experience
-              stays consistent city to city.
-            </li>
-            <li>
-              Designed a resilient UI layer: category-based imagery and a clear
-              empty state when a location truly has no matches, so the product
-              never feels “broken”—just honest.
-            </li>
-            <li>
-              Chose resilience over coupling: search results return even if the
-              history write hiccups, so discovery never stalls; persistence is
-              additive, not a gate.
-            </li>
-            <li>
-              Auth is explicit in the UI—save and trip features appear only when
-              a session exists, which keeps expectations aligned with RLS and
-              avoids fake affordances.
-            </li>
-            <li>
-              Shipped pragmatic rate limiting at the route layer—enough to
-              protect keys and Supabase under normal load, with a straightforward
-              path to swap in a shared store if traffic grows.
-            </li>
-            <li>
-              The route pipeline includes room for richer language handling
-              (normalization helpers alongside category mapping) as the product
-              expands beyond the first set of locales.
-            </li>
-            <li>
-              Evolved the schema deliberately: share links, richer{" "}
-              <code className="text-foreground/90">saved_places</code>, and UPDATE
-              policies landed as real usage clarified what people actually save
-              and share.
-            </li>
-          </ul>
-        </CaseStudySection>
-
-        <CaseStudySection title="Why this matters">
-          <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
-            <li>Helps people move from browsing to actually saving places.</li>
-            <li>Reduces friction between discovery and planning.</li>
-            <li>
-              Separates anonymous exploration from logged-in trip management.
-            </li>
-          </ul>
-        </CaseStudySection>
-
-        <CaseStudySection title="Tradeoffs">
-          <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
-            <li>
-              <code className="text-foreground/90">searches</code> uses a permissive
-              anon policy so exploration works out of the box—an intentional
-              product bet, easy to harden when requirements demand it.
-            </li>
-            <li>
-              Leaned on <code className="text-foreground/90">use client</code>{" "}
-              for interactive search, maps, and modals—fast to ship, predictable
-              for this surface area, with the API doing the heavy lifting.
-            </li>
-            <li>
-              Discover and quiz content ship as curated in-repo data—zero CMS
-              overhead, full creative control, and instant deploys for a solo
-              build.
-            </li>
-            <li>
-              Grid keys follow Geoapify’s shape (order-stable results per search)
-              rather than imaginary universal IDs—honest to the provider model
-              and stable for the UX as implemented.
+              Sharing generates a unique token on the itinerary. The shared view
+              uses the Supabase service role to serve read-only data by token —
+              no session required, no private data exposed.
             </li>
           </ul>
         </CaseStudySection>
 
         <CaseStudySection title="Design decisions">
-          <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
+          <ul className="list-disc space-y-3 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
-              Editorial UI in the app (serif headlines, cream/stone palette) so
-              places stay the hero—calm enough for long browsing sessions.
+              <strong className="font-semibold text-foreground">Editorial aesthetic</strong>{" "}
+              — serif headlines, warm cream palette, and generous photography
+              keep the places front and center. The UI stays calm enough for
+              long browsing sessions without competing with the content.
             </li>
             <li>
-              Concentrated complexity in Route Handlers: retries, filtering, and
-              the image pipeline live server-side; the client owns clear states
-              and presentation.
+              <strong className="font-semibold text-foreground">Auth as enhancement, not a gate</strong>{" "}
+              — anonymous users get the full search experience. Sign-in unlocks
+              persistence. This is a deliberate product decision: make the value
+              obvious before asking for commitment.
             </li>
             <li>
-              Save flows go through a modal and an explicit itinerary choice—no
-              mystery “heart” with nowhere to land; every saved spot has a home.
+              <strong className="font-semibold text-foreground">Complexity lives server-side</strong>{" "}
+              — retries, filtering, image enrichment, and normalization all
+              happen in Route Handlers. The client owns state and presentation.
+              Easier to test, easier to change, and the browser payload stays
+              clean.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">Save flows are explicit</strong>{" "}
+              — a modal prompts users to choose or create a trip before saving a
+              place. No mystery heart button that saves somewhere unknown; every
+              saved spot has a home.
             </li>
           </ul>
         </CaseStudySection>
@@ -345,22 +255,26 @@ export default function WanderlistPage() {
         <CaseStudySection title="Outcome">
           <ul className="list-none space-y-3 pl-0 text-[15px] font-medium leading-snug md:text-base">
             <li>
-              This is a full-stack product, not a concept deck—Geoapify, Unsplash,
-              Supabase auth, RLS, and shareable trips all ship in one coherent
-              codebase.
+              Wanderlist is a complete product, not a prototype — search, auth,
+              trips, maps, sharing, quiz, and security all ship in one codebase
+              and work together end to end. Every surface has a designed state
+              for every async outcome: loading, success, empty, and error.
             </li>
             <li>
-              The split between anonymous search history and authenticated
-              itineraries is a clean security and UX story: explore freely,
-              commit when you sign in.
+              The security model is real: JWT validation at the route layer, RLS
+              at the database layer, server-only API keys. Not a bolt-on — it was
+              designed in from the start and holds up to the same scrutiny as a
+              production system.
             </li>
             <li>
-              I’m proud of how much surface area ships in one repo: search,
-              persistence, trips, maps, sharing, and hardening—evidence of design
-              and engineering moving together.
+              The resilience decisions are deliberate — search results survive a
+              failed history write, the app degrades gracefully when third-party
+              APIs don't cooperate, and complexity stays on the server so the
+              client stays predictable. That's production thinking, not
+              happy-path thinking.
             </li>
             <li>
-              Code and docs live here:{" "}
+              Code lives here:{" "}
               <a
                 href={REPO}
                 className="font-semibold text-foreground underline decoration-muted-foreground underline-offset-[5px] hover:decoration-foreground"

@@ -145,11 +145,11 @@ export default function MisePage() {
               swaps. The user selects one or more dietary goals (higher protein,
               lower carb, dairy-free, etc.) and Claude reads the full ingredient
               list at once, applies the most practical combination of swaps for
-              the actual dish, and writes all results in a single pass. Claude
-              resolves goal conflicts natively—if two goals disagree on the same
-              ingredient, it picks the swap that serves the most goals
-              simultaneously rather than surfacing a mechanical priority-order
-              dialog. Batch-shifted lines are tagged in{" "}
+              the actual dish, and writes all results in a single pass. The
+              prompt instructs Claude to resolve goal conflicts in a single
+              pass—if two goals disagree on the same ingredient, it picks the
+              swap that serves the most goals simultaneously rather than
+              surfacing a mechanical priority-order dialog. Batch-shifted lines are tagged in{" "}
               <code className="text-foreground/90">recipe_modifications</code>{" "}
               so they can be cleared independently of manual swaps. A static
               swap catalog serves as a zero-latency fallback if the API is
@@ -168,8 +168,8 @@ export default function MisePage() {
               handling nested <code className="text-foreground/90">@graph</code>,
               HowToSection with itemListElement, and plain string instruction
               arrays. A demo mock adapter provides a working end-to-end fallback
-              with no external dependencies. Virtually any major recipe site
-              imports cleanly at one of the three tiers.
+              with no external dependencies. Most major recipe sites import
+              cleanly at one of the three tiers.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
@@ -228,8 +228,9 @@ export default function MisePage() {
           trailVisual={
             <>
               <CaseStudyMedia shot={shots.cookMode} />
-              <CaseStudyMedia shot={shots.cookModeSwap} />
               <CaseStudyMedia shot={shots.ingredientSwap} />
+              <CaseStudyMedia shot={shots.cookModeSwap} />
+              <CaseStudyMedia shot={shots.swapModal} />
             </>
           }
         >
@@ -308,8 +309,8 @@ export default function MisePage() {
             <li>
               <strong className="font-semibold text-foreground">Supabase SSR</strong>{" "}
               — Per-request server clients for auth-aware queries; browser client
-              for cook mode's real-time step and timer syncs. RLS on all tables—
-              no row accessible outside its owner.
+              for cook mode's step and timer writes. RLS on all tables—no row
+              accessible outside its owner.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
@@ -373,32 +374,43 @@ export default function MisePage() {
               caching docs to confirm.
             </li>
             <li>
-              The timer's clock-based model (fixed{" "}
-              <code className="text-foreground/90">endsAt</code> timestamp vs. a
-              countdown counter) was a small decision with real UX consequences.
-              A counter drifts across tab switches and phone locks. A timestamp
-              doesn't—remaining seconds are always calculated fresh on each tick.
+              <strong className="font-semibold text-foreground">
+                A timestamp beats a counter.
+              </strong>{" "}
+              The timer stores a fixed{" "}
+              <code className="text-foreground/90">endsAt</code> timestamp
+              rather than a countdown. A counter drifts across tab switches
+              and phone locks. A timestamp doesn't—remaining seconds are
+              always calculated fresh on each tick.
             </li>
             <li>
+              <strong className="font-semibold text-foreground">
+                Honest beats clever in ingredient matching.
+              </strong>{" "}
               Step-ingredient matching surfaced an inherent tension: strict
-              matching misses paraphrased ingredients; loose matching shows too
-              much. The solution was to show everything when confidence is
-              low—honest beats clever.
+              matching misses paraphrased ingredients; loose matching shows
+              too much. The solution was to show everything when confidence
+              is low and label it clearly—not hide the fallback.
             </li>
             <li>
-              The three-tier import pipeline emerged from real failures in
-              production: Spoonacular occasionally extracts garbage from
-              paywalled or redirect pages. JSON-LD structured data is
-              surprisingly reliable as a free fallback—most major recipe
-              sites include it for SEO. Designing each adapter against the
-              same interface kept the fallback logic clean and testable.
+              <strong className="font-semibold text-foreground">
+                The import pipeline was designed for failure.
+              </strong>{" "}
+              Spoonacular occasionally extracts garbage from paywalled or
+              redirect pages. JSON-LD structured data is surprisingly
+              reliable as a free fallback—most major recipe sites include it
+              for SEO. Designing each adapter against the same interface kept
+              the fallback logic clean and testable.
             </li>
             <li>
-              Server Actions made the mutation pattern unusually clean: no
-              route handlers, no client-side fetches for writes, cache
+              <strong className="font-semibold text-foreground">
+                Server Actions kept mutations clean.
+              </strong>{" "}
+              No route handlers, no client-side fetches for writes, cache
               invalidation via{" "}
               <code className="text-foreground/90">revalidatePath()</code>{" "}
-              co-located with the action.
+              co-located with the action. The write pattern stayed consistent
+              across every mutation in the app.
             </li>
           </ul>
         </CaseStudySection>

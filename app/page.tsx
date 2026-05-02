@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 items-end gap-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7 lg:col-start-1">
             <p className="mb-10 text-[10px] font-semibold uppercase tracking-[0.32em] text-muted-foreground md:mb-12">
-              Product design · systems · ship
+              Product design · full-stack · AI
             </p>
             <h1 className="font-instrument text-[clamp(3.1rem,10vw,6.75rem)] font-normal leading-[0.88] tracking-[-0.038em] text-foreground">
               Design isn’t done
@@ -38,8 +38,9 @@ export default function HomePage() {
             />
             <div className="hidden lg:mb-12 lg:block lg:h-px lg:w-14 lg:bg-border" />
             <p className="max-w-[38ch] text-[15px] font-medium leading-[1.6] tracking-[-0.01em] text-muted-foreground md:text-base md:leading-relaxed lg:max-w-[40ch]">
-              I focus on clarity and follow work through implementation—systems,
-              interfaces, and what happens when real users hit real data.
+              Designer who engineers. I take products from concept to working
+              code—full-stack, shipped, and built to hold up when real users
+              show up.
             </p>
           </div>
         </div>
@@ -103,20 +104,21 @@ export default function HomePage() {
                       <p className="text-[13px] font-medium leading-snug text-muted-foreground md:text-sm">
                         {teaser}
                       </p>
-                      {hasLiveProduct ? (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={cn(
-                            buttonVariants({ variant: "outline", size: "lg" }),
-                            "h-11 w-fit gap-2 rounded-lg border-white/18 bg-background/50 px-6 text-foreground backdrop-blur-sm transition-colors hover:border-white/28 hover:bg-background/70"
-                          )}
-                        >
-                          View live product
-                          <ArrowUpRight className="size-4 opacity-80" aria-hidden />
-                        </a>
-                      ) : (
+                      <div className="flex flex-wrap gap-3">
+                        {hasLiveProduct && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                              buttonVariants({ variant: "outline", size: "lg" }),
+                              "h-11 w-fit gap-2 rounded-lg border-white/18 bg-background/50 px-6 text-foreground backdrop-blur-sm transition-colors hover:border-white/28 hover:bg-background/70"
+                            )}
+                          >
+                            View live product
+                            <ArrowUpRight className="size-4 opacity-80" aria-hidden />
+                          </a>
+                        )}
                         <Link
                           href={`/projects/${project.slug}`}
                           className={cn(
@@ -127,7 +129,7 @@ export default function HomePage() {
                           Case study
                           <ArrowUpRight className="size-4 opacity-80" aria-hidden />
                         </Link>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -137,41 +139,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* More work */}
-      <section className="border-t border-border/70" aria-label="More work">
-        <div className="mx-auto max-w-[min(92rem,calc(100vw-1.5rem))] px-3 py-14 md:px-6 md:py-20 lg:px-10">
-          <div className="mb-7 md:mb-9">
-            <h2 className="font-instrument text-2xl font-normal tracking-tight text-foreground md:text-3xl">
-              More work
-            </h2>
-            <p className="mt-2 max-w-sm text-[13px] font-medium leading-snug text-muted-foreground">
-              Case studies still in motion.
-            </p>
+      {/* More work — only rendered when there are entries */}
+      {additionalProjects.length > 0 && (
+        <section className="border-t border-border/70" aria-label="More work">
+          <div className="mx-auto max-w-[min(92rem,calc(100vw-1.5rem))] px-3 py-14 md:px-6 md:py-20 lg:px-10">
+            <div className="mb-7 md:mb-9">
+              <h2 className="font-instrument text-2xl font-normal tracking-tight text-foreground md:text-3xl">
+                More work
+              </h2>
+            </div>
+
+            <Separator className="bg-border" />
+
+            <ul className="divide-y divide-border">
+              {additionalProjects.map((project) =>
+                project.comingSoon ? (
+                  <li key={project.slug}>
+                    <div className="py-8 md:py-10">
+                      <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-12">
+                        <span className="flex items-baseline gap-3 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+                          {project.title}
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/60">
+                            Coming soon
+                          </span>
+                        </span>
+                        <span className="max-w-md text-[13px] font-medium leading-snug text-muted-foreground md:pt-0.5 md:text-right md:text-[14px]">
+                          {project.description}
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                ) : (
+                  <li key={project.slug}>
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="group block py-8 md:py-10"
+                    >
+                      <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-12">
+                        <span className="text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-0.5 md:text-2xl">
+                          {project.title}
+                        </span>
+                        <span className="max-w-md text-[13px] font-medium leading-snug text-muted-foreground md:pt-0.5 md:text-right md:text-[14px]">
+                          {project.description}
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                )
+              )}
+            </ul>
           </div>
-
-          <Separator className="bg-border" />
-
-          <ul className="divide-y divide-border">
-            {additionalProjects.map((project) => (
-              <li key={project.slug}>
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="group block py-8 md:py-10"
-                >
-                  <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-12">
-                    <span className="text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-0.5 md:text-2xl">
-                      {project.title}
-                    </span>
-                    <span className="max-w-md text-[13px] font-medium leading-snug text-muted-foreground md:pt-0.5 md:text-right md:text-[14px]">
-                      {project.description}
-                    </span>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Closing */}
       <section className="mx-auto max-w-[min(92rem,calc(100vw-1.5rem))] px-3 py-20 md:px-6 md:py-24 lg:px-10 lg:pl-[min(9vw,7rem)]">

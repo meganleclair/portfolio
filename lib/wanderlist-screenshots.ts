@@ -59,15 +59,32 @@ const SPECS = {
   },
   builtTrips: {
     files: [
+      "trips-open.png",
+      "trips-open.webp",
       "built-trips.webp",
       "built-trips.png",
       "03-trips-or-save.png",
       "03-trips-or-save.webp",
     ],
-    alt: "Trips or saved places for a signed-in user",
-    caption: "Saved trips tied to authenticated users.",
+    alt: "My Trips page with Rome 2026 expanded, showing the Leaflet map and day-by-day place list",
+    caption: "My Trips — expanded view with live map, day layout, and budget estimate.",
     placeholderLabel:
-      "Screenshot: My Trips / saves — add built-trips.png or 03-trips-or-save.png",
+      "Screenshot: My Trips expanded — add built-trips.png to public/wanderlist/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  builtTripsClosed: {
+    files: [
+      "trips-closed.png",
+      "trips-closed.webp",
+      "built-trips-closed.webp",
+      "built-trips-closed.png",
+    ],
+    alt: "My Trips page showing all trips collapsed — Rome 2026, Spain 2027, and completed Greece 2025",
+    caption: "Collapsed trip list — upcoming and completed trips with budget estimates at a glance.",
+    placeholderLabel:
+      "Screenshot: My Trips collapsed — add built-trips-closed.png to public/wanderlist/",
     variant: "default" as const,
     width: 1440,
     height: 900,
@@ -101,6 +118,45 @@ const SPECS = {
     variant: "compact" as const,
     width: 1200,
     height: 720,
+  },
+  discover: {
+    files: [
+      "discover.webp",
+      "discover.png",
+    ],
+    alt: "Discover Itineraries page showing curated trip templates",
+    caption: "Discover — curated itineraries filterable by type and interest. One click copies any trip to your account.",
+    placeholderLabel:
+      "Screenshot: Discover Itineraries — add discover.png to public/wanderlist/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  quizVibe: {
+    files: [
+      "quiz-vibe.webp",
+      "quiz-vibe.png",
+    ],
+    alt: "Trip Quiz first question — What's your travel vibe?",
+    caption: "Trip Quiz — 5 questions that match you to a personalized itinerary.",
+    placeholderLabel:
+      "Screenshot: Trip Quiz Q1 — add quiz-vibe.png to public/wanderlist/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  quizResult: {
+    files: [
+      "quiz-result.webp",
+      "quiz-result.png",
+    ],
+    alt: "Trip Quiz results showing ranked itinerary recommendations",
+    caption: "Quiz results — ranked matches with destination photography, duration, budget, and interest tags.",
+    placeholderLabel:
+      "Screenshot: Trip Quiz result — add quiz-result.png to public/wanderlist/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
   },
 } satisfies Record<string, ShotSpec>;
 
@@ -137,7 +193,11 @@ export function getWanderlistShots(): Record<
     contextHero: resolveShot(SPECS.contextHero),
     builtResults: resolveShot(SPECS.builtResults),
     builtTrips: resolveShot(SPECS.builtTrips),
+    builtTripsClosed: resolveShot(SPECS.builtTripsClosed),
     builtStates: resolveShot(SPECS.builtStates),
     dataFlow: resolveShot(SPECS.dataFlow),
+    discover: resolveShot(SPECS.discover),
+    quizVibe: resolveShot(SPECS.quizVibe),
+    quizResult: resolveShot(SPECS.quizResult),
   };
 }

@@ -22,7 +22,20 @@ export const metadata: Metadata = {
     template: "%s — Megan LeClair",
   },
   description:
-    "Product designer. Design through build—systems, interfaces, shipped software.",
+    "Product designer and engineer based in Nashville—full-stack, shipped, and working at the intersection of design and code.",
+  openGraph: {
+    title: "Megan LeClair",
+    description:
+      "Product designer and engineer—full-stack, shipped, design through build.",
+    siteName: "Megan LeClair",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Megan LeClair",
+    description:
+      "Product designer and engineer—full-stack, shipped, design through build.",
+  },
 };
 
 export default function RootLayout({
