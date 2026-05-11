@@ -36,12 +36,12 @@ export const projects: ProjectListItem[] = [
   },
   {
     slug: "relay",
-    title: "Relay Task Tracker",
+    title: "Threshold",
     description:
-      "A task tracker for teams that need to know who owns what and where it stands—ownership, status, and inline edits in one table.",
+      "A purpose-built ops tool for cyber insurance underwriting teams—tracking ransomware assessments, breach evaluations, and sublimit reviews with clear ownership and an auditable decision trail.",
     featuredCard: true,
     cardTeaser:
-      "Task lifecycle from intake to resolved—filtering, inline edits, and the detail panel that kept the main view clean.",
+      "When exposure crosses a risk threshold, it enters the queue. Inline editing, composable filters, activity logs, and a live demo queue that never goes stale.",
   },
   {
     slug: "signal-work-management",
