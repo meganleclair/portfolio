@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 const REPO = "https://github.com/meganleclair/relay-task-tracker";
+const LIVE = "https://threshold-task-tracker.netlify.app";
 
 export default function RelayPage() {
   const shots = getRelayShots();
@@ -34,6 +35,14 @@ export default function RelayPage() {
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
+            href={LIVE}
+            className="text-muted-foreground underline decoration-border underline-offset-[6px] transition-colors hover:text-foreground hover:decoration-foreground"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View live product
+          </a>
+          <a
             href={REPO}
             className="text-muted-foreground underline decoration-border underline-offset-[6px] transition-colors hover:text-foreground hover:decoration-foreground"
             target="_blank"
@@ -47,7 +56,7 @@ export default function RelayPage() {
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection
           title="Context"
-          leadVisual={<CaseStudyMedia shot={shots.tableView} />}
+          leadVisual={<CaseStudyMedia shot={shots.dashboard} />}
         >
           <p>
             Cyber insurance underwriting teams move high-stakes work through
@@ -139,9 +148,11 @@ export default function RelayPage() {
             <li>
               <strong className="font-semibold text-foreground">Lightweight intake</strong>{" "}
               — a modal form creates new items with name, client, type, owner,
-              priority, due date, and a summary. The item lands at the top of
-              the table with an activity entry and a flash animation that
-              orients the user to the new row.
+              priority, due date, and a summary. Work types are domain-specific:
+              Ransomware Assessment, Data Breach Evaluation, Sublimit Review,
+              Cyber Renewal. The item lands at the top of the table with an
+              activity entry and a flash animation that orients the user to the
+              new row.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Scripted live updates</strong>{" "}
@@ -154,14 +165,32 @@ export default function RelayPage() {
 
         <CaseStudySection title="Key features">
           <div className="space-y-16 md:space-y-20">
+
             <div>
               <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Interactive filtering
+                The queue
               </h3>
               <p className="mt-3">
-                Status, owner, search, and activity-day filters compose
-                together. The table pulses when filters change so the update
-                registers visually without a spinner.
+                The full underwriting queue — every active item with owner,
+                priority, type, status, and due date visible without opening
+                anything. Dense enough to see the whole picture; sortable by
+                any column.
+              </p>
+              <div className="mt-7 w-full max-w-3xl">
+                <CaseStudyMedia shot={shots.tableView} />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                Metrics as filters
+              </h3>
+              <p className="mt-3">
+                The stat cards aren't decorative. Clicking "In Review" or
+                "Blocked" scopes the table to those items immediately — the
+                metric earns its place by being functional, not just
+                informational. A unified filter banner shows exactly what's
+                active and clears in one click.
               </p>
               <div className="mt-7 w-full max-w-3xl">
                 <CaseStudyMedia shot={shots.filtering} />
@@ -190,7 +219,8 @@ export default function RelayPage() {
               <p className="mt-3">
                 A focused side panel for context, notes, and history — open
                 alongside the table, not instead of it. Owners can leave notes
-                and change status without losing their place in the queue.
+                and change status without losing their place in the queue. Every
+                action is appended to the activity log with a timestamp.
               </p>
               <div className="mt-7 w-full max-w-3xl">
                 <CaseStudyMedia shot={shots.drawer} />
@@ -203,14 +233,20 @@ export default function RelayPage() {
               </h3>
               <p className="mt-3">
                 New work enters the system quickly, with sensible defaults and
-                a flash animation that orients the user to the new row. The
-                item is immediately visible in the queue with its activity
-                entry.
+                domain-specific work types built in. The item lands at the top
+                of the table with its activity entry — no ambiguity about where
+                it went.
               </p>
-              <div className="mt-7 w-full max-w-2xl">
-                <CaseStudyMedia shot={shots.intake} />
+              <div className="mt-7 flex flex-col gap-6 sm:flex-row sm:items-start">
+                <div className="w-full max-w-sm">
+                  <CaseStudyMedia shot={shots.intake} />
+                </div>
+                <div className="w-full max-w-sm">
+                  <CaseStudyMedia shot={shots.intakeTypes} />
+                </div>
               </div>
             </div>
+
           </div>
         </CaseStudySection>
 
@@ -301,6 +337,19 @@ export default function RelayPage() {
                 matters in cyber insurance: "who approved the BEC sublimit
                 adjustment and when" is a real question that gets asked at
                 renewal. The log answers it without digging through email.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Domain-specific intake types
+              </h3>
+              <p className="mt-2">
+                Work types in the intake form aren't generic categories — they're
+                the actual types cyber underwriting teams deal with: Ransomware
+                Assessment, Data Breach Evaluation, Sublimit Review, Cyber
+                Renewal, Incident Response Review. This specificity matters: it
+                means the tool speaks the team's language from the moment work
+                enters the system.
               </p>
             </div>
           </div>

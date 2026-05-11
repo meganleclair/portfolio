@@ -91,6 +91,11 @@ export default function HomePage() {
                     <CardTitle className="font-instrument text-[clamp(2.5rem,5vw,4.25rem)] font-normal leading-[0.92] tracking-[-0.034em] text-card-foreground">
                       {project.title}
                     </CardTitle>
+                    {project.subtitle && (
+                      <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground/60">
+                        {project.subtitle}
+                      </p>
+                    )}
                     <CardDescription className="mt-7 max-w-md text-[15px] font-medium leading-relaxed text-muted-foreground md:mt-8 md:text-base md:leading-relaxed">
                       {project.description}
                     </CardDescription>

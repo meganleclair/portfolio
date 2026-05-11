@@ -16,52 +16,77 @@ type ShotSpec = {
 
 /** First matching file in public/relay/ wins. */
 const SPECS = {
-  tableView: {
-    files: ["table-view.webp", "table-view.png", "01-table-view.webp"],
-    alt: "Relay Task Tracker main table view with work items",
-    caption: "Primary surface—dense table for scanning and comparing items.",
-    placeholderLabel:
-      "Main table view — add table-view.webp or .png to public/relay/",
+  dashboard: {
+    files: ["dashboard.webp", "dashboard.png"],
+    alt: "Threshold dashboard — stat cards, activity chart, and queue",
+    caption:
+      "Dashboard — live metrics, activity chart, and the full underwriting queue.",
+    placeholderLabel: "Dashboard overview — add dashboard.png to public/relay/",
     variant: "hero" as const,
     width: 1600,
     height: 960,
   },
-  drawer: {
-    files: ["drawer.webp", "drawer.png", "02-detail-panel.webp"],
-    alt: "Relay Task Tracker detail panel beside the table",
-    caption: "Detail panel—context, notes, and history without leaving the list.",
+  tableView: {
+    files: ["table-view.webp", "table-view.png", "01-table-view.webp"],
+    alt: "Threshold full queue table with all work items",
+    caption:
+      "Queue table — 12 items across owners, priorities, and due dates at a glance.",
     placeholderLabel:
-      "Detail panel open — add drawer.png or 02-detail-panel.webp to public/relay/",
-    variant: "default" as const,
-    width: 1440,
-    height: 900,
-  },
-  inlineEdit: {
-    files: ["inline-edit.webp", "inline-edit.png", "03-inline-edit.webp"],
-    alt: "Inline editing in the Relay Task Tracker table",
-    caption: "Inline editing—status, owner, priority, and dates in place.",
-    placeholderLabel:
-      "Inline editing — add inline-edit.png to public/relay/",
+      "Main table view — add table-view.png to public/relay/",
     variant: "default" as const,
     width: 1440,
     height: 900,
   },
   filtering: {
     files: ["filtering.webp", "filtering.png", "04-filtering.webp"],
-    alt: "Filtering controls in Relay Task Tracker",
-    caption: "Filters—activity, status, and ownership working together.",
+    alt: "Threshold filtered to In Review items via stat card click",
+    caption:
+      "Metrics as filters — clicking a stat card scopes the table to that slice instantly.",
     placeholderLabel:
       "Filtering interaction — add filtering.png to public/relay/",
     variant: "default" as const,
     width: 1440,
     height: 900,
   },
+  inlineEdit: {
+    files: ["inline-edit.webp", "inline-edit.png", "03-inline-edit.webp"],
+    alt: "Inline status editing in the Threshold queue table",
+    caption:
+      "Inline editing — status, owner, priority, and due date update in the row.",
+    placeholderLabel:
+      "Inline editing — add inline-edit.png to public/relay/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
+  drawer: {
+    files: ["drawer.webp", "drawer.png", "02-detail-panel.webp"],
+    alt: "Threshold detail panel open alongside the queue",
+    caption:
+      "Detail panel — full context, activity log, and notes without leaving the queue.",
+    placeholderLabel:
+      "Detail panel open — add drawer.png to public/relay/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
+  },
   intake: {
     files: ["intake.webp", "intake.png", "05-intake.webp"],
-    alt: "Creating new work in Relay Task Tracker",
-    caption: "Lightweight intake—new items land with clear defaults.",
+    alt: "New item intake form in Threshold",
+    caption: "Intake form — name, client, owner, priority, and due date.",
     placeholderLabel:
       "Intake / create flow — add intake.png to public/relay/",
+    variant: "compact" as const,
+    width: 1200,
+    height: 720,
+  },
+  intakeTypes: {
+    files: ["intake-types.webp", "intake-types.png"],
+    alt: "Threshold intake form showing cyber insurance work type options",
+    caption:
+      "Domain-specific types — Ransomware Assessment, Data Breach Evaluation, Sublimit Review, and more.",
+    placeholderLabel:
+      "Intake type dropdown — add intake-types.png to public/relay/",
     variant: "compact" as const,
     width: 1200,
     height: 720,
@@ -95,10 +120,12 @@ function resolveShot(spec: ShotSpec): ResolvedCaseStudyMedia {
 
 export function getRelayShots(): Record<keyof typeof SPECS, ResolvedCaseStudyMedia> {
   return {
+    dashboard: resolveShot(SPECS.dashboard),
     tableView: resolveShot(SPECS.tableView),
-    drawer: resolveShot(SPECS.drawer),
-    inlineEdit: resolveShot(SPECS.inlineEdit),
     filtering: resolveShot(SPECS.filtering),
+    inlineEdit: resolveShot(SPECS.inlineEdit),
+    drawer: resolveShot(SPECS.drawer),
     intake: resolveShot(SPECS.intake),
+    intakeTypes: resolveShot(SPECS.intakeTypes),
   };
 }
