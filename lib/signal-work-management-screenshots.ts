@@ -72,6 +72,17 @@ const SPECS = {
     width: 1200,
     height: 720,
   },
+  triageAssist: {
+    files: ["triage-assist.webp", "triage-assist.png", "06-triage-assist.webp"],
+    alt: "Signal Triage Assist result card powered by Claude",
+    caption:
+      "Triage Assist—Claude reads the full signal and returns urgency, owner, and a recommended first action.",
+    placeholderLabel:
+      "Triage Assist — add triage-assist.png to public/signal-work-management/",
+    variant: "compact" as const,
+    width: 1200,
+    height: 720,
+  },
 } satisfies Record<string, ShotSpec>;
 
 function resolveShot(spec: ShotSpec): ResolvedCaseStudyMedia {
@@ -109,5 +120,6 @@ export function getSignalWorkManagementShots(): Record<
     sidebarSources: resolveShot(SPECS.sidebarSources),
     detailPanel: resolveShot(SPECS.detailPanel),
     toolbar: resolveShot(SPECS.toolbar),
+    triageAssist: resolveShot(SPECS.triageAssist),
   };
 }

@@ -8,7 +8,7 @@ import { getSignalWorkManagementShots } from "@/lib/signal-work-management-scree
 export const metadata: Metadata = {
   title: "Signal Work Management",
   description:
-    "An inbound triage surface for work that arrives from Slack, email, and beyond—grouped by urgency, scoped by team workspace, and built for the person everything flows through.",
+    "An inbound triage surface for work that arrives from Slack, email, and beyond—grouped by urgency, scoped by team workspace, and powered by Claude for AI-assisted triage suggestions.",
 };
 
 const REPO = "https://github.com/meganleclair/signal-work-management";
@@ -23,14 +23,16 @@ export default function SignalWorkManagementPage() {
           Signal Work Management
         </h1>
         <p className="mt-3 max-w-2xl text-sm font-medium text-muted-foreground/90 md:text-[15px]">
-          Inbound triage · workspace scoping · urgency-led feed
+          Inbound triage · AI-assisted · workspace scoping · urgency-led feed
         </p>
         <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed">
           Work doesn't arrive in a queue. It arrives in fragments—a Slack message
           here, an email thread there, a calendar hold that needs a decision, a
           form submission nobody's claimed yet. Signal is the surface that makes
           that inbound legible: urgency-grouped, workspace-scoped, and built for
-          the person everything flows through.
+          the person everything flows through. A Claude-powered Triage Assist
+          reads each signal in full and returns a recommended urgency, owner, and
+          first action.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
@@ -70,7 +72,9 @@ export default function SignalWorkManagementPage() {
             Signal is the surface that makes the inbound stack visible. It
             collapses work from Slack, email, calendar, docs, forms, and chat
             into a single feed—scoped by team workspace, grouped by urgency, and
-            triaged item by item.
+            triaged item by item. When you need a second opinion on how to act,
+            Triage Assist sends the full signal context to Claude and comes back
+            with a structured recommendation.
           </p>
         </CaseStudySection>
 
@@ -117,6 +121,15 @@ export default function SignalWorkManagementPage() {
         <CaseStudySection title="What I built">
           <ul className="list-disc space-y-3 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
+              <strong className="font-semibold text-foreground">Triage Assist — Claude API</strong>{" "}
+              — a sparkle button in the detail panel sends the full signal
+              context (title, urgency, workspace, why it matters, sources, related
+              inputs) to Claude. It returns a structured recommendation: suggested
+              urgency, recommended owner, and a 2-sentence action plan. The
+              suggested owner pre-fills the assign dropdown so one click commits
+              it. The result is advisory—you review and decide.
+            </li>
+            <li>
               <strong className="font-semibold text-foreground">Workspace scoping</strong>{" "}
               — five team workspaces (Product, Legal, Design, Operations, Sales)
               scope the feed so different teams don't compete in the same view.
@@ -132,9 +145,9 @@ export default function SignalWorkManagementPage() {
             <li>
               <strong className="font-semibold text-foreground">Triage state lifecycle</strong>{" "}
               — every signal moves through states: Needs Triage → Assigned,
-              Deferred, Ignored, or Resolved. The triage view (sidebar + top
-              nav) filters the feed to exactly one state at a time. "Needs
-              Triage" is the default — the unprocessed inbound.
+              Deferred, Ignored, or Resolved. The triage view filters the feed
+              to exactly one state at a time. "Needs Triage" is the default—the
+              unprocessed inbound.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Source filters</strong>{" "}
@@ -149,6 +162,12 @@ export default function SignalWorkManagementPage() {
               context: why it matters, related inputs (the actual message
               snippets and their sources), assignee, and triage actions. The
               feed stays visible alongside it.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">Dark mode</strong>{" "}
+              — system-aware dark mode with localStorage persistence and an
+              anti-flash inline script in the document head. Toggled from the
+              user bar in the sidebar.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Undo via Cmd+Z</strong>{" "}
@@ -175,12 +194,33 @@ export default function SignalWorkManagementPage() {
           <div className="space-y-16 md:space-y-20">
             <div>
               <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                Triage Assist
+              </h3>
+              <p className="mt-3">
+                The detail panel has a{" "}
+                <span className="font-semibold text-foreground">✦ Triage Assist</span>{" "}
+                button that sends the full signal context to Claude
+                (claude-haiku-4-5) and returns a structured recommendation in
+                under two seconds: a suggested urgency level, a recommended
+                owner from the team roster, and a 2-sentence action plan
+                specific to that signal. The suggested owner pre-fills the
+                assign dropdown automatically—review the suggestion, then
+                click Assign to commit it. The card is dismissible and resets
+                when you switch signals.
+              </p>
+              <div className="mt-7 w-full max-w-2xl">
+                <CaseStudyMedia shot={shots.triageAssist} />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
                 Workspace &amp; triage lens
               </h3>
               <p className="mt-3">
                 The workspace bar and triage view work as a two-axis scope: which
                 team's work you're looking at, and what state that work is in.
-                Together they reduce a 25-item backlog to the 3 items that
+                Together they reduce a 30-item backlog to the 3 items that
                 actually need attention right now.
               </p>
               <div className="mt-7 w-full max-w-[min(56rem,100%)]">
@@ -230,8 +270,9 @@ export default function SignalWorkManagementPage() {
               <p className="mt-3">
                 Selecting a signal opens a side panel without replacing the feed.
                 It shows the full context — why it matters, the actual message
-                snippets it surfaced from, suggested owner, and triage actions.
-                The feed stays visible so you can keep moving after you act.
+                snippets it surfaced from, suggested owner, triage actions, and
+                the Triage Assist button. The feed stays visible so you can keep
+                moving after you act.
               </p>
               <div className="mt-7 w-full max-w-3xl">
                 <CaseStudyMedia shot={shots.detailPanel} />
@@ -243,48 +284,71 @@ export default function SignalWorkManagementPage() {
         <CaseStudySection title="Stack">
           <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
-              <strong className="font-semibold text-foreground">Next.js 15</strong>{" "}
+              <strong className="font-semibold text-foreground">Next.js 16</strong>{" "}
               (App Router) — client workspace component manages all signal state;
-              the page shell is server-rendered for fast initial load.
+              the page shell is server-rendered for fast initial load. API routes
+              handle the Claude integration server-side so the key never touches
+              the client.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">Claude API (Anthropic)</strong>{" "}
+              — Triage Assist calls{" "}
+              <code>claude-haiku-4-5</code> via a Next.js API route. The system
+              prompt defines the team roster and their roles; Claude returns a
+              typed JSON object (urgency, suggested_owner, recommended_action)
+              that maps directly onto the UI.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Tailwind CSS</strong>{" "}
-              — utility-first styling with shadcn/ui components for the detail
-              panel sheet, buttons, and form inputs. No external component
-              library dependency to manage.
+              — utility-first styling with a three-level surface hierarchy (sidebar,
+              background, card) defined in OKLCH color tokens. Full dark mode via{" "}
+              <code>.dark</code> class on{" "}
+              <code>{"<html>"}</code> with localStorage persistence.
             </li>
             <li>
               <strong className="font-semibold text-foreground">TypeScript</strong>{" "}
               — strict types throughout; domain types (<code>Urgency</code>,{" "}
               <code>TriageState</code>, <code>SourceType</code>,{" "}
               <code>Workspace</code>) flow from a single <code>types.ts</code>.
-              Runtime type guards on import validation prevent corrupt localStorage
-              data from silently coercing into the wrong shape.
+              Runtime type guards on import validation and Claude response
+              parsing prevent corrupt data from silently coercing into the
+              wrong shape.
             </li>
             <li>
               <strong className="font-semibold text-foreground">localStorage persistence</strong>{" "}
               — signals persist between sessions with schema versioning (
-              <code>signal-signals-v3</code>). The service layer handles
+              <code>signal-signals-v5</code>). The service layer handles
               hydration, patching, and reset to seed without the signals array
               ever touching the component directly.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Seed data</strong>{" "}
-              — 25 signals across all five workspaces with realistic content:
-              enterprise renewals blocked on legal review, customer escalations,
-              security patches, design audits, and vendor NDAs. Mixed triage
+              — 30 signals across all five workspaces built around Vela, a
+              fictional B2B SaaS company. Signals span enterprise renewals blocked
+              on legal review (Meridian Health), mobile crash spikes, onboarding
+              drop-offs, vendor NDAs, and API partner escalations. Mixed triage
               states and urgency levels so every view has something to show.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">FontAwesome</strong>{" "}
-              — icon set for source type glyphs, triage action buttons, and
-              urgency indicators.
             </li>
           </ul>
         </CaseStudySection>
 
         <CaseStudySection title="Design decisions">
           <div className="space-y-8 md:space-y-9">
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Triage Assist is advisory, not automatic
+              </h3>
+              <p className="mt-2">
+                The AI suggestion doesn't auto-commit anything. It shows a
+                recommended urgency, pre-fills the owner dropdown, and gives
+                you a two-sentence action plan—but you review it and decide.
+                This was a deliberate choice: triage involves judgment calls
+                that depend on context Claude doesn't have (team capacity,
+                politics, relationships). Showing the reasoning and letting you
+                accept or override it keeps the human in the loop while still
+                reducing the cognitive load of cold-starting a decision.
+              </p>
+            </div>
             <div>
               <h3 className="text-base font-semibold text-foreground">
                 The <code>why_it_matters</code> field
@@ -295,9 +359,10 @@ export default function SignalWorkManagementPage() {
                 isn't handled. This turned out to be the most important field in
                 the data model. Without it, signals read as task titles. With it,
                 they carry their own context. You don't have to reconstruct the
-                stakes from the title — the card tells you: "ACME's renewal is
-                the largest in the quarter; legal delay risks churn." That
-                changes how you prioritize.
+                stakes from the title — the card tells you: "Meridian Health's
+                renewal is the largest in the quarter; legal delay risks churn."
+                That changes how you prioritize. It also gives Claude richer
+                input for Triage Assist recommendations.
               </p>
             </div>
             <div>
@@ -399,6 +464,16 @@ export default function SignalWorkManagementPage() {
               meant the worst case was a clear error message, not corrupted
               data with confusing behavior downstream.
             </li>
+            <li>
+              <strong className="font-semibold text-foreground">Claude for Desktop hijacked the API key.</strong>{" "}
+              Claude for Desktop injects{" "}
+              <code>ANTHROPIC_API_KEY</code> as an empty string into every shell
+              it spawns, which silently overrides <code>.env.local</code> values.
+              The fix was renaming the variable to{" "}
+              <code>SIGNAL_ANTHROPIC_KEY</code> to avoid the collision — a good
+              reminder that environment variable naming is part of the
+              integration surface.
+            </li>
           </ul>
         </CaseStudySection>
 
@@ -410,6 +485,14 @@ export default function SignalWorkManagementPage() {
               actions update state and persist, undo works, import validates
               before loading, and the empty states explain exactly what lens
               produced them.
+            </li>
+            <li>
+              The Claude integration shows where AI earns its place in a
+              workflow tool: not replacing the decision, but reducing the cold-start
+              cost of making it. Triage Assist reads the same context a human
+              would—title, stakes, sources, related snippets—and returns a
+              structured first opinion. You stay in control; it just gets you to
+              a starting point faster.
             </li>
             <li>
               The design question Signal is answering is real: how do you make

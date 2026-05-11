@@ -39,6 +39,17 @@ export const projects: ProjectListItem[] = [
       "Full-stack travel app—stack, security model, and what broke once the database stopped being hypothetical.",
   },
   {
+    slug: "signal-work-management",
+    title: "Signal Work Management",
+    subtitle: "Inbound triage · AI-assisted · workspace scoping",
+    description:
+      "An inbound triage surface for work that arrives from Slack, email, and beyond—grouped by urgency, scoped by team workspace, with Claude-powered triage suggestions.",
+    liveUrl: "https://signal-work-management.netlify.app",
+    featuredCard: true,
+    cardTeaser:
+      "Urgency-grouped feed, workspace scoping, source filters—and a Claude-powered Triage Assist that reads the full signal and returns a recommended urgency, owner, and first action.",
+  },
+  {
     slug: "relay",
     title: "Threshold",
     subtitle: "Cyber insurance ops",
@@ -48,17 +59,6 @@ export const projects: ProjectListItem[] = [
     featuredCard: true,
     cardTeaser:
       "When exposure crosses a risk threshold, it enters the queue. Inline editing, composable filters, activity logs, and a live demo queue that never goes stale.",
-  },
-  {
-    slug: "signal-work-management",
-    title: "Signal Work Management",
-    subtitle: "Inbound triage & workspace scoping",
-    description:
-      "An inbound triage surface for work that arrives from Slack, email, and beyond—grouped by urgency, scoped by team workspace.",
-    liveUrl: "https://signal-work-management.netlify.app",
-    featuredCard: true,
-    cardTeaser:
-      "Turning a noisy inbound into a legible feed—workspaces, urgency grouping, source filters, and what sharpened once triage felt real.",
   },
   {
     slug: "system-sidekick",
