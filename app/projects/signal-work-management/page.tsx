@@ -208,23 +208,8 @@ export default function SignalWorkManagementPage() {
                 click Assign to commit it. The card is dismissible and resets
                 when you switch signals.
               </p>
-              <div className="mt-7 w-full max-w-2xl">
+              <div className="mt-7">
                 <CaseStudyMedia shot={shots.triageAssist} />
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Workspace &amp; triage lens
-              </h3>
-              <p className="mt-3">
-                The workspace bar and triage view work as a two-axis scope: which
-                team's work you're looking at, and what state that work is in.
-                Together they reduce a 30-item backlog to the 3 items that
-                actually need attention right now.
-              </p>
-              <div className="mt-7 w-full max-w-[min(56rem,100%)]">
-                <CaseStudyMedia shot={shots.workspaceHero} />
               </div>
             </div>
 
@@ -236,45 +221,35 @@ export default function SignalWorkManagementPage() {
                 Signals group under urgency headers so the stack sorts itself.
                 Critical items are always first. Within each group, signals are
                 ordered by recency. The visual weight of the urgency label
-                matches how much it should matter.
+                matches how much it should matter. The workspace bar above the
+                feed scopes everything to one team — one click to switch from
+                Product to Legal to Operations.
               </p>
-              <div className="mt-7 w-full max-w-3xl">
+              <div className="mt-7">
                 <CaseStudyMedia shot={shots.urgencyFeed} />
               </div>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Source filters
+                Sidebar &amp; detail panel
               </h3>
               <p className="mt-3">
-                Every signal carries the channel it came from. The sidebar lets
-                you toggle sources on or off to narrow to exactly the work you're
-                managing. Filtering out forms and calendar items when you're in
-                "clear Slack backlog" mode keeps the feed honest.
+                The sidebar gives you two controls: the triage view lens (All,
+                Needs Triage, Assigned, Deferred, Ignored, Resolved) and source
+                type toggles (Slack, email, calendar, doc, form). Counts update
+                as signals move through triage states so you always know what's
+                in each bucket.
               </p>
-              <div className="mt-7 flex flex-col gap-10 md:flex-row md:items-start">
-                <div className="w-full max-w-3xl md:flex-1">
-                  <CaseStudyMedia shot={shots.sidebarSources} />
-                </div>
-                <div className="w-full max-w-2xl md:w-80 md:shrink-0">
-                  <CaseStudyMedia shot={shots.toolbar} />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Detail panel
-              </h3>
               <p className="mt-3">
-                Selecting a signal opens a side panel without replacing the feed.
-                It shows the full context — why it matters, the actual message
-                snippets it surfaced from, suggested owner, triage actions, and
-                the Triage Assist button. The feed stays visible so you can keep
-                moving after you act.
+                Selecting a signal opens the detail panel without leaving the
+                feed. It shows why the signal matters, the raw snippets it
+                surfaced from, triage actions, and the Triage Assist button.
+                On mobile it slides up as a sheet; on desktop it sits alongside
+                the feed.
               </p>
-              <div className="mt-7 w-full max-w-sm">
+              <div className="mt-7 grid grid-cols-2 gap-5">
+                <CaseStudyMedia shot={shots.sidebarSources} />
                 <CaseStudyMedia shot={shots.detailPanel} />
               </div>
             </div>
