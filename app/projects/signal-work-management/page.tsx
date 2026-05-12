@@ -274,7 +274,7 @@ export default function SignalWorkManagementPage() {
                 the Triage Assist button. The feed stays visible so you can keep
                 moving after you act.
               </p>
-              <div className="mt-7 w-full max-w-3xl">
+              <div className="mt-7 w-full max-w-sm">
                 <CaseStudyMedia shot={shots.detailPanel} />
               </div>
             </div>
