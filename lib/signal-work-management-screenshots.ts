@@ -14,74 +14,60 @@ type ShotSpec = {
   height: number;
 };
 
-/** Drop files into public/signal-work-management/ — first filename match wins. */
 const SPECS = {
   workspaceHero: {
-    files: [
-      "workspace.webp",
-      "workspace.png",
-      "01-workspace.webp",
-      "01-signal-workspace.png",
-    ],
+    files: ["workspace.webp", "workspace.png"],
     alt: "Signal Work Management full workspace",
-    caption:
-      "Primary workspace—workspace switcher, triage lens, feed, and detail.",
-    placeholderLabel:
-      "Full workspace — add workspace.webp or .png to public/signal-work-management/",
+    caption: "Full workspace — sidebar nav, urgency-grouped feed, and detail panel.",
+    placeholderLabel: "Full workspace — add workspace.png to public/signal-work-management/",
     variant: "hero" as const,
     width: 1600,
     height: 960,
   },
   urgencyFeed: {
-    files: ["feed.webp", "feed.png", "02-feed.webp"],
+    files: ["feed.webp", "feed.png"],
     alt: "Signal feed grouped by urgency",
-    caption: "Feed—signals grouped by urgency so attention follows risk.",
-    placeholderLabel:
-      "Urgency-grouped feed — add feed.png to public/signal-work-management/",
+    caption: "Feed — Critical, High, Medium, Low groups so the stack sorts itself.",
+    placeholderLabel: "Urgency feed — add feed.png to public/signal-work-management/",
     variant: "default" as const,
     width: 1440,
     height: 900,
   },
   sidebarSources: {
-    files: ["sidebar.webp", "sidebar.png", "03-sidebar.webp"],
-    alt: "Signal sidebar with source filters",
-    caption: "Sidebar—turn sources on or off to narrow what surfaces.",
-    placeholderLabel:
-      "Sidebar & sources — add sidebar.png to public/signal-work-management/",
-    variant: "default" as const,
-    width: 1440,
-    height: 900,
-  },
-  detailPanel: {
-    files: ["detail.webp", "detail.png", "04-detail-panel.webp"],
-    alt: "Signal detail panel for a selected item",
-    caption: "Detail panel—context, related inputs, and triage actions.",
-    placeholderLabel:
-      "Detail panel — add detail.png to public/signal-work-management/",
-    variant: "default" as const,
-    width: 1440,
-    height: 900,
+    files: ["sidebar.webp", "sidebar.png"],
+    alt: "Signal sidebar with views and source filters",
+    caption: "Sidebar — triage views and source filters.",
+    placeholderLabel: "Sidebar — add sidebar.png to public/signal-work-management/",
+    variant: "compact" as const,
+    width: 800,
+    height: 1000,
   },
   toolbar: {
-    files: ["toolbar.webp", "toolbar.png", "05-toolbar.webp"],
-    alt: "Signal toolbar with search",
-    caption: "Toolbar—search and quick actions across the current lens.",
-    placeholderLabel:
-      "Toolbar / search — add toolbar.png to public/signal-work-management/",
+    files: ["toolbar.webp", "toolbar.png"],
+    alt: "Signal workspace switcher bar",
+    caption: "Workspace bar — one click to scope the feed to a different team.",
+    placeholderLabel: "Toolbar — add toolbar.png to public/signal-work-management/",
     variant: "compact" as const,
     width: 1200,
-    height: 720,
+    height: 200,
+  },
+  detailPanel: {
+    files: ["detail.webp", "detail.png"],
+    alt: "Signal detail panel showing signal context and actions",
+    caption: "Detail panel — why it matters, sources, related inputs, and triage actions.",
+    placeholderLabel: "Detail panel — add detail.png to public/signal-work-management/",
+    variant: "compact" as const,
+    width: 800,
+    height: 1000,
   },
   triageAssist: {
-    files: ["triage-assist.webp", "triage-assist.png", "06-triage-assist.webp"],
+    files: ["triage-assist.webp", "triage-assist.png"],
     alt: "Signal Triage Assist result card powered by Claude",
-    caption:
-      "Triage Assist—Claude reads the full signal and returns urgency, owner, and a recommended first action.",
-    placeholderLabel:
-      "Triage Assist — add triage-assist.png to public/signal-work-management/",
-    variant: "compact" as const,
-    width: 1200,
-    height: 720,
+    caption: "Triage Assist — Claude returns urgency, owner, and a recommended first action.",
+    placeholderLabel: "Triage Assist — add triage-assist.png to public/signal-work-management/",
+    variant: "default" as const,
+    width: 1440,
+    height: 900,
   },
 } satisfies Record<string, ShotSpec>;
 
@@ -118,8 +104,8 @@ export function getSignalWorkManagementShots(): Record<
     workspaceHero: resolveShot(SPECS.workspaceHero),
     urgencyFeed: resolveShot(SPECS.urgencyFeed),
     sidebarSources: resolveShot(SPECS.sidebarSources),
-    detailPanel: resolveShot(SPECS.detailPanel),
     toolbar: resolveShot(SPECS.toolbar),
+    detailPanel: resolveShot(SPECS.detailPanel),
     triageAssist: resolveShot(SPECS.triageAssist),
   };
 }
