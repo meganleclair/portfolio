@@ -39,17 +39,6 @@ export const projects: ProjectListItem[] = [
       "The core insight: browsing a recipe and actively cooking it are completely different mental states—so they got completely different surfaces. Claude runs in two distinct integrations, each scoped, prompt-engineered, and quality-controlled differently.",
   },
   {
-    slug: "relay",
-    title: "Threshold",
-    subtitle: "Cyber insurance ops",
-    liveUrl: "https://threshold-task-tracker.netlify.app",
-    description:
-      "Coverage decisions have to be traceable. Threshold is the operational layer for cyber insurance underwriting teams—tracking assessments, breach evaluations, and sublimit reviews with clear ownership and a full audit trail.",
-    featuredCard: true,
-    cardTeaser:
-      "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
-  },
-  {
     slug: "wanderlist",
     title: "Wanderlist",
     subtitle: "Travel planning & discovery",
@@ -59,6 +48,17 @@ export const projects: ProjectListItem[] = [
     featuredCard: true,
     cardTeaser:
       "Full-stack travel planner on live data with auth, RLS, and real persistence. The Trip Quiz turns five questions about vibe and pace into a ranked itinerary shortlist—built for the gap between inspiration and a real plan.",
+  },
+  {
+    slug: "relay",
+    title: "Threshold",
+    subtitle: "Cyber insurance ops",
+    liveUrl: "https://threshold-task-tracker.netlify.app",
+    description:
+      "Coverage decisions have to be traceable. Threshold is the operational layer for cyber insurance underwriting teams—tracking assessments, breach evaluations, and sublimit reviews with clear ownership and a full audit trail.",
+    featuredCard: true,
+    cardTeaser:
+      "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
   },
   {
     slug: "system-sidekick",

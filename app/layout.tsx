@@ -53,7 +53,7 @@ export default function RootLayout({
         {/* Anti-flash: apply theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var s=localStorage.getItem('portfolio-theme');var dark=s==='dark'||(s!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',dark);})();`,
+            __html: `(function(){var s=localStorage.getItem('portfolio-theme');var dark=s!=='light';document.documentElement.classList.toggle('dark',dark);})();`,
           }}
         />
       </head>
