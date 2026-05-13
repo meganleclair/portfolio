@@ -95,6 +95,15 @@ export default function AboutPage() {
                 problems that only surface once something is live.
               </p>
               <p>
+                The work I'm most interested in right now is at the edge where
+                human judgment and AI capability overlap—where the tool has to
+                earn trust through restraint as much as through capability. Most
+                AI product design gets this backwards: it defaults to automation
+                and walks it back after friction. I think the better question is
+                where a person genuinely wants to stay in the loop, and designing
+                for that honestly from the start.
+              </p>
+              <p>
                 Outside of work, I'm usually planning my next trip, at the gym,
                 cooking something I have no business attempting, or walking my dog
                 Finn.

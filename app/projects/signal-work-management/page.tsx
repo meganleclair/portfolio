@@ -52,12 +52,14 @@ export default function SignalWorkManagementPage() {
           leadVisual={<CaseStudyMedia shot={shots.workspaceHero} />}
         >
           <p>
-            Every growing team has a person (or a few people) who act as a hub.
-            They're the product manager fielding requests from engineering, sales,
-            and leadership simultaneously. The ops lead who routes everything
-            before it has an owner. The team lead whose Slack DMs are half other
-            people's blockers. Work flows through them from every direction—and
-            it all arrives differently.
+            Every growing team has a person who is everyone's first stop—not
+            because they're the most senior, but because they're the most
+            connected. The PM whose DMs are half other people's blockers. The
+            ops lead who routes everything before it has a real owner. The team
+            lead who has 40 unread messages at 9 a.m., knows maybe six of them
+            need action today, and can't find the six without reading all 40.
+            They're not behind because they're slow. They're behind because the
+            work is invisible.
           </p>
           <p>
             The problem isn't volume. It's legibility. A critical customer
@@ -66,7 +68,7 @@ export default function SignalWorkManagementPage() {
             thing that just came in. You feel behind but you don't know what
             you're actually behind on—because the work isn't visible as a
             coherent stack. It's scattered across six channels, with no shared
-            sense of urgency or ownership.
+            sense of urgency, ownership, or record of what's already been decided.
           </p>
           <p>
             Signal is the surface that makes the inbound stack visible. It
@@ -116,6 +118,59 @@ export default function SignalWorkManagementPage() {
               be undone create hesitation.
             </li>
           </ul>
+        </CaseStudySection>
+
+        <CaseStudySection title="Design approach">
+          <p>
+            Three decisions anchored the design before any screens were drawn:
+          </p>
+          <div className="mt-6 space-y-8 md:space-y-9">
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Urgency as structure, not label
+              </h3>
+              <p className="mt-2">
+                Most tools badge items with an urgency color and leave sorting
+                to the user. That still requires mental re-sorting under
+                pressure. Signal groups the feed by urgency so the scan pattern
+                does the work: top of the list is always critical, regardless
+                of when things arrived. The visual hierarchy isn't
+                decoration—it encodes the decision about what to look at first.
+                A flat list with urgency badges still asks something of the
+                user. A grouped feed doesn't.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                AI that earns trust through restraint
+              </h3>
+              <p className="mt-2">
+                Triage Assist doesn't auto-commit anything, and that was a
+                deliberate design choice—not a technical limitation. Triage
+                involves judgment Claude doesn't have: team capacity,
+                relationship context, the unspoken prioritization that lives in
+                someone's head. What Claude <em>can</em> do is give you a
+                structured starting point so you're not cold-starting a decision
+                from scratch. The recommendation is advisory. You review it,
+                adjust if needed, and commit. Keeping the human in the loop
+                isn't a hedge—it's the right design for this kind of call.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Triage states that capture decisions, not just status
+              </h3>
+              <p className="mt-2">
+                The five states—Needs Triage, Assigned, Deferred, Ignored,
+                Resolved—model what you <em>chose</em>, not what's technically
+                pending. "Ignored" means the team consciously passed on it.
+                "Deferred" means they know about it and decided to wait.
+                That distinction matters: it separates a signal that fell
+                through the cracks from one the team intentionally deprioritized,
+                and the record of that choice is as valuable as the action itself.
+              </p>
+            </div>
+          </div>
         </CaseStudySection>
 
         <CaseStudySection title="What I built">

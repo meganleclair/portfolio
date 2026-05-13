@@ -81,8 +81,10 @@ export default function MisePage() {
           trailVisual={<CaseStudyMedia shot={shots.recipeDetail} />}
         >
           <p>
-            The core architecture decision: Editorial and Cook are distinct
-            modes with different demands.
+            The core architecture decision was a UX decision first: browsing
+            a recipe and actively cooking it are completely different jobs, in
+            completely different physical contexts, with completely different
+            tolerance for cognitive load. They needed different surfaces.
           </p>
           <div className="space-y-6">
             <div>
@@ -283,6 +285,92 @@ export default function MisePage() {
             at the top when there's an active session—no notification badge,
             just context when you need it.
           </p>
+        </CaseStudySection>
+
+        <CaseStudySection title="Design decisions">
+          <div className="space-y-8 md:space-y-9">
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Two modes because cooking and browsing are different mental states
+              </h3>
+              <p className="mt-2">
+                Editorial and Cook aren't tabs on the same screen—they're
+                genuinely different surfaces with different interaction models.
+                Editorial is calm and browsable, designed for when you're
+                sitting down and planning. Cook is focused, large-type, and
+                touch-optimized, designed for a kitchen counter with flour on
+                your hands. Collapsing them into one view would have made each
+                worse. The mode switch is a commitment—it changes what the app
+                is <em>for</em>. That separation turned out to be the right
+                call; each surface stayed clean in ways a unified view would
+                have compromised.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                A swap button that appears means something
+              </h3>
+              <p className="mt-2">
+                The AI swap feature was scoped deliberately: no suggestions for
+                aromatics, herbs, spices, or vegetables—categories where swaps
+                either don't matter or produce generic results. That was a
+                design decision enforced at the prompt level, not a technical
+                gap. If a swap button appears, the suggestion will be
+                meaningful. If it doesn't, there's nothing worth saying.
+                Comprehensiveness would have trained users to ignore the button.
+                Restraint makes it useful. The same logic applied to cheap
+                neutral oils—they're hard-banned from suggestions by name,
+                because a "swap" that makes the dish worse isn't a feature.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                The AI doesn't explain itself—it shows up in the UI
+              </h3>
+              <p className="mt-2">
+                Both Claude integrations return structured JSON that maps
+                directly onto existing interface elements. The per-ingredient
+                swap slides up in a sheet. The batch shift rewrites ingredient
+                lines in place. There's no chat, no explanation of how it
+                worked, no AI branding on the interaction. The intelligence
+                shows up as UI state. That keeps the experience coherent and
+                avoids the pattern where AI features feel bolted on rather than
+                designed in—the swap is just part of the recipe, not a
+                separate AI product inside the product.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                Prep as a checkpoint, not a feature
+              </h3>
+              <p className="mt-2">
+                The prep checklist is a deliberate pause before committing to
+                cook mode—not a to-do list for its own sake, but a mental state
+                change. Working through mise en place tasks shifts you from
+                planning mode to ready-to-cook mode. Keeping it as a separate
+                route rather than a modal or tab reinforces that it's a
+                transition: you check out of one context and check into another.
+                The boundary is the point.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
+                The timer stores a timestamp, not a countdown
+              </h3>
+              <p className="mt-2">
+                This is the kind of design decision that's invisible until it
+                fails. A countdown timer drifts across tab switches and phone
+                locks—it's ticking against the JavaScript event loop, not wall
+                time. A fixed{" "}
+                <code className="text-foreground/90">endsAt</code> timestamp
+                doesn't drift. Remaining seconds are always calculated fresh
+                from the current time on each tick. The user experience
+                difference is small when everything works; it's the whole
+                experience when someone steps away to stir something and comes
+                back.
+              </p>
+            </div>
+          </div>
         </CaseStudySection>
 
         <CaseStudySection title="Stack">
