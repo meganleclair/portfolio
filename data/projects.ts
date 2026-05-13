@@ -17,28 +17,6 @@ export type ProjectListItem = {
 /** Order: featured cards first (in display order), then list-only projects. */
 export const projects: ProjectListItem[] = [
   {
-    slug: "mise",
-    title: "Mise Intelligent Chef",
-    subtitle: "Recipe import & AI-powered cooking",
-    description:
-      "Recipe websites are built for traffic, not cooking. Mise strips the friction—import any URL, get AI-powered ingredient swaps tuned to real dietary needs, then cook one clear step at a time.",
-    liveUrl: "https://miseintelligentchef.netlify.app",
-    featuredCard: true,
-    cardTeaser:
-      "The core insight: browsing a recipe and actively cooking it are completely different mental states—so they got completely different surfaces. Claude runs in two distinct integrations, each scoped, prompt-engineered, and quality-controlled differently.",
-  },
-  {
-    slug: "wanderlist",
-    title: "Wanderlist",
-    subtitle: "Travel planning & discovery",
-    description:
-      "Most travel apps show you what's popular. Wanderlist surfaces what's actually there—live place data, real photography, no manual curation. Search a city, build a trip, share a read-only link.",
-    liveUrl: "https://wanderwanderlist.netlify.app/",
-    featuredCard: true,
-    cardTeaser:
-      "Full-stack travel planner on live data with auth, RLS, and real persistence. The Trip Quiz turns five questions about vibe and pace into a ranked itinerary shortlist—built for the gap between inspiration and a real plan.",
-  },
-  {
     slug: "signal-work-management",
     title: "Signal Work Management",
     subtitle: "Inbound triage · AI-assisted · workspace scoping",
@@ -50,6 +28,17 @@ export const projects: ProjectListItem[] = [
       "Designed for the person everything flows through. The feed sorts itself so critical work is always at the top. Triage Assist is advisory by design—Claude surfaces a recommendation, you decide. Because triage involves judgment AI doesn't have.",
   },
   {
+    slug: "mise",
+    title: "Mise Intelligent Chef",
+    subtitle: "Recipe import & AI-powered cooking",
+    description:
+      "Recipe websites are built for traffic, not cooking. Mise strips the friction—import any URL, get AI-powered ingredient swaps tuned to real dietary needs, then cook one clear step at a time.",
+    liveUrl: "https://miseintelligentchef.netlify.app",
+    featuredCard: true,
+    cardTeaser:
+      "The core insight: browsing a recipe and actively cooking it are completely different mental states—so they got completely different surfaces. Claude runs in two distinct integrations, each scoped, prompt-engineered, and quality-controlled differently.",
+  },
+  {
     slug: "relay",
     title: "Threshold",
     subtitle: "Cyber insurance ops",
@@ -59,6 +48,17 @@ export const projects: ProjectListItem[] = [
     featuredCard: true,
     cardTeaser:
       "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
+  },
+  {
+    slug: "wanderlist",
+    title: "Wanderlist",
+    subtitle: "Travel planning & discovery",
+    description:
+      "Most travel apps show you what's popular. Wanderlist surfaces what's actually there—live place data, real photography, no manual curation. Search a city, build a trip, share a read-only link.",
+    liveUrl: "https://wanderwanderlist.netlify.app/",
+    featuredCard: true,
+    cardTeaser:
+      "Full-stack travel planner on live data with auth, RLS, and real persistence. The Trip Quiz turns five questions about vibe and pace into a ranked itinerary shortlist—built for the gap between inspiration and a real plan.",
   },
   {
     slug: "system-sidekick",
