@@ -122,6 +122,10 @@
 }
 
 html {
+  color-scheme: light;
+}
+
+html.dark {
   color-scheme: dark;
 }
 
@@ -130,9 +134,14 @@ html {
 }
 
 .nav-glass {
-  background: oklch(0.124 0.015 278 / 0.92);
+  background: oklch(1 0 0 / 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid oklch(0 0 0 / 6%);
+}
+
+.dark .nav-glass {
+  background: oklch(0.124 0.015 278 / 0.92);
   border-bottom: 1px solid oklch(1 0 0 / 8%);
 }
 
