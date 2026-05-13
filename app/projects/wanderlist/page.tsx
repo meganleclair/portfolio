@@ -29,10 +29,14 @@ export default function WanderlistPage() {
         <p className="mt-3 max-w-2xl text-sm font-medium text-muted-foreground/90 md:text-[15px]">
           City search · live place data · trips &amp; sharing
         </p>
-        <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl">
-          A full-stack travel app — search any city, get curated places from live
-          data, build trips, and share them. Design through database, shipped and
-          live.
+        <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed">
+          A full-stack travel planner built on live place data — no static
+          content, no manual curation. Search any city and get a curated split
+          of headline attractions and local finds with photography layered in,
+          then save to named trips, estimate a budget, view on a map, and share
+          a read-only link. The Trip Quiz turns five questions about vibe, pace,
+          and landscape into a ranked itinerary shortlist. Auth adds persistence;
+          anonymous search works without an account.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
