@@ -194,36 +194,18 @@ export default function SignalWorkManagementPage() {
           <div className="space-y-16 md:space-y-20">
             <div>
               <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Triage Assist
-              </h3>
-              <p className="mt-3">
-                The detail panel has a{" "}
-                <span className="font-semibold text-foreground">✦ Triage Assist</span>{" "}
-                button that sends the full signal context to Claude
-                (claude-haiku-4-5) and returns a structured recommendation in
-                under two seconds: a suggested urgency level, a recommended
-                owner from the team roster, and a 2-sentence action plan
-                specific to that signal. The suggested owner pre-fills the
-                assign dropdown automatically—review the suggestion, then
-                click Assign to commit it. The card is dismissible and resets
-                when you switch signals.
-              </p>
-              <div className="mt-7">
-                <CaseStudyMedia shot={shots.triageAssist} />
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
                 Urgency-grouped feed
               </h3>
               <p className="mt-3">
-                Signals group under urgency headers so the stack sorts itself.
-                Critical items are always first. Within each group, signals are
-                ordered by recency. The visual weight of the urgency label
-                matches how much it should matter. The workspace bar above the
-                feed scopes everything to one team — one click to switch from
-                Product to Legal to Operations.
+                The feed doesn't sort by arrival time — it sorts by what
+                matters. Critical signals are always at the top, not buried
+                three screens down because they came in on a Tuesday. In the
+                Legal workspace, that means the Meridian Health renewal blocking
+                on legal review is the first thing you see — not the blog footer
+                disclaimer that can wait a week. The workspace bar scopes
+                everything: one click moves you from Legal's queue to Product's
+                to Operations', each with its own signals, counts, and active
+                triage state.
               </p>
               <div className="mt-7">
                 <CaseStudyMedia shot={shots.urgencyFeed} />
@@ -232,25 +214,67 @@ export default function SignalWorkManagementPage() {
 
             <div>
               <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                Sidebar &amp; detail panel
+                Detail panel
               </h3>
               <p className="mt-3">
-                The sidebar gives you two controls: the triage view lens (All,
-                Needs Triage, Assigned, Deferred, Ignored, Resolved) and source
-                type toggles (Slack, email, calendar, doc, form). Counts update
-                as signals move through triage states so you always know what's
-                in each bucket.
+                Selecting a signal doesn't take you anywhere — the feed stays
+                visible and the detail panel opens alongside it. What's in
+                there: a{" "}
+                <span className="font-semibold text-foreground">why it matters</span>{" "}
+                sentence (the business consequence if this goes unhandled),
+                source chips linking back to the original messages, and related
+                input snippets with timestamps. For the Q2 vendor access review,
+                that means seeing the security checklist note about two former
+                contractors still on vendor portals — context that would
+                otherwise take five minutes to reconstruct from Slack history.
+                Triage actions and the Triage Assist button are at the bottom.
               </p>
-              <p className="mt-3">
-                Selecting a signal opens the detail panel without leaving the
-                feed. It shows why the signal matters, the raw snippets it
-                surfaced from, triage actions, and the Triage Assist button.
-                On mobile it slides up as a sheet; on desktop it sits alongside
-                the feed.
-              </p>
-              <div className="mt-7 grid grid-cols-2 gap-5">
-                <CaseStudyMedia shot={shots.sidebarSources} />
+              <div className="mt-7">
                 <CaseStudyMedia shot={shots.detailPanel} />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                Triage Assist
+              </h3>
+              <p className="mt-3">
+                One button sends the full signal context to Claude — title,
+                urgency, workspace, why it matters, every source, every related
+                snippet — and gets back a structured recommendation in under two
+                seconds. Not a summary. An opinion: suggested urgency (with a
+                note if it matches what's already set), recommended owner from
+                the team roster, and a specific 2-sentence action plan. For the
+                iOS crash spike, that looked like:{" "}
+                <em>
+                  pull the Sentry logs for the NullPointerException in
+                  BootstrapActivity.onCreate, determine if a hotfix can ship in
+                  24 hours, post an ETA to #incidents.
+                </em>{" "}
+                The suggested owner pre-fills the assign dropdown. You review,
+                adjust if needed, and commit. The decision is still yours.
+              </p>
+              <div className="mt-7">
+                <CaseStudyMedia shot={shots.triageAssist} />
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                Triage states
+              </h3>
+              <p className="mt-3">
+                Every signal moves through five states: Needs Triage, Assigned,
+                Deferred, Ignored, Resolved. These aren't task statuses — they're
+                decisions. A signal marked Assigned means someone owns it; the
+                record shows who and when. Deferred means the team consciously
+                parked it, not that it fell through the cracks. The sidebar view
+                counts update in real time so you always know what's unprocessed.
+                If you misfire, Cmd+Z reverses the last action without a confirm
+                dialog.
+              </p>
+              <div className="mt-7">
+                <CaseStudyMedia shot={shots.triageStates} />
               </div>
             </div>
           </div>
