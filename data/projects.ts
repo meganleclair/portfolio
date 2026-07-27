@@ -17,17 +17,6 @@ export type ProjectListItem = {
 /** Order: featured cards first (in display order), then list-only projects. */
 export const projects: ProjectListItem[] = [
   {
-    slug: "signal-work-management",
-    title: "Signal Work Management",
-    subtitle: "Inbound triage · AI-assisted · workspace scoping",
-    description:
-      "Work arrives in fragments. Signal makes the inbound stack legible—urgency-grouped, workspace-scoped, with a Claude-powered Triage Assist that reads each signal in full and returns a structured recommendation.",
-    liveUrl: "https://signal-work-management.netlify.app",
-    featuredCard: true,
-    cardTeaser:
-      "Designed for the person everything flows through. The feed sorts itself so critical work is always at the top. Triage Assist is advisory by design—Claude surfaces a recommendation, you decide. Because triage involves judgment AI doesn't have.",
-  },
-  {
     slug: "mise",
     title: "Mise Intelligent Chef",
     subtitle: "A cooking app that got smaller on purpose",
@@ -37,6 +26,17 @@ export const projects: ProjectListItem[] = [
     featuredCard: true,
     cardTeaser:
       "The harder edit: deleting a working cook mode, a working swap sheet, and a working prep checklist because real usage data said they weren't earning their place. What survived—Sous—is playable by a stranger with no account, and it's the whole product now.",
+  },
+  {
+    slug: "signal-work-management",
+    title: "Signal Work Management",
+    subtitle: "Inbound triage · AI-assisted · workspace scoping",
+    description:
+      "Work arrives in fragments. Signal makes the inbound stack legible—urgency-grouped, workspace-scoped, with a Claude-powered Triage Assist that reads each signal in full and returns a structured recommendation.",
+    liveUrl: "https://signal-work-management.netlify.app",
+    featuredCard: true,
+    cardTeaser:
+      "Designed for the person everything flows through. The feed sorts itself so critical work is always at the top. Triage Assist is advisory by design—Claude surfaces a recommendation, you decide. Because triage involves judgment AI doesn't have.",
   },
   {
     slug: "wanderlist",
