@@ -9,7 +9,7 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Mise Intelligent Chef",
   description:
-    "A full-stack cooking app powered by Claude. Import any recipe URL, get AI-driven ingredient swaps tuned to real dietary needs, prep with a checklist, then cook one step at a time.",
+    "A cooking app that got smaller on purpose. After shipping a full-featured recipe app, real usage revealed the one thing actually being used — a separate ChatGPT conversation, every single time, to ask about substitutions and recalculate macros. Mise cut everything else and built that as Sous, a Claude-powered cooking companion grounded in the actual recipe.",
 };
 
 const miseProject = projects.find((p) => p.slug === "mise");
@@ -22,16 +22,21 @@ export default function MisePage() {
   return (
     <article className="page-wrap py-16 md:py-24">
       <header className="read-width">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/70">
+          Flagship project
+        </p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]">
           Mise Intelligent Chef
         </h1>
         <p className="mt-3 max-w-2xl text-sm font-medium text-muted-foreground/90 md:text-[15px]">
-          Claude-powered swaps · recipe import · prep mode · guided cook
+          Recipe import · Sous, a Claude-powered cooking companion · a full visual identity reset
         </p>
         <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed">
-          A full-stack cooking app built around Claude. Import any recipe URL,
-          get AI-driven ingredient swaps tuned to real dietary shifts, work
-          through a prep checklist, then cook one clear step at a time.
+          I built a full-featured recipe app, used it on myself for a few
+          weeks, and found out I was ignoring most of it. The one thing I
+          actually did—every single time I cooked—was open a separate ChatGPT
+          conversation to ask about substitutions and recalculate macros. So I
+          cut the rest and built that, properly, inside the product.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold">
           <a
@@ -56,64 +61,128 @@ export default function MisePage() {
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection
           title="The problem"
-          leadVisual={<CaseStudyMedia shot={shots.editorialHome} />}
+          leadVisual={<CaseStudyMedia shot={shots.hero} />}
         >
           <p>
-            Recipe websites are built for traffic, not cooking. You get five
-            paragraphs of backstory, an ingredients list that doesn't match the
-            steps, and instructions that assume you've done this before.
+            Recipe websites are built for traffic, not cooking. Five
+            paragraphs of backstory, an ingredients list that drifts from the
+            steps, instructions that assume you've done this before. That was
+            the starting premise, and it's still true.
           </p>
           <p>
-            The gap between "found a recipe" and "actually cooked it" is mostly
-            friction—cognitive load from switching context, tracking where you
-            are, and figuring out what to do before the heat goes on. And if a
-            recipe calls for heavy cream you don't have, or dairy you can't eat,
-            you're back to Google.
+            But it wasn't the real problem. The real friction shows up after
+            you've already found a recipe you like: you don't have heavy
+            cream, or you're cooking for six instead of four, or you just want
+            to know what a dish actually costs you nutritionally before you
+            commit to making it. That renegotiation—swap this, rescale that,
+            what's the protein now—was happening in a completely separate app,
+            every time, disconnected from the recipe itself.
+          </p>
+        </CaseStudySection>
+
+        <CaseStudySection title="What I actually discovered">
+          <p>
+            The first version of Mise had two full surfaces: an editorial mode
+            for browsing and importing recipes, and a dedicated cook mode—a
+            step-by-step, timer-synced, touch-friendly view for standing at the
+            counter. It also had a Claude-powered ingredient-swap sheet and a
+            batch dietary-goal shifter that could rewrite an entire ingredient
+            list in one pass. It was a genuinely full-featured app, and all of
+            it worked.
           </p>
           <p>
-            Mise treats those as solvable design problems—and uses Claude to
-            solve the ones that need more than layout.
+            Then I used it on myself for a few weeks, the way an actual home
+            cook would. And when I looked honestly at what I was doing, the
+            step-by-step cook mode barely got touched. What I actually did,
+            every single time, was open a completely separate ChatGPT
+            conversation to ask things like "can I use chickpeas instead of
+            white beans" or "what does this look like at six servings instead
+            of four." The app I'd built and the behavior I actually had were
+            two different products.
+          </p>
+          <p>
+            That's the kind of thing that's easy to miss if you only ever
+            watch other people use something, and easy to see the moment
+            you're your own most honest user. So I made the harder call:
+            cut cook mode, the prep checklist, the swap sheet, and the batch
+            dietary shifter entirely, and rebuild the one behavior that
+            mattered as a first-class feature. That became Sous.
           </p>
         </CaseStudySection>
 
         <CaseStudySection
-          title="Two modes, one session"
-          trailVisual={<CaseStudyMedia shot={shots.recipeDetail} />}
+          title="Meet Sous"
+          trailVisual={
+            <>
+              <CaseStudyMedia shot={shots.meetSous} />
+              <CaseStudyMedia shot={shots.demoRecipe} />
+            </>
+          }
         >
           <p>
-            The core architecture decision was a UX decision first: browsing
-            a recipe and actively cooking it are completely different jobs, in
-            completely different physical contexts, with completely different
-            tolerance for cognitive load. They needed different surfaces.
+            Sous is a recipe-scoped chat, not a bolted-on assistant widget. It
+            opens already knowing the recipe you're looking at—every
+            ingredient, every quantity—so the first question you ask doesn't
+            need context you haven't given it yet.
           </p>
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-base font-semibold text-foreground">
-                Editorial mode
-              </h3>
-              <p className="mt-2">
-                Browse your imported recipes, discover new ones, manage your
-                kitchen. Calm, readable, meant for planning—not for a kitchen
-                with flour on your hands.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-base font-semibold text-foreground">
-                Cook mode
-              </h3>
-              <p className="mt-2">
-                A focused, touch-friendly surface that shows one step at a
-                time with only the ingredients relevant to that step alongside.
-                No scrolling. No distractions. Timer synced to the session so
-                you can step away and come back.
-              </p>
-            </div>
-          </div>
+          <ul className="list-disc space-y-2 pl-5 marker:text-foreground/40">
+            <li>
+              <strong className="font-semibold text-foreground">
+                Swap anything.
+              </strong>{" "}
+              Ask about a substitution in plain language and get a real
+              answer—what changes, what to watch for, whether it's actually a
+              good idea—grounded in the specific dish, not a generic
+              substitution chart.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Resize on the fly.
+              </strong>{" "}
+              A servings stepper recalculates the whole recipe, and Sous
+              carries that context into the conversation without being asked
+              twice.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Real macros.
+              </strong>{" "}
+              Calories, protein, carbs, fat, and fiber update as the
+              conversation and servings change—not a one-time nutrition label,
+              a running estimate that stays honest as the recipe changes
+              underneath it.
+            </li>
+          </ul>
           <p>
-            The session model means switching mid-recipe is safe—{" "}
-            <code className="text-foreground/90">cook_sessions</code> tracks
-            your current step and timer state in Supabase, so a refresh or a
-            phone lock doesn't lose your place.
+            Every demo recipe on the homepage is fully playable with Sous—no
+            account, no sign-up. That was a deliberate bet: the fastest way to
+            prove the feature is worth the friction of creating an account is
+            to remove that friction for the first conversation entirely.
+          </p>
+        </CaseStudySection>
+
+        <CaseStudySection
+          title="A real conversation, not a mockup"
+          leadVisual={<CaseStudyMedia shot={shots.sousChat} />}
+        >
+          <p>
+            This is a live exchange with the deployed app, not a designed
+            composite. I asked Sous whether chickpeas would work in place of
+            white beans in a slow-roasted tomato stew, and it answered with
+            the actual tradeoff—firmer texture, similar protein, a note about
+            stock if the stew runs thick—instead of a canned substitution
+            list. The macro panel above the conversation is live too: it
+            reflects the current servings count and updates in place as the
+            conversation continues.
+          </p>
+          <p>
+            Getting a model to answer honestly is harder than getting it to
+            answer confidently. An earlier draft of Sous's sample copy claimed
+            chickpeas added "40 more grams of protein per batch" compared to
+            white beans—a plausible-sounding number that's simply wrong; the
+            two are close in protein per cup. Catching that meant treating
+            nutritional claims with the same scrutiny as any other factual
+            output, sample copy included.
           </p>
         </CaseStudySection>
 
@@ -121,169 +190,122 @@ export default function MisePage() {
           <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
               <strong className="font-semibold text-foreground">
-                AI ingredient swaps (Claude)
+                Sous, a recipe-scoped nutrition chat (Claude Haiku)
               </strong>{" "}
-              — A slide-up sheet powered by Claude Haiku generates 2–3
-              substitutions per ingredient, focused on real dietary shifts:
-              dairy-free, lower calorie, lower carb, higher protein. The prompt
-              is scope-controlled: vegetables, aromatics, herbs, and spices
-              correctly return nothing—swaps are only offered when they
-              actually matter (fats, dairy, proteins, grains, sweeteners).
-              Combinations are encouraged where they work best (e.g.{" "}
-              <em>cream cheese + whole milk</em> as a one-for-one heavy cream
-              swap). Quality is enforced at the prompt level: cheap neutral
-              oils are hard-banned from suggestions. Claude receives the full
-              ingredient list as context so its reasoning is grounded in the
-              actual dish, not just the ingredient name in isolation. Saved
-              swaps write to{" "}
-              <code className="text-foreground/90">recipe_modifications</code>{" "}
-              and carry over between sessions.
+              — A persisted chat session per recipe, keyed to{" "}
+              <code className="text-foreground/90">recipe_nutrition_sessions</code>{" "}
+              in Supabase, carrying servings, ingredient overrides, and macro
+              estimates as first-class state rather than re-deriving them from
+              chat history on every turn. Retries are structured: transient
+              failures retry with backoff, but auth and bad-request errors
+              from the Anthropic API fail fast instead of burning a retry
+              budget on something that will never succeed.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
-                Batch dietary goal shifts (Claude)
+                A no-signup demo path
               </strong>{" "}
-              — A second, distinct Claude integration separate from per-ingredient
-              swaps. The user selects one or more dietary goals (higher protein,
-              lower carb, dairy-free, etc.) and Claude reads the full ingredient
-              list at once, applies the most practical combination of swaps for
-              the actual dish, and writes all results in a single pass. The
-              prompt instructs Claude to resolve goal conflicts in a single
-              pass—if two goals disagree on the same ingredient, it picks the
-              swap that serves the most goals simultaneously rather than
-              surfacing a mechanical priority-order dialog. Batch-shifted lines are tagged in{" "}
-              <code className="text-foreground/90">recipe_modifications</code>{" "}
-              so they can be cleared independently of manual swaps. A static
-              swap catalog serves as a zero-latency fallback if the API is
-              unavailable.
+              — The same{" "}
+              <code className="text-foreground/90">/api/nutrition-chat</code>{" "}
+              route branches on whether a request carries a real{" "}
+              <code className="text-foreground/90">recipeId</code> (signed-in,
+              persisted, per-user rate-limited) or an inline{" "}
+              <code className="text-foreground/90">recipeTitle</code> +{" "}
+              <code className="text-foreground/90">ingredients</code> payload
+              (demo mode: no auth, no database access at all, IP-keyed rate
+              limit). The branch is structural, not a flag—the demo path
+              can't accidentally reach a real user's data because it never
+              queries the recipes table in the first place.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 Three-tier recipe import pipeline
               </strong>{" "}
-              — Spoonacular handles enriched imports when a key is configured.
-              When it fails or isn't available, a custom JSON-LD adapter fetches
-              the URL directly, parses{" "}
+              — Spoonacular for enriched imports when a key is configured; a
+              custom JSON-LD adapter that fetches the URL directly and parses{" "}
               <code className="text-foreground/90">{"<script type=\"application/ld+json\">"}</code>{" "}
-              blocks, and extracts the{" "}
-              <code className="text-foreground/90">@type: "Recipe"</code> node—
-              handling nested <code className="text-foreground/90">@graph</code>,
-              HowToSection with itemListElement, and plain string instruction
-              arrays. A demo mock adapter provides a working end-to-end fallback
-              with no external dependencies. Most major recipe sites import
-              cleanly at one of the three tiers.
+              blocks for the{" "}
+              <code className="text-foreground/90">@type: "Recipe"</code>{" "}
+              node when it isn't; a demo mock adapter as a zero-dependency
+              fallback. Most major recipe sites import cleanly at one of the
+              three tiers.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Duplicate-import prevention
+              </strong>{" "}
+              — A unique index on{" "}
+              <code className="text-foreground/90">(user_id, source_url)</code>{" "}
+              plus an application-level check before the (comparatively
+              expensive) import pipeline runs, so re-importing a URL you've
+              already saved returns the existing recipe instead of creating a
+              copy. A race between two near-simultaneous imports of the same
+              URL still resolves correctly—the losing insert hits the unique
+              constraint and the action recovers by looking up the row the
+              winner just created, rather than surfacing a raw database error.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 Server-side image proxy
               </strong>{" "}
-              — Recipe images are routed through{" "}
-              <code className="text-foreground/90">/api/image-proxy</code>, which
-              fetches with a browser User-Agent and sets{" "}
-              <code className="text-foreground/90">Referer</code> to the source
-              hostname—bypassing hotlink protection silently. Private IP ranges
-              are blocked. Images are validated by content-type, capped at 8 MB,
-              and served with{" "}
-              <code className="text-foreground/90">Cache-Control: private</code>{" "}
-              to prevent CDN-level caching.
+              — Recipe images route through{" "}
+              <code className="text-foreground/90">/api/image-proxy</code>,
+              which fetches with a browser User-Agent and sets{" "}
+              <code className="text-foreground/90">Referer</code> to the
+              source hostname to bypass hotlink protection, blocks private IP
+              ranges, validates by content-type, caps at 8&nbsp;MB, and serves
+              with <code className="text-foreground/90">Cache-Control: private</code>{" "}
+              so a CDN never caches one recipe's photo under another's URL.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Prep editor</strong>{" "}
-              — A checklist of tasks that need to happen before the heat goes on:
-              sourcing, mise en place, equipment. Editable and persisted
-              per-recipe so it reflects your actual habits, not a generic list.
+              <strong className="font-semibold text-foreground">
+                Font Awesome Pro Duotone icon system
+              </strong>{" "}
+              — Every icon in the app runs through a single{" "}
+              <code className="text-foreground/90">DuotoneIcon</code>{" "}
+              wrapper that sets the secondary-layer opacity via a CSS custom
+              property, so the two-tone treatment is consistent everywhere
+              without repeating inline styles at each call site.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Cook mode</strong>{" "}
-              — Step navigator with per-step ingredient narrowing:{" "}
-              <code className="text-foreground/90">getIngredientsForStep()</code>{" "}
-              matches ingredient names against step text so you see only what's
-              relevant now. Multi-sentence steps are split into a numbered list.
-              Timer persists to{" "}
-              <code className="text-foreground/90">cook_sessions.timer_state</code>{" "}
-              as a fixed{" "}
-              <code className="text-foreground/90">endsAt</code> timestamp—a
-              background tab or refresh doesn't drift the clock.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">My Kitchen</strong>{" "}
-              — Import recipes, toggle favorites, and search your collection
-              without leaving the page. A "continue cooking" banner surfaces
-              when an active session exists—no badge, just context when you need it.
-              The list paginates client-side from a larger server-fetched set
-              so the initial render stays fast.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">Auth &amp; security</strong>{" "}
-              — Supabase SSR with cookie-aware server and client boundaries.
-              Middleware enforces session requirements on Editorial and Cook
-              routes; RLS on all tables means no row is accessible outside its
-              owner. The Claude-powered swap endpoint requires a valid session
-              and applies a sliding-window rate limit per user to prevent
-              API cost abuse.
+              <strong className="font-semibold text-foreground">
+                Auth &amp; security
+              </strong>{" "}
+              — Supabase SSR with cookie-aware server and client boundaries,
+              RLS on every table so no row is reachable outside its owner, and
+              a sliding-window rate limit on the authenticated nutrition-chat
+              endpoint to prevent API cost abuse.
             </li>
           </ul>
         </CaseStudySection>
 
         <CaseStudySection
-          title="Cook mode in detail"
-          trailVisual={
-            <>
-              <CaseStudyMedia shot={shots.cookMode} />
-              <CaseStudyMedia shot={shots.ingredientSwap} />
-              <CaseStudyMedia shot={shots.cookModeSwap} />
-              <CaseStudyMedia shot={shots.swapModal} />
-            </>
-          }
+          title="A visual identity that had to earn its confidence"
+          trailVisual={<CaseStudyMedia shot={shots.importDark} />}
         >
           <p>
-            The step view has one job: put the right information in front of
-            you, at the right time, with as little noise as possible.
-          </p>
-          <ul className="list-disc space-y-2 pl-5 marker:text-foreground/40">
-            <li>
-              Large type for the instruction—readable at arm's length from a
-              phone propped up in the kitchen.
-            </li>
-            <li>
-              Ingredient list narrows to just what's relevant to the current
-              step, with a fallback to everything when matching confidence is low.
-            </li>
-            <li>
-              Swap button on each ingredient opens the Claude-powered sheet
-              without losing your step position. The sheet knows what recipe
-              you're in and surfaces dietary-shift suggestions—not generic
-              alternatives.
-            </li>
-            <li>
-              Back / Next at thumb reach; the final step marks the session
-              complete and prompts for a rating.
-            </li>
-          </ul>
-        </CaseStudySection>
-
-        <CaseStudySection
-          title="Prep &amp; kitchen"
-          trailVisual={
-            <>
-              <CaseStudyMedia shot={shots.prepEditor} />
-              <CaseStudyMedia shot={shots.kitchen} />
-              <CaseStudyMedia shot={shots.importFlow} />
-            </>
-          }
-        >
-          <p>
-            Prep is a separate route from the recipe detail—a deliberate
-            checkpoint before committing to a cook session. The checklist
-            is editable and persists so it reflects each person's actual
-            mise en place habits.
+            The first shipped design was calm and quiet on purpose—a muted
+            neutral palette, generous whitespace, a serif tagline that read
+            "a calmer way to cook the internet." It was fine. It also didn't
+            say anything about what made Sous worth using, and once the
+            product's actual center of gravity shifted, the identity needed to
+            move with it.
           </p>
           <p>
-            My Kitchen deliberately avoids dashboard energy. A short list
-            with titles, ratings, and a delete button. Favorites are separated
-            so they're easy to find again. The continue-cooking banner appears
-            at the top when there's an active session—no notification badge,
-            just context when you need it.
+            The first attempt at "more personality" overcorrected: a bubbly
+            rounded display font, a cream-and-blush palette, fully pill-shaped
+            everything. It photographed fine in isolation and read as
+            unmistakably junior once it was live—every surface fighting for
+            the same amount of attention, nothing left to signal
+            confidence. Rebuilding it meant treating color the way a site
+            like Allrecipes actually does: layered backgrounds instead of one
+            flat tone (white chrome, a tinted content panel, white cards on
+            top), ink-black headlines instead of accent-colored ones, and an
+            accent color used as a border and a line before it's ever used as
+            a fill. The final system pairs a confident serif with a navy ink,
+            an orange primary accent, and one deliberately bold dark panel
+            partway down the homepage—a visual break in an otherwise light,
+            editorial layout, not a color choice made in isolation.
           </p>
         </CaseStudySection>
 
@@ -291,83 +313,69 @@ export default function MisePage() {
           <div className="space-y-8 md:space-y-9">
             <div>
               <h3 className="text-base font-semibold text-foreground">
-                Two modes because cooking and browsing are different mental states
+                Cutting a working feature is still a design decision
               </h3>
               <p className="mt-2">
-                Editorial and Cook aren't tabs on the same screen—they're
-                genuinely different surfaces with different interaction models.
-                Editorial is calm and browsable, designed for when you're
-                sitting down and planning. Cook is focused, large-type, and
-                touch-optimized, designed for a kitchen counter with flour on
-                your hands. Collapsing them into one view would have made each
-                worse. The mode switch is a commitment—it changes what the app
-                is <em>for</em>. That separation turned out to be the right
-                call; each surface stayed clean in ways a unified view would
-                have compromised.
+                Cook mode wasn't broken. It had a synced timer, per-step
+                ingredient narrowing, a session model that survived a phone
+                lock. It was also not the thing I reached for. Removing
+                working software is a harder call than removing something
+                that's clearly failing, because there's no error message
+                telling you it's wrong—only your own usage data, if you're
+                willing to look at it honestly.
               </p>
             </div>
             <div>
               <h3 className="text-base font-semibold text-foreground">
-                A swap button that appears means something
+                A no-signup demo is a credibility bet, not a growth hack
               </h3>
               <p className="mt-2">
-                The AI swap feature was scoped deliberately: no suggestions for
-                aromatics, herbs, spices, or vegetables—categories where swaps
-                either don't matter or produce generic results. That was a
-                design decision enforced at the prompt level, not a technical
-                gap. If a swap button appears, the suggestion will be
-                meaningful. If it doesn't, there's nothing worth saying.
-                Comprehensiveness would have trained users to ignore the button.
-                Restraint makes it useful. The same logic applied to cheap
-                neutral oils—they're hard-banned from suggestions by name,
-                because a "swap" that makes the dish worse isn't a feature.
+                Letting anyone chat with Sous on a demo recipe before creating
+                an account means the feature has to be good enough to survive
+                first contact with zero context about the user. That's a
+                higher bar than gating it behind sign-up, and it's the right
+                bar—if Sous only feels good after you've already committed to
+                an account, that's a sign it isn't good enough yet.
               </p>
             </div>
             <div>
               <h3 className="text-base font-semibold text-foreground">
-                The AI doesn't explain itself—it shows up in the UI
+                Honest beats impressive in nutrition copy
               </h3>
               <p className="mt-2">
-                Both Claude integrations return structured JSON that maps
-                directly onto existing interface elements. The per-ingredient
-                swap slides up in a sheet. The batch shift rewrites ingredient
-                lines in place. There's no chat, no explanation of how it
-                worked, no AI branding on the interaction. The intelligence
-                shows up as UI state. That keeps the experience coherent and
-                avoids the pattern where AI features feel bolted on rather than
-                designed in—the swap is just part of the recipe, not a
-                separate AI product inside the product.
+                It would have been easy to let Sous's sample responses lean
+                toward whatever sounds most compelling—bigger protein deltas,
+                more dramatic swaps. The fix for the chickpea/protein error
+                wasn't a better-sounding number; it was admitting the swap is
+                close to a wash and saying so. A cooking assistant that
+                exaggerates results isn't a feature worth having.
               </p>
             </div>
             <div>
               <h3 className="text-base font-semibold text-foreground">
-                Prep as a checkpoint, not a feature
+                Color should earn its saturation before it gets a fill
               </h3>
               <p className="mt-2">
-                The prep checklist is a deliberate pause before committing to
-                cook mode—not a to-do list for its own sake, but a mental state
-                change. Working through mise en place tasks shifts you from
-                planning mode to ready-to-cook mode. Keeping it as a separate
-                route rather than a modal or tab reinforces that it's a
-                transition: you check out of one context and check into another.
-                The boundary is the point.
+                The visual reset's real lesson wasn't a palette swap, it was a
+                rule: an accent color proves itself as a border, a line, or a
+                small icon tint before it's allowed to become a large filled
+                surface. Applied consistently, that rule is what separates a
+                confident, restrained interface from one where every element
+                is shouting at the same volume.
               </p>
             </div>
             <div>
               <h3 className="text-base font-semibold text-foreground">
-                The timer stores a timestamp, not a countdown
+                A structural branch is safer than a conditional flag
               </h3>
               <p className="mt-2">
-                This is the kind of design decision that's invisible until it
-                fails. A countdown timer drifts across tab switches and phone
-                locks—it's ticking against the JavaScript event loop, not wall
-                time. A fixed{" "}
-                <code className="text-foreground/90">endsAt</code> timestamp
-                doesn't drift. Remaining seconds are always calculated fresh
-                from the current time on each tick. The user experience
-                difference is small when everything works; it's the whole
-                experience when someone steps away to stir something and comes
-                back.
+                The demo mode for Sous could have been a boolean flag checked
+                before a database call. Instead, the route branches on which
+                shape of payload arrived—a real{" "}
+                <code className="text-foreground/90">recipeId</code> versus an
+                inline title and ingredient list—so the demo code path is
+                physically incapable of reaching a signed-in user's data,
+                rather than merely instructed not to.
               </p>
             </div>
           </div>
@@ -379,40 +387,49 @@ export default function MisePage() {
               <strong className="font-semibold text-foreground">
                 Claude Haiku (Anthropic)
               </strong>{" "}
-              — Used in two distinct integrations via{" "}
-              <code className="text-foreground/90">@anthropic-ai/sdk</code>:{" "}
-              per-ingredient swap suggestions (Route Handler, authenticated +
-              rate-limited) and batch dietary goal shifts (Server Action, reads the
-              full ingredient list in a single pass). Each integration has its own
-              prompt-engineering constraints: scope guards, quality rules, and
-              structured JSON output requirements.
+              — Powers Sous via{" "}
+              <code className="text-foreground/90">@anthropic-ai/sdk</code>,
+              with a retry layer that distinguishes transient failures from
+              non-retryable API errors, and structured-output validation on
+              every macro estimate and ingredient override before it reaches
+              the UI.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Next.js 15</strong>{" "}
-              (App Router) — Server Components for data fetching, Server Actions
-              for mutations, Route Handlers for the AI swap and image proxy
-              endpoints. Write paths go through typed actions in{" "}
-              <code className="text-foreground/90">lib/actions/</code>.
+              <strong className="font-semibold text-foreground">
+                Next.js
+              </strong>{" "}
+              (App Router, Turbopack) — Server Components for data fetching,
+              Server Actions for mutations, Route Handlers for the
+              nutrition-chat and image-proxy endpoints.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Supabase SSR</strong>{" "}
-              — Per-request server clients for auth-aware queries; browser client
-              for cook mode's step and timer writes. RLS on all tables—no row
-              accessible outside its owner.
+              <strong className="font-semibold text-foreground">
+                Supabase SSR
+              </strong>{" "}
+              — Per-request server clients for auth-aware queries; RLS on
+              every table so no row is reachable outside its owner.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                shadcn/ui on Base UI
+              </strong>{" "}
+              — Dialog, Sheet, Tooltip, and Button primitives, kept on one
+              component library end to end rather than mixing UI kits.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Font Awesome Pro (Duotone)
+              </strong>{" "}
+              — The full icon system, routed through one wrapper component
+              for consistent secondary-layer styling.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 Recipe import pipeline
               </strong>{" "}
               — Spoonacular for enriched parsing when configured; a custom
-              JSON-LD structured-data adapter as a free fallback that handles
-              virtually any major recipe site; a demo mock adapter for
-              zero-dependency demos.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">shadcn/ui</strong>{" "}
-              — Dialog, Sheet, Checkbox, and scroll areas; component-level
-              overrides kept minimal.
+              JSON-LD structured-data adapter as a free fallback; a demo mock
+              adapter for zero-dependency demos.
             </li>
           </ul>
         </CaseStudySection>
@@ -421,84 +438,63 @@ export default function MisePage() {
           <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
               <strong className="font-semibold text-foreground">
-                Prompt scope matters more than prompt cleverness.
+                Watch what you actually do, not what you built for yourself to
+                do.
               </strong>{" "}
-              The Claude swap prompt went through several iterations. The
-              breakthrough wasn't better positive instructions—it was tighter
-              exclusions. Explicitly telling Claude what{" "}
-              <em>not</em> to suggest (cheap neutral oils, aromatic vegetables,
-              spices) produced dramatically more useful output than rewording
-              what it <em>should</em> suggest. Cheap oils were hard-banned by
-              name. The scope rule—return{" "}
-              <code className="text-foreground/90">[]</code> for anything that
-              isn't a meaningful dietary swap candidate—kept the UI honest:
-              a swap button that appears means something.
+              The gap between Mise's designed cook-mode workflow and my
+              actual weekly behavior (a separate ChatGPT tab, every time) was
+              invisible until I looked at my own usage honestly. Being your
+              own first user only works if you're willing to notice when you
+              don't use the thing you built.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
-                Context makes AI suggestions credible.
+                A single literal value can hide a parsing bug for a long time.
               </strong>{" "}
-              Sending only the ingredient name produced generic results. Sending
-              the full ingredient list alongside it gave Claude enough recipe
-              context to reason about what a substitution actually does to the
-              dish—not just whether it's chemically similar.
+              Recipe sites frequently encode JSON-LD yield as "1 loaf,"
+              "1 batch," or "1 pan"—and a naive parser reads that leading
+              digit as a one-person serving count, producing a confidently
+              wrong "Serves 1" label. The fix wasn't a smarter parser; it was
+              recognizing that a bare{" "}
+              <code className="text-foreground/90">1</code> is almost never
+              trustworthy unless the source text explicitly says "serving."
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                A demo good enough to remove the sign-up wall is a genuinely
+                different design problem than a demo that's just a locked
+                preview.
+              </strong>{" "}
+              Making Sous usable pre-auth meant the IP-based rate limit, the
+              inline ingredient payload, and the "no persistence" behavior all
+              had to be designed together—not bolted onto the authenticated
+              path after the fact.
+            </li>
+            <li>
+              <strong className="font-semibold text-foreground">
+                Taste feedback loops fast when the medium is right.
+              </strong>{" "}
+              Iterating on the visual identity through quick side-by-side
+              mockups—rather than shipping a full redesign and asking for
+              reactions afterward—turned "I hate the UI, it looks junior"
+              into a specific, actionable set of fixes (typography, color
+              layering, corner radius) within the same conversation, instead
+              of another full redesign cycle.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 CDN cache collisions are silent and maddening.
               </strong>{" "}
-              The image proxy shipped with{" "}
+              The image proxy originally shipped with{" "}
               <code className="text-foreground/90">Cache-Control: public</code>.
-              In production on Netlify, every imported recipe started displaying
-              the same image—the first one ever fetched. The CDN was caching the
-              proxy response by path alone, ignoring the{" "}
-              <code className="text-foreground/90">?url=</code> query parameter
-              entirely. The fix was{" "}
-              <code className="text-foreground/90">Cache-Control: private</code>
-              —browser-only caching, no edge layer. Unsplash URLs were also
-              moved to bypass the proxy entirely since their CDN is already
-              public. The symptom (all images identical) was obvious; the root
-              cause (edge cache keying behavior) took careful reading of Netlify's
-              caching docs to confirm.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">
-                A timestamp beats a counter.
-              </strong>{" "}
-              The timer stores a fixed{" "}
-              <code className="text-foreground/90">endsAt</code> timestamp
-              rather than a countdown. A counter drifts across tab switches
-              and phone locks. A timestamp doesn't—remaining seconds are
-              always calculated fresh on each tick.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">
-                Honest beats clever in ingredient matching.
-              </strong>{" "}
-              Step-ingredient matching surfaced an inherent tension: strict
-              matching misses paraphrased ingredients; loose matching shows
-              too much. The solution was to show everything when confidence
-              is low and label it clearly—not hide the fallback.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">
-                The import pipeline was designed for failure.
-              </strong>{" "}
-              Spoonacular occasionally extracts garbage from paywalled or
-              redirect pages. JSON-LD structured data is surprisingly
-              reliable as a free fallback—most major recipe sites include it
-              for SEO. Designing each adapter against the same interface kept
-              the fallback logic clean and testable.
-            </li>
-            <li>
-              <strong className="font-semibold text-foreground">
-                Server Actions kept mutations clean.
-              </strong>{" "}
-              No route handlers, no client-side fetches for writes, cache
-              invalidation via{" "}
-              <code className="text-foreground/90">revalidatePath()</code>{" "}
-              co-located with the action. The write pattern stayed consistent
-              across every mutation in the app.
+              In production, every imported recipe started displaying the
+              same photo—the first one ever fetched—because the CDN was
+              keying its cache by path alone and ignoring the{" "}
+              <code className="text-foreground/90">?url=</code> query
+              parameter entirely. The fix was{" "}
+              <code className="text-foreground/90">Cache-Control: private</code>.
+              The symptom was obvious; the root cause took reading the CDN's
+              actual cache-keying behavior to confirm.
             </li>
           </ul>
         </CaseStudySection>
@@ -506,26 +502,24 @@ export default function MisePage() {
         <CaseStudySection title="Outcome">
           <ul className="list-none space-y-3 pl-0 text-[15px] font-medium leading-snug md:text-base">
             <li>
-              Mise is where architecture, AI integration, and UX deliberateness
-              all had to work together. Claude isn&apos;t a single bolt-on
-              feature—it runs in two separate places, each with a different
-              job: swapping individual ingredients on demand, and shifting an
-              entire recipe toward a dietary goal in one pass. Each integration
-              is scoped, prompt-engineered, and quality-controlled at the model
-              level rather than post-processed in code.
+              Mise went from a full-featured app that I only partially used to
+              a smaller app built entirely around the one thing that was
+              actually working. That's a harder edit than adding a feature—it
+              meant deleting a working cook mode, a working swap sheet, and a
+              working prep checklist because the data on my own behavior said
+              they weren't earning their place.
             </li>
             <li>
-              The import pipeline handles real-world failure gracefully at every
-              tier. The session model means you can set down your phone mid-recipe
-              and come back without losing your place. The image proxy was
-              simple until it wasn&apos;t—and debugging the CDN cache collision
-              required understanding how Netlify&apos;s edge layer keys its
-              cache, not just reading error logs.
+              Sous is the product now, not a feature bolted onto one. It's
+              recipe-scoped, it carries real context into every answer, and
+              it's good enough to hand to a stranger with no account and no
+              onboarding.
             </li>
             <li>
-              The separation between Editorial and Cook turned out to be the
-              right call: each surface has one job, which kept both clean in
-              ways that a unified view would have compromised.
+              The visual identity went through a real design cycle in the
+              open—shipped, judged too junior, diagnosed specifically, and
+              rebuilt around a rule (accent color earns saturation before it
+              earns a fill) rather than a fixed palette.
             </li>
             <li>
               Code lives here:{" "}

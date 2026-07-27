@@ -30,13 +30,13 @@ export const projects: ProjectListItem[] = [
   {
     slug: "mise",
     title: "Mise Intelligent Chef",
-    subtitle: "Recipe import & AI-powered cooking",
+    subtitle: "A cooking app that got smaller on purpose",
     description:
-      "Recipe websites are built for traffic, not cooking. Mise strips the friction—import any URL, get AI-powered ingredient swaps tuned to real dietary needs, then cook one clear step at a time.",
+      "I shipped a full-featured recipe app, used it on myself, and found out the one thing I actually did every time I cooked was open a separate ChatGPT conversation for substitutions and macros. Mise cut everything else and built that as Sous—a Claude-powered cooking companion grounded in the actual recipe.",
     liveUrl: "https://miseintelligentchef.netlify.app",
     featuredCard: true,
     cardTeaser:
-      "The core insight: browsing a recipe and actively cooking it are completely different mental states—so they got completely different surfaces. Claude runs in two distinct integrations, each scoped, prompt-engineered, and quality-controlled differently.",
+      "The harder edit: deleting a working cook mode, a working swap sheet, and a working prep checklist because real usage data said they weren't earning their place. What survived—Sous—is playable by a stranger with no account, and it's the whole product now.",
   },
   {
     slug: "wanderlist",
