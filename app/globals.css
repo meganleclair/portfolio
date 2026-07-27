@@ -166,11 +166,16 @@ html.dark {
 }
 
 .glass-card {
-  background: oklch(1 0 0 / 2.8%);
+  background: oklch(0 0 0 / 3%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid oklch(1 0 0 / 9%);
+  border: 1px solid oklch(0 0 0 / 8%);
   border-radius: var(--radius-md);
+}
+
+.dark .glass-card {
+  background: oklch(1 0 0 / 2.8%);
+  border: 1px solid oklch(1 0 0 / 9%);
 }
 
 @layer base {
@@ -183,6 +188,8 @@ html.dark {
   body {
     @apply min-h-full text-foreground antialiased;
     background-color: var(--background);
+  }
+  .dark body {
     background-image:
       radial-gradient(
         ellipse 100% 70% at 95% -8%,
