@@ -61,6 +61,13 @@ export const projects: ProjectListItem[] = [
       "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
   },
   {
+    slug: "cowbell-broker-portal",
+    title: "Broker Portal Redesign",
+    subtitle: "Cyber insurance · dashboard, quoting, client profile",
+    description:
+      "Real, shipped work at Cowbell—redesigning the broker dashboard, quoting flow, and client profile around a simple idea: show what needs a decision now, guide the rest step by step. Password-protected out of respect for my employer; ask me for access.",
+  },
+  {
     slug: "system-sidekick",
     title: "System Sidekick",
     description:
