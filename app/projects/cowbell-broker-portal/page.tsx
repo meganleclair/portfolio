@@ -53,13 +53,43 @@ export default async function CowbellBrokerPortalPage() {
       <div className="mt-24 space-y-24 md:mt-32 md:space-y-28">
         <CaseStudySection title="The problem">
           <p>
-            A broker logging in to quote or service a policy was looking at
-            the same interface whether they had one urgent renewal or two
-            hundred quiet accounts. Every client sat in one flat table with
-            equal visual weight. Starting a quote meant one long form asking
-            for everything at once, with no sense of how much was left.
-            Nothing in the interface distinguished &quot;needs a decision today&quot;
-            from &quot;fine for now.&quot;
+            Cowbell&apos;s broker workflow was fragmented across three separate
+            experiences at once — a legacy portal, a current dashboard that
+            was better but still fragmented, and an early prototype quoting
+            flow that hadn&apos;t been validated or unified across products. Each used
+            different navigation, field order, and submission logic. Brokers
+            struggled to complete quotes efficiently, next steps were
+            unclear, and internal teams spent more time propping the
+            experience up with support than the platform spent scaling
+            itself.
+          </p>
+          <p>
+            The goal wasn&apos;t a visual refresh. It was one coherent broker
+            experience — dashboard, quoting, and servicing — that held up
+            consistently across lines of business.
+          </p>
+        </CaseStudySection>
+
+        <CaseStudySection title="Research, not assumptions">
+          <p>
+            The redesign started with a full audit of all three existing
+            experiences, plus structured interviews on both sides: internally
+            across underwriting, concierge, sales, and platform support, and
+            externally with brokers ranging from retail agencies to
+            wholesalers and MGAs — backed by a broader survey to check how
+            far those interviews generalized. Brokers were also asked how
+            Cowbell&apos;s quoting experience stacked up against Coalition,
+            At-Bay, Chubb, and Travelers, since that comparison is the one
+            they actually make in their day-to-day work.
+          </p>
+          <p>
+            Interviews establish what people say; they don&apos;t always confirm
+            what people do. Session replay and event analytics ran alongside
+            the qualitative research to check the two against each other —
+            tracking where brokers actually dropped off in the quoting
+            stepper, how long they hesitated on specific fields, and whether
+            they used help text and tooltips at all, rather than assuming
+            they did.
           </p>
         </CaseStudySection>
 
@@ -73,14 +103,29 @@ export default async function CowbellBrokerPortalPage() {
           }
         >
           <p>
-            The redesigned dashboard opens with a personalized summary —
-            in-force policies, expiring policies, open quotes, and total
-            premium, each with a six-month trend line instead of a bare
-            count. Below that, a <strong className="font-semibold text-foreground">Needs Attention</strong>{" "}
-            row surfaces the specific accounts with a quote ready to bind, a
-            policy that just expired, or a binder waiting on action — each
-            with the one next step that applies to it, ahead of the full
-            client list rather than buried inside it.
+            The audit of the existing dashboard turned up a structural
+            problem, not a visual one: it never committed to a single primary
+            object. Clients, submissions, quotes, binders, and policies were
+            all presented at once, which forced a broker to translate their
+            actual goal — &quot;I need to deal with this client&quot; — into internal
+            platform concepts before they could even choose an action.
+            Status values like Ready, Referred, and Expired carried equal
+            visual weight despite representing completely different levels
+            of urgency, so brokers had to do their own triage every time.
+            Actions were generic enough (&quot;Bind / More&quot;) that the real next
+            step was hidden behind a click.
+          </p>
+          <p>
+            The redesign commits to the client as the anchor. It opens with a
+            personalized summary — in-force policies, expiring policies,
+            open quotes, and total premium, each with a trend line instead of
+            a bare count — then a{" "}
+            <strong className="font-semibold text-foreground">
+              Needs Attention
+            </strong>{" "}
+            row that surfaces the specific accounts with a quote ready to
+            bind, a policy that just expired, or a binder waiting on action,
+            each labeled with the one next step that actually applies to it.
           </p>
           <p>
             The client table itself grew from three columns to ten — line of
@@ -142,6 +187,21 @@ export default async function CowbellBrokerPortalPage() {
           <div className="space-y-8 md:space-y-9">
             <div>
               <h3 className="text-base font-semibold text-foreground">
+                A broker&apos;s mental model isn&apos;t the system&apos;s data model
+              </h3>
+              <p className="mt-2">
+                Brokers arrive thinking &quot;I need to deal with this client,&quot;
+                not &quot;I need to find the submission, then the quote, then the
+                binder.&quot; Presenting clients, submissions, quotes, binders,
+                and policies as equally weighted entities was internal system
+                structure leaking into a broker-facing surface. Committing to
+                the client as the one primary object — with everything else
+                nested under it — was a bigger interface decision than it
+                looks like from the outside.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-foreground">
                 Attention is a first-class piece of information
               </h3>
               <p className="mt-2">
@@ -189,6 +249,11 @@ export default async function CowbellBrokerPortalPage() {
               from listing everything with equal weight to actively
               distinguishing what needs a broker&apos;s attention from what
               doesn&apos;t.
+            </li>
+            <li>
+              The redesigned dashboard and quoting stepper went back through
+              evaluative usability interviews — internally and with brokers
+              — before being treated as validated rather than just shipped.
             </li>
             <li>
               This is live, in-production work at Cowbell. Real screenshots,
