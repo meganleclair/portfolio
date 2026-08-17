@@ -60,19 +60,19 @@ export const projects: ProjectListItem[] = [
       "Full-stack travel planner on live data with auth, RLS, and real persistence. The Trip Quiz turns five questions about vibe and pace into a ranked itinerary shortlist—built for the gap between inspiration and a real plan.",
   },
   {
+    slug: "cowbell-design-system",
+    title: "Design System as a Service",
+    subtitle: "Design system strategy · AI tooling · Cowbell console",
+    description:
+      "Real, active strategy work at Cowbell—turning two years of undocumented design decisions into a token pipeline and AI-readable rules files, so Claude and Cursor generate on-brand UI by default instead of guessing. Password-protected out of respect for my employer; ask me for access.",
+  },
+  {
     slug: "relay",
     title: "Threshold",
     subtitle: "Cyber insurance ops",
     liveUrl: "https://threshold-task-tracker.netlify.app",
     description:
       "Coverage decisions have to be traceable. Threshold is the operational layer for cyber insurance underwriting teams—tracking assessments, breach evaluations, and sublimit reviews with clear ownership and a full audit trail.",
-  },
-  {
-    slug: "cowbell-design-system",
-    title: "Design System as a Service",
-    subtitle: "Design system strategy · AI tooling · Cowbell console",
-    description:
-      "Real, active strategy work at Cowbell—turning two years of undocumented design decisions into a token pipeline and AI-readable rules files, so Claude and Cursor generate on-brand UI by default instead of guessing. Password-protected out of respect for my employer; ask me for access.",
   },
 ];
 
