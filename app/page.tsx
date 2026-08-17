@@ -181,8 +181,12 @@ export default function HomePage() {
                       className="group block py-8 md:py-10"
                     >
                       <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between md:gap-12">
-                        <span className="text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-0.5 md:text-2xl">
+                        <span className="flex items-baseline gap-2 text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 group-hover:translate-x-0.5 md:text-2xl">
                           {project.title}
+                          <ArrowUpRight
+                            className="size-4 text-muted-foreground/60 transition-colors group-hover:text-foreground"
+                            aria-hidden
+                          />
                         </span>
                         <span className="max-w-md text-[13px] font-medium leading-snug text-muted-foreground md:pt-0.5 md:text-right md:text-[14px]">
                           {project.description}
