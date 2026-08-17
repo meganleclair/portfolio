@@ -70,9 +70,9 @@ export default function RelayPage() {
           <p>
             The name comes from the domain: when exposure crosses a risk
             threshold, the underwriting team has to act. Threshold is the
-            surface that shows them what crossed, who owns it, where it's
+            surface that shows them what crossed, who owns it, where it&apos;s
             stuck, and what decisions have been made—without the overhead of a
-            general project management tool that wasn't built for this kind of
+            general project management tool that wasn&apos;t built for this kind of
             work.
           </p>
         </CaseStudySection>
@@ -92,20 +92,20 @@ export default function RelayPage() {
               identical to one actively in underwriting.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Activity history doesn't exist</strong>{" "}
-              — who approved the BEC sublimit adjustment and why isn't captured
+              <strong className="font-semibold text-foreground">Activity history doesn&apos;t exist</strong>{" "}
+              — who approved the BEC sublimit adjustment and why isn&apos;t captured
               anywhere auditable. That decision matters at renewal.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Prioritization is manual</strong>{" "}
-              — figuring out what's due this week requires sorting a spreadsheet,
+              — figuring out what&apos;s due this week requires sorting a spreadsheet,
               not scanning a live queue with regulatory deadlines visible.
             </li>
             <li>
-              <strong className="font-semibold text-foreground">Generic tools don't fit the shape of the work</strong>{" "}
-              — Kanban boards don't support dense item lists with sublimit
-              thresholds; project tools add overhead the team doesn't need and
-              don't speak the domain's language.
+              <strong className="font-semibold text-foreground">Generic tools don&apos;t fit the shape of the work</strong>{" "}
+              — Kanban boards don&apos;t support dense item lists with sublimit
+              thresholds; project tools add overhead the team doesn&apos;t need and
+              don&apos;t speak the domain&apos;s language.
             </li>
           </ul>
         </CaseStudySection>
@@ -122,7 +122,7 @@ export default function RelayPage() {
             <li>
               <strong className="font-semibold text-foreground">Activity bar chart</strong>{" "}
               — a Mon–Fri chart shows how many items were touched each weekday.
-              Clicking a bar filters the table to that day's work. Hovering
+              Clicking a bar filters the table to that day&apos;s work. Hovering
               shows a per-status breakdown for each column. It makes weekly
               cadence visible without a reporting tool.
             </li>
@@ -130,13 +130,13 @@ export default function RelayPage() {
               <strong className="font-semibold text-foreground">Inline editing</strong>{" "}
               — status, owner, priority, and due date all update directly in the
               table row. No modal, no navigation, no lost scroll position.
-              Updates write to the item's activity log immediately.
+              Updates write to the item&apos;s activity log immediately.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Composable filters</strong>{" "}
-              — status, owner, and "mine only" dropdowns work together with
+              — status, owner, and &quot;mine only&quot; dropdowns work together with
               header search and activity chart clicks. A unified filter banner
-              shows exactly what's active and clears in one click.
+              shows exactly what&apos;s active and clears in one click.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Detail panel</strong>{" "}
@@ -158,7 +158,7 @@ export default function RelayPage() {
               <strong className="font-semibold text-foreground">Scripted live updates</strong>{" "}
               — every 30 seconds, a queued sequence of real notes and status
               changes fires against mock items, keeping the demo queue fresh
-              and the "Updated just now" badge honest. No backend needed.
+              and the &quot;Updated just now&quot; badge honest. No backend needed.
             </li>
           </ul>
         </CaseStudySection>
@@ -186,10 +186,10 @@ export default function RelayPage() {
                 Metrics as filters
               </h3>
               <p className="mt-3">
-                The stat cards aren't decorative. Clicking "In Review" or
-                "Blocked" scopes the table to those items immediately — the
+                The stat cards aren&apos;t decorative. Clicking &quot;In Review&quot; or
+                &quot;Blocked&quot; scopes the table to those items immediately — the
                 metric earns its place by being functional, not just
-                informational. A unified filter banner shows exactly what's
+                informational. A unified filter banner shows exactly what&apos;s
                 active and clears in one click.
               </p>
               <div className="mt-7 w-full max-w-3xl">
@@ -298,7 +298,7 @@ export default function RelayPage() {
                 Kanban boards work for work that moves linearly through a few
                 stages. Insurance review queues are denser — 50+ items, multiple
                 owners, regulatory deadlines that matter. A table lets you scan,
-                sort, and compare across dimensions a board can't. Progressive
+                sort, and compare across dimensions a board can&apos;t. Progressive
                 disclosure via the detail panel handles depth without polluting
                 the main view.
               </p>
@@ -308,10 +308,10 @@ export default function RelayPage() {
                 Metrics as filters
               </h3>
               <p className="mt-2">
-                The four stat cards aren't decorative. Clicking "In Review" or
-                "Blocked" filters the table to those items immediately. The
+                The four stat cards aren&apos;t decorative. Clicking &quot;In Review&quot; or
+                &quot;Blocked&quot; filters the table to those items immediately. The
                 metric earns its place by being functional, not just
-                informational — it's a shortcut into the relevant slice of the
+                informational — it&apos;s a shortcut into the relevant slice of the
                 queue.
               </p>
             </div>
@@ -333,9 +333,9 @@ export default function RelayPage() {
               </h3>
               <p className="mt-2">
                 Every status change, ownership move, due date update, and note
-                is appended to the item's activity log with a timestamp. This
-                matters in cyber insurance: "who approved the BEC sublimit
-                adjustment and when" is a real question that gets asked at
+                is appended to the item&apos;s activity log with a timestamp. This
+                matters in cyber insurance: &quot;who approved the BEC sublimit
+                adjustment and when&quot; is a real question that gets asked at
                 renewal. The log answers it without digging through email.
               </p>
             </div>
@@ -344,11 +344,11 @@ export default function RelayPage() {
                 Domain-specific intake types
               </h3>
               <p className="mt-2">
-                Work types in the intake form aren't generic categories — they're
+                Work types in the intake form aren&apos;t generic categories — they&apos;re
                 the actual types cyber underwriting teams deal with: Ransomware
                 Assessment, Data Breach Evaluation, Sublimit Review, Cyber
                 Renewal, Incident Response Review. This specificity matters: it
-                means the tool speaks the team's language from the moment work
+                means the tool speaks the team&apos;s language from the moment work
                 enters the system.
               </p>
             </div>
@@ -359,7 +359,7 @@ export default function RelayPage() {
           <ul className="list-disc space-y-3 pl-5 text-[15px] font-medium leading-snug marker:text-foreground/40 md:text-base">
             <li>
               <strong className="font-semibold text-foreground">Filter composition surfaced a UX gap.</strong>{" "}
-              The first version had separate "clear" buttons per filter. Once
+              The first version had separate &quot;clear&quot; buttons per filter. Once
               multiple filters could be active simultaneously, users had no way
               to see the combined state at a glance. The unified filter banner —
               which lists every active filter and clears them all in one click —
@@ -369,7 +369,7 @@ export default function RelayPage() {
               <strong className="font-semibold text-foreground">The table pulse was earned, not added.</strong>{" "}
               Without it, filtering felt instant but directionless — results just
               changed. Adding the CSS pulse class on each filter change gave the
-              update a physical register. It's 200ms of animation but it made
+              update a physical register. It&apos;s 200ms of animation but it made
               the interaction feel substantially more responsive.
             </li>
             <li>
@@ -381,7 +381,7 @@ export default function RelayPage() {
             </li>
             <li>
               <strong className="font-semibold text-foreground">Live ticks forced honest timestamps.</strong>{" "}
-              The "Updated just now" badge looked great until the mock data went
+              The &quot;Updated just now&quot; badge looked great until the mock data went
               stale 30 seconds after load. The scripted live-update sequence —
               which fires real notes and status changes on a 30s interval — kept
               the badge accurate and made the demo feel like a live team queue

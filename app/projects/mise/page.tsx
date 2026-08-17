@@ -66,16 +66,16 @@ export default function MisePage() {
           <p>
             Recipe websites are built for traffic, not cooking. Five
             paragraphs of backstory, an ingredients list that drifts from the
-            steps, instructions that assume you've done this before. That was
-            the starting premise, and it's still true.
+            steps, instructions that assume you&apos;ve done this before. That was
+            the starting premise, and it&apos;s still true.
           </p>
           <p>
-            But it wasn't the real problem. The real friction shows up after
-            you've already found a recipe you like: you don't have heavy
-            cream, or you're cooking for six instead of four, or you just want
+            But it wasn&apos;t the real problem. The real friction shows up after
+            you&apos;ve already found a recipe you like: you don&apos;t have heavy
+            cream, or you&apos;re cooking for six instead of four, or you just want
             to know what a dish actually costs you nutritionally before you
             commit to making it. That renegotiation—swap this, rescale that,
-            what's the protein now—was happening in a completely separate app,
+            what&apos;s the protein now—was happening in a completely separate app,
             every time, disconnected from the recipe itself.
           </p>
         </CaseStudySection>
@@ -95,15 +95,15 @@ export default function MisePage() {
             cook would. And when I looked honestly at what I was doing, the
             step-by-step cook mode barely got touched. What I actually did,
             every single time, was open a completely separate ChatGPT
-            conversation to ask things like "can I use chickpeas instead of
-            white beans" or "what does this look like at six servings instead
-            of four." The app I'd built and the behavior I actually had were
+            conversation to ask things like &quot;can I use chickpeas instead of
+            white beans&quot; or &quot;what does this look like at six servings instead
+            of four.&quot; The app I&apos;d built and the behavior I actually had were
             two different products.
           </p>
           <p>
-            That's the kind of thing that's easy to miss if you only ever
+            That&apos;s the kind of thing that&apos;s easy to miss if you only ever
             watch other people use something, and easy to see the moment
-            you're your own most honest user. So I made the harder call:
+            you&apos;re your own most honest user. So I made the harder call:
             cut cook mode, the prep checklist, the swap sheet, and the batch
             dietary shifter entirely, and rebuild the one behavior that
             mattered as a first-class feature. That became Sous.
@@ -121,9 +121,9 @@ export default function MisePage() {
         >
           <p>
             Sous is a recipe-scoped chat, not a bolted-on assistant widget. It
-            opens already knowing the recipe you're looking at—every
-            ingredient, every quantity—so the first question you ask doesn't
-            need context you haven't given it yet.
+            opens already knowing the recipe you&apos;re looking at—every
+            ingredient, every quantity—so the first question you ask doesn&apos;t
+            need context you haven&apos;t given it yet.
           </p>
           <ul className="list-disc space-y-2 pl-5 marker:text-foreground/40">
             <li>
@@ -131,7 +131,7 @@ export default function MisePage() {
                 Swap anything.
               </strong>{" "}
               Ask about a substitution in plain language and get a real
-              answer—what changes, what to watch for, whether it's actually a
+              answer—what changes, what to watch for, whether it&apos;s actually a
               good idea—grounded in the specific dish, not a generic
               substitution chart.
             </li>
@@ -177,9 +177,9 @@ export default function MisePage() {
           </p>
           <p>
             Getting a model to answer honestly is harder than getting it to
-            answer confidently. An earlier draft of Sous's sample copy claimed
-            chickpeas added "40 more grams of protein per batch" compared to
-            white beans—a plausible-sounding number that's simply wrong; the
+            answer confidently. An earlier draft of Sous&apos;s sample copy claimed
+            chickpeas added &quot;40 more grams of protein per batch&quot; compared to
+            white beans—a plausible-sounding number that&apos;s simply wrong; the
             two are close in protein per cup. Catching that meant treating
             nutritional claims with the same scrutiny as any other factual
             output, sample copy included.
@@ -214,7 +214,7 @@ export default function MisePage() {
               <code className="text-foreground/90">ingredients</code> payload
               (demo mode: no auth, no database access at all, IP-keyed rate
               limit). The branch is structural, not a flag—the demo path
-              can't accidentally reach a real user's data because it never
+              can&apos;t accidentally reach a real user&apos;s data because it never
               queries the recipes table in the first place.
             </li>
             <li>
@@ -225,8 +225,8 @@ export default function MisePage() {
               custom JSON-LD adapter that fetches the URL directly and parses{" "}
               <code className="text-foreground/90">{"<script type=\"application/ld+json\">"}</code>{" "}
               blocks for the{" "}
-              <code className="text-foreground/90">@type: "Recipe"</code>{" "}
-              node when it isn't; a demo mock adapter as a zero-dependency
+              <code className="text-foreground/90">@type: &quot;Recipe&quot;</code>{" "}
+              node when it isn&apos;t; a demo mock adapter as a zero-dependency
               fallback. Most major recipe sites import cleanly at one of the
               three tiers.
             </li>
@@ -237,7 +237,7 @@ export default function MisePage() {
               — A unique index on{" "}
               <code className="text-foreground/90">(user_id, source_url)</code>{" "}
               plus an application-level check before the (comparatively
-              expensive) import pipeline runs, so re-importing a URL you've
+              expensive) import pipeline runs, so re-importing a URL you&apos;ve
               already saved returns the existing recipe instead of creating a
               copy. A race between two near-simultaneous imports of the same
               URL still resolves correctly—the losing insert hits the unique
@@ -255,7 +255,7 @@ export default function MisePage() {
               source hostname to bypass hotlink protection, blocks private IP
               ranges, validates by content-type, caps at 8&nbsp;MB, and serves
               with <code className="text-foreground/90">Cache-Control: private</code>{" "}
-              so a CDN never caches one recipe's photo under another's URL.
+              so a CDN never caches one recipe&apos;s photo under another&apos;s URL.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
@@ -286,13 +286,13 @@ export default function MisePage() {
           <p>
             The first shipped design was calm and quiet on purpose—a muted
             neutral palette, generous whitespace, a serif tagline that read
-            "a calmer way to cook the internet." It was fine. It also didn't
+            &quot;a calmer way to cook the internet.&quot; It was fine. It also didn&apos;t
             say anything about what made Sous worth using, and once the
-            product's actual center of gravity shifted, the identity needed to
+            product&apos;s actual center of gravity shifted, the identity needed to
             move with it.
           </p>
           <p>
-            The first attempt at "more personality" overcorrected: a bubbly
+            The first attempt at &quot;more personality&quot; overcorrected: a bubbly
             rounded display font, a cream-and-blush palette, fully pill-shaped
             everything. It photographed fine in isolation and read as
             unmistakably junior once it was live—every surface fighting for
@@ -301,7 +301,7 @@ export default function MisePage() {
             like Allrecipes actually does: layered backgrounds instead of one
             flat tone (white chrome, a tinted content panel, white cards on
             top), ink-black headlines instead of accent-colored ones, and an
-            accent color used as a border and a line before it's ever used as
+            accent color used as a border and a line before it&apos;s ever used as
             a fill. The final system pairs a confident serif with a navy ink,
             an orange primary accent, and one deliberately bold dark panel
             partway down the homepage—a visual break in an otherwise light,
@@ -316,12 +316,12 @@ export default function MisePage() {
                 Cutting a working feature is still a design decision
               </h3>
               <p className="mt-2">
-                Cook mode wasn't broken. It had a synced timer, per-step
+                Cook mode wasn&apos;t broken. It had a synced timer, per-step
                 ingredient narrowing, a session model that survived a phone
                 lock. It was also not the thing I reached for. Removing
                 working software is a harder call than removing something
-                that's clearly failing, because there's no error message
-                telling you it's wrong—only your own usage data, if you're
+                that&apos;s clearly failing, because there&apos;s no error message
+                telling you it&apos;s wrong—only your own usage data, if you&apos;re
                 willing to look at it honestly.
               </p>
             </div>
@@ -332,10 +332,10 @@ export default function MisePage() {
               <p className="mt-2">
                 Letting anyone chat with Sous on a demo recipe before creating
                 an account means the feature has to be good enough to survive
-                first contact with zero context about the user. That's a
-                higher bar than gating it behind sign-up, and it's the right
-                bar—if Sous only feels good after you've already committed to
-                an account, that's a sign it isn't good enough yet.
+                first contact with zero context about the user. That&apos;s a
+                higher bar than gating it behind sign-up, and it&apos;s the right
+                bar—if Sous only feels good after you&apos;ve already committed to
+                an account, that&apos;s a sign it isn&apos;t good enough yet.
               </p>
             </div>
             <div>
@@ -343,12 +343,12 @@ export default function MisePage() {
                 Honest beats impressive in nutrition copy
               </h3>
               <p className="mt-2">
-                It would have been easy to let Sous's sample responses lean
+                It would have been easy to let Sous&apos;s sample responses lean
                 toward whatever sounds most compelling—bigger protein deltas,
                 more dramatic swaps. The fix for the chickpea/protein error
-                wasn't a better-sounding number; it was admitting the swap is
+                wasn&apos;t a better-sounding number; it was admitting the swap is
                 close to a wash and saying so. A cooking assistant that
-                exaggerates results isn't a feature worth having.
+                exaggerates results isn&apos;t a feature worth having.
               </p>
             </div>
             <div>
@@ -356,9 +356,9 @@ export default function MisePage() {
                 Color should earn its saturation before it gets a fill
               </h3>
               <p className="mt-2">
-                The visual reset's real lesson wasn't a palette swap, it was a
+                The visual reset&apos;s real lesson wasn&apos;t a palette swap, it was a
                 rule: an accent color proves itself as a border, a line, or a
-                small icon tint before it's allowed to become a large filled
+                small icon tint before it&apos;s allowed to become a large filled
                 surface. Applied consistently, that rule is what separates a
                 confident, restrained interface from one where every element
                 is shouting at the same volume.
@@ -374,7 +374,7 @@ export default function MisePage() {
                 shape of payload arrived—a real{" "}
                 <code className="text-foreground/90">recipeId</code> versus an
                 inline title and ingredient list—so the demo code path is
-                physically incapable of reaching a signed-in user's data,
+                physically incapable of reaching a signed-in user&apos;s data,
                 rather than merely instructed not to.
               </p>
             </div>
@@ -441,32 +441,32 @@ export default function MisePage() {
                 Watch what you actually do, not what you built for yourself to
                 do.
               </strong>{" "}
-              The gap between Mise's designed cook-mode workflow and my
+              The gap between Mise&apos;s designed cook-mode workflow and my
               actual weekly behavior (a separate ChatGPT tab, every time) was
               invisible until I looked at my own usage honestly. Being your
-              own first user only works if you're willing to notice when you
-              don't use the thing you built.
+              own first user only works if you&apos;re willing to notice when you
+              don&apos;t use the thing you built.
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 A single literal value can hide a parsing bug for a long time.
               </strong>{" "}
-              Recipe sites frequently encode JSON-LD yield as "1 loaf,"
-              "1 batch," or "1 pan"—and a naive parser reads that leading
+              Recipe sites frequently encode JSON-LD yield as &quot;1 loaf,&quot;
+              &quot;1 batch,&quot; or &quot;1 pan&quot;—and a naive parser reads that leading
               digit as a one-person serving count, producing a confidently
-              wrong "Serves 1" label. The fix wasn't a smarter parser; it was
+              wrong &quot;Serves 1&quot; label. The fix wasn&apos;t a smarter parser; it was
               recognizing that a bare{" "}
               <code className="text-foreground/90">1</code> is almost never
-              trustworthy unless the source text explicitly says "serving."
+              trustworthy unless the source text explicitly says &quot;serving.&quot;
             </li>
             <li>
               <strong className="font-semibold text-foreground">
                 A demo good enough to remove the sign-up wall is a genuinely
-                different design problem than a demo that's just a locked
+                different design problem than a demo that&apos;s just a locked
                 preview.
               </strong>{" "}
               Making Sous usable pre-auth meant the IP-based rate limit, the
-              inline ingredient payload, and the "no persistence" behavior all
+              inline ingredient payload, and the &quot;no persistence&quot; behavior all
               had to be designed together—not bolted onto the authenticated
               path after the fact.
             </li>
@@ -476,7 +476,7 @@ export default function MisePage() {
               </strong>{" "}
               Iterating on the visual identity through quick side-by-side
               mockups—rather than shipping a full redesign and asking for
-              reactions afterward—turned "I hate the UI, it looks junior"
+              reactions afterward—turned &quot;I hate the UI, it looks junior&quot;
               into a specific, actionable set of fixes (typography, color
               layering, corner radius) within the same conversation, instead
               of another full redesign cycle.
@@ -493,7 +493,7 @@ export default function MisePage() {
               <code className="text-foreground/90">?url=</code> query
               parameter entirely. The fix was{" "}
               <code className="text-foreground/90">Cache-Control: private</code>.
-              The symptom was obvious; the root cause took reading the CDN's
+              The symptom was obvious; the root cause took reading the CDN&apos;s
               actual cache-keying behavior to confirm.
             </li>
           </ul>
@@ -504,15 +504,15 @@ export default function MisePage() {
             <li>
               Mise went from a full-featured app that I only partially used to
               a smaller app built entirely around the one thing that was
-              actually working. That's a harder edit than adding a feature—it
+              actually working. That&apos;s a harder edit than adding a feature—it
               meant deleting a working cook mode, a working swap sheet, and a
               working prep checklist because the data on my own behavior said
-              they weren't earning their place.
+              they weren&apos;t earning their place.
             </li>
             <li>
-              Sous is the product now, not a feature bolted onto one. It's
+              Sous is the product now, not a feature bolted onto one. It&apos;s
               recipe-scoped, it carries real context into every answer, and
-              it's good enough to hand to a stranger with no account and no
+              it&apos;s good enough to hand to a stranger with no account and no
               onboarding.
             </li>
             <li>

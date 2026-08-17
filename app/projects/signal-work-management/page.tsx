@@ -26,9 +26,9 @@ export default function SignalWorkManagementPage() {
           Inbound triage · AI-assisted · workspace scoping · urgency-led feed
         </p>
         <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl md:leading-relaxed">
-          Work doesn't arrive in a queue. It arrives in fragments—a Slack message
+          Work doesn&apos;t arrive in a queue. It arrives in fragments—a Slack message
           here, an email thread there, a calendar hold that needs a decision, a
-          form submission nobody's claimed yet. Signal is the surface that makes
+          form submission nobody&apos;s claimed yet. Signal is the surface that makes
           that inbound legible: urgency-grouped, workspace-scoped, and built for
           the person everything flows through. A Claude-powered Triage Assist
           reads each signal in full and returns a recommended urgency, owner, and
@@ -52,23 +52,23 @@ export default function SignalWorkManagementPage() {
           leadVisual={<CaseStudyMedia shot={shots.workspaceHero} />}
         >
           <p>
-            Every growing team has a person who is everyone's first stop—not
-            because they're the most senior, but because they're the most
-            connected. The PM whose DMs are half other people's blockers. The
+            Every growing team has a person who is everyone&apos;s first stop—not
+            because they&apos;re the most senior, but because they&apos;re the most
+            connected. The PM whose DMs are half other people&apos;s blockers. The
             ops lead who routes everything before it has a real owner. The team
             lead who has 40 unread messages at 9 a.m., knows maybe six of them
-            need action today, and can't find the six without reading all 40.
-            They're not behind because they're slow. They're behind because the
+            need action today, and can&apos;t find the six without reading all 40.
+            They&apos;re not behind because they&apos;re slow. They&apos;re behind because the
             work is invisible.
           </p>
           <p>
-            The problem isn't volume. It's legibility. A critical customer
+            The problem isn&apos;t volume. It&apos;s legibility. A critical customer
             escalation and a low-priority docs request look identical in an email
-            inbox. The thing that's been waiting a week looks the same as the
-            thing that just came in. You feel behind but you don't know what
-            you're actually behind on—because the work isn't visible as a
-            coherent stack. It's scattered across six channels, with no shared
-            sense of urgency, ownership, or record of what's already been decided.
+            inbox. The thing that&apos;s been waiting a week looks the same as the
+            thing that just came in. You feel behind but you don&apos;t know what
+            you&apos;re actually behind on—because the work isn&apos;t visible as a
+            coherent stack. It&apos;s scattered across six channels, with no shared
+            sense of urgency, ownership, or record of what&apos;s already been decided.
           </p>
           <p>
             Signal is the surface that makes the inbound stack visible. It
@@ -90,7 +90,7 @@ export default function SignalWorkManagementPage() {
               <strong className="font-semibold text-foreground">Everything looks equally loud</strong>{" "}
               — a critical enterprise renewal and a low-priority docs request
               compete for the same attention in an undifferentiated inbox. The
-              urgent item doesn't announce itself.
+              urgent item doesn&apos;t announce itself.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Source context gets lost in handoffs</strong>{" "}
@@ -101,20 +101,20 @@ export default function SignalWorkManagementPage() {
             <li>
               <strong className="font-semibold text-foreground">Triage happens mentally, not visibly</strong>{" "}
               — most teams triage in their heads, continuously, as new messages
-              arrive. There's no record of "we decided to defer this" or "this is
-              assigned to Jordan"—just an unspoken understanding that degrades
+              arrive. There&apos;s no record of &quot;we decided to defer this&quot; or &quot;this is
+              assigned to Jordan&quot;—just an unspoken understanding that degrades
               over time.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Cross-team work collides</strong>{" "}
               — legal requests, product decisions, design reviews, and ops tasks
-              don't belong in the same undifferentiated list. Mixing them creates
+              don&apos;t belong in the same undifferentiated list. Mixing them creates
               noise for everyone.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Mistakes are hard to reverse</strong>{" "}
               — marking something as ignored or resolved is a lightweight action
-              in practice, but it needs a recovery path. Triage actions that can't
+              in practice, but it needs a recovery path. Triage actions that can&apos;t
               be undone create hesitation.
             </li>
           </ul>
@@ -134,10 +134,10 @@ export default function SignalWorkManagementPage() {
                 to the user. That still requires mental re-sorting under
                 pressure. Signal groups the feed by urgency so the scan pattern
                 does the work: top of the list is always critical, regardless
-                of when things arrived. The visual hierarchy isn't
+                of when things arrived. The visual hierarchy isn&apos;t
                 decoration—it encodes the decision about what to look at first.
                 A flat list with urgency badges still asks something of the
-                user. A grouped feed doesn't.
+                user. A grouped feed doesn&apos;t.
               </p>
             </div>
             <div>
@@ -145,15 +145,15 @@ export default function SignalWorkManagementPage() {
                 AI that earns trust through restraint
               </h3>
               <p className="mt-2">
-                Triage Assist doesn't auto-commit anything, and that was a
+                Triage Assist doesn&apos;t auto-commit anything, and that was a
                 deliberate design choice—not a technical limitation. Triage
-                involves judgment Claude doesn't have: team capacity,
+                involves judgment Claude doesn&apos;t have: team capacity,
                 relationship context, the unspoken prioritization that lives in
-                someone's head. What Claude <em>can</em> do is give you a
-                structured starting point so you're not cold-starting a decision
+                someone&apos;s head. What Claude <em>can</em> do is give you a
+                structured starting point so you&apos;re not cold-starting a decision
                 from scratch. The recommendation is advisory. You review it,
                 adjust if needed, and commit. Keeping the human in the loop
-                isn't a hedge—it's the right design for this kind of call.
+                isn&apos;t a hedge—it&apos;s the right design for this kind of call.
               </p>
             </div>
             <div>
@@ -162,9 +162,9 @@ export default function SignalWorkManagementPage() {
               </h3>
               <p className="mt-2">
                 The five states—Needs Triage, Assigned, Deferred, Ignored,
-                Resolved—model what you <em>chose</em>, not what's technically
-                pending. "Ignored" means the team consciously passed on it.
-                "Deferred" means they know about it and decided to wait.
+                Resolved—model what you <em>chose</em>, not what&apos;s technically
+                pending. &quot;Ignored&quot; means the team consciously passed on it.
+                &quot;Deferred&quot; means they know about it and decided to wait.
                 That distinction matters: it separates a signal that fell
                 through the cracks from one the team intentionally deprioritized,
                 and the record of that choice is as valuable as the action itself.
@@ -187,21 +187,21 @@ export default function SignalWorkManagementPage() {
             <li>
               <strong className="font-semibold text-foreground">Workspace scoping</strong>{" "}
               — five team workspaces (Product, Legal, Design, Operations, Sales)
-              scope the feed so different teams don't compete in the same view.
+              scope the feed so different teams don&apos;t compete in the same view.
               Switching workspaces is a single click; the feed, filters, and
               empty states all update to match the new scope.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Urgency-grouped feed</strong>{" "}
               — signals are grouped by urgency (Critical → High → Medium → Low)
-              so the stack sorts itself. You don't have to mentally re-sort a
+              so the stack sorts itself. You don&apos;t have to mentally re-sort a
               flat list. The critical items are at the top by definition.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Triage state lifecycle</strong>{" "}
               — every signal moves through states: Needs Triage → Assigned,
               Deferred, Ignored, or Resolved. The triage view filters the feed
-              to exactly one state at a time. "Needs Triage" is the default—the
+              to exactly one state at a time. &quot;Needs Triage&quot; is the default—the
               unprocessed inbound.
             </li>
             <li>
@@ -209,7 +209,7 @@ export default function SignalWorkManagementPage() {
               — signals carry the channel they arrived from (Slack, email,
               calendar, doc, chat, form). The sidebar lets you toggle sources
               on or off so you can focus on a specific channel or silence the
-              ones you're not managing right now.
+              ones you&apos;re not managing right now.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Detail panel</strong>{" "}
@@ -252,14 +252,14 @@ export default function SignalWorkManagementPage() {
                 Urgency-grouped feed
               </h3>
               <p className="mt-3">
-                The feed doesn't sort by arrival time — it sorts by what
+                The feed doesn&apos;t sort by arrival time — it sorts by what
                 matters. Critical signals are always at the top, not buried
                 three screens down because they came in on a Tuesday. In the
                 Legal workspace, that means the Meridian Health renewal blocking
                 on legal review is the first thing you see — not the blog footer
                 disclaimer that can wait a week. The workspace bar scopes
-                everything: one click moves you from Legal's queue to Product's
-                to Operations', each with its own signals, counts, and active
+                everything: one click moves you from Legal&apos;s queue to Product&apos;s
+                to Operations&apos;, each with its own signals, counts, and active
                 triage state.
               </p>
               <div className="mt-7">
@@ -272,8 +272,8 @@ export default function SignalWorkManagementPage() {
                 Detail panel
               </h3>
               <p className="mt-3">
-                Selecting a signal doesn't take you anywhere — the feed stays
-                visible and the detail panel opens alongside it. What's in
+                Selecting a signal doesn&apos;t take you anywhere — the feed stays
+                visible and the detail panel opens alongside it. What&apos;s in
                 there: a{" "}
                 <span className="font-semibold text-foreground">why it matters</span>{" "}
                 sentence (the business consequence if this goes unhandled),
@@ -298,7 +298,7 @@ export default function SignalWorkManagementPage() {
                 urgency, workspace, why it matters, every source, every related
                 snippet — and gets back a structured recommendation in under two
                 seconds. Not a summary. An opinion: suggested urgency (with a
-                note if it matches what's already set), recommended owner from
+                note if it matches what&apos;s already set), recommended owner from
                 the team roster, and a specific 2-sentence action plan. For the
                 iOS crash spike, that looked like:{" "}
                 <em>
@@ -320,11 +320,11 @@ export default function SignalWorkManagementPage() {
               </h3>
               <p className="mt-3">
                 Every signal moves through five states: Needs Triage, Assigned,
-                Deferred, Ignored, Resolved. These aren't task statuses — they're
+                Deferred, Ignored, Resolved. These aren&apos;t task statuses — they&apos;re
                 decisions. A signal marked Assigned means someone owns it; the
                 record shows who and when. Deferred means the team consciously
                 parked it, not that it fell through the cracks. The sidebar view
-                counts update in real time so you always know what's unprocessed.
+                counts update in real time so you always know what&apos;s unprocessed.
                 If you misfire, Cmd+Z reverses the last action without a confirm
                 dialog.
               </p>
@@ -393,11 +393,11 @@ export default function SignalWorkManagementPage() {
                 Triage Assist is advisory, not automatic
               </h3>
               <p className="mt-2">
-                The AI suggestion doesn't auto-commit anything. It shows a
+                The AI suggestion doesn&apos;t auto-commit anything. It shows a
                 recommended urgency, pre-fills the owner dropdown, and gives
                 you a two-sentence action plan—but you review it and decide.
                 This was a deliberate choice: triage involves judgment calls
-                that depend on context Claude doesn't have (team capacity,
+                that depend on context Claude doesn&apos;t have (team capacity,
                 politics, relationships). Showing the reasoning and letting you
                 accept or override it keeps the human in the loop while still
                 reducing the cognitive load of cold-starting a decision.
@@ -410,11 +410,11 @@ export default function SignalWorkManagementPage() {
               <p className="mt-2">
                 Every signal carries a <code>why_it_matters</code> string — a
                 short sentence explaining the business consequence if this item
-                isn't handled. This turned out to be the most important field in
+                isn&apos;t handled. This turned out to be the most important field in
                 the data model. Without it, signals read as task titles. With it,
-                they carry their own context. You don't have to reconstruct the
-                stakes from the title — the card tells you: "Meridian Health's
-                renewal is the largest in the quarter; legal delay risks churn."
+                they carry their own context. You don&apos;t have to reconstruct the
+                stakes from the title — the card tells you: &quot;Meridian Health&apos;s
+                renewal is the largest in the quarter; legal delay risks churn.&quot;
                 That changes how you prioritize. It also gives Claude richer
                 input for Triage Assist recommendations.
               </p>
@@ -424,11 +424,11 @@ export default function SignalWorkManagementPage() {
                 Urgency as structure, not decoration
               </h3>
               <p className="mt-2">
-                Urgency grouping is structural, not visual. The feed doesn't just
+                Urgency grouping is structural, not visual. The feed doesn&apos;t just
                 badge items with a color — it groups them so the scan pattern
                 matches how people actually read under pressure: top to bottom,
                 most critical first. A flat list with urgency badges still
-                requires mental sorting. A grouped feed doesn't.
+                requires mental sorting. A grouped feed doesn&apos;t.
               </p>
             </div>
             <div>
@@ -438,8 +438,8 @@ export default function SignalWorkManagementPage() {
               <p className="mt-2">
                 The five triage states (Needs Triage, Assigned, Deferred,
                 Ignored, Resolved) model decisions, not progress. Something
-                "ignored" isn't broken — it's a conscious choice that the
-                team has logged. "Deferred" isn't stalled — it's explicitly
+                &quot;ignored&quot; isn&apos;t broken — it&apos;s a conscious choice that the
+                team has logged. &quot;Deferred&quot; isn&apos;t stalled — it&apos;s explicitly
                 parked. This matters because it separates the signal from the
                 response: you can triage without acting, and the record of what
                 you chose is as valuable as the action itself.
@@ -465,9 +465,9 @@ export default function SignalWorkManagementPage() {
               <p className="mt-2">
                 Source type (Slack, email, calendar, doc, form) is filterable
                 because different sources imply different response modes. When
-                you're clearing your email backlog, form submissions are noise.
-                When you're preparing for a meeting, calendar items deserve
-                their own focus. Sources aren't just labels — they're a way to
+                you&apos;re clearing your email backlog, form submissions are noise.
+                When you&apos;re preparing for a meeting, calendar items deserve
+                their own focus. Sources aren&apos;t just labels — they&apos;re a way to
                 enter a different mode of work on the same queue.
               </p>
             </div>
@@ -480,14 +480,14 @@ export default function SignalWorkManagementPage() {
               <strong className="font-semibold text-foreground">Empty states had to explain the lens.</strong>{" "}
               An empty feed without context looks broken. Once workspace, triage
               view, source filters, and search could all combine to produce zero
-              results, the empty state needed to tell you why: "No critical
-              signals need triage in the Product workspace." Without that
+              results, the empty state needed to tell you why: &quot;No critical
+              signals need triage in the Product workspace.&quot; Without that
               specificity, users would assume the app had failed, not that
-              they'd triaged everything.
+              they&apos;d triaged everything.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Undo became essential once actions felt real.</strong>{" "}
-              Early versions had no undo. Marking something as "ignored" felt
+              Early versions had no undo. Marking something as &quot;ignored&quot; felt
               risky — what if you mis-clicked? Adding Cmd+Z reduced hesitation
               on every triage action. One level is enough: you almost never need
               to undo two steps back, but you frequently need to undo the last

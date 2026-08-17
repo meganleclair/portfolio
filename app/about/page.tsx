@@ -29,7 +29,7 @@ export default function AboutPage() {
         </p>
 
         <h1 className="mt-8 font-instrument text-[clamp(2rem,5.2vw,2.85rem)] font-normal leading-[1.12] tracking-[-0.02em] text-foreground md:mt-10">
-          I'm Megan. Product designer and engineer,{" "}
+          I&apos;m Megan. Product designer and engineer,{" "}
           <br />
           based in Nashville.
         </h1>
@@ -78,33 +78,32 @@ export default function AboutPage() {
           <div>
             <div className="space-y-7 text-left text-[15px] font-medium leading-[1.82] text-muted-foreground md:text-base md:leading-[1.85]">
               <p>
-                I started in design and kept going. Most designers hand off to
-                engineering — I wanted to know what happened on the other side. So I
-                learned to build, and it changed how I design. When you ship your
-                own work, the decisions get a lot more honest.
+                I started in design, then kept going straight into the code. I
+                wanted to see what actually happens after handoff, not just hear
+                about it secondhand. So I learned to build, and it changed how I
+                design — shipping your own work makes the tradeoffs a lot more
+                real.
               </p>
               <p>
                 These days I build full-stack — Next.js, Supabase, live APIs —
-                with Cursor and Claude woven into the process across engineering and
-                design. Not to replace design, but because the gap between a mock
-                and a working product is where the real decisions live. The auth
+                with Cursor and Claude woven into the process. Not because AI does
+                the design thinking for me, but because the gap between a mockup
+                and a working product is where the real decisions live: the auth
                 edge cases, the empty states, what breaks when real data shows up.
               </p>
               <p>
-                I'm drawn to complex workflows, product systems, and the kind of
-                problems that only surface once something is live.
+                I&apos;m drawn to complex workflows and product systems — the kind
+                of problems you only really see once something is live.
               </p>
               <p>
-                The work I'm most interested in right now is at the edge where
-                human judgment and AI capability overlap—where the tool has to
-                earn trust through restraint as much as through capability. Most
-                AI product design gets this backwards: it defaults to automation
-                and walks it back after friction. I think the better question is
-                where a person genuinely wants to stay in the loop, and designing
-                for that honestly from the start.
+                Lately I&apos;m curious about where AI and human judgment overlap in
+                a product — when a tool should just act, and when someone
+                genuinely wants to stay in the loop. I try to design for that
+                honestly, rather than defaulting to full automation and adding the
+                friction back in later.
               </p>
               <p>
-                Outside of work, I'm usually planning my next trip, at the gym,
+                Outside of work, I&apos;m usually planning my next trip, at the gym,
                 cooking something I have no business attempting, or walking my dog
                 Finn.
               </p>
