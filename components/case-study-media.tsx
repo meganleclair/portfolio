@@ -17,7 +17,7 @@ export type ResolvedCaseStudyMedia = {
   height: number;
 };
 
-function Lightbox({
+export function Lightbox({
   src,
   alt,
   onClose,

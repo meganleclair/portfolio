@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CaseStudyMedia } from "@/components/case-study-media";
+import { CaseStudyBeforeAfter } from "@/components/case-study-before-after";
 import { CaseStudySection } from "@/components/case-study-section";
 import { CaseStudyPasswordGate } from "@/components/case-study-password-gate";
 import { isCowbellCaseStudyUnlocked } from "@/lib/case-study-auth";
@@ -96,10 +96,10 @@ export default async function CowbellBrokerPortalPage() {
         <CaseStudySection
           title="Dashboard: from a flat list to a triage view"
           trailVisual={
-            <>
-              <CaseStudyMedia shot={shots.dashboardBefore} />
-              <CaseStudyMedia shot={shots.dashboardAfter} />
-            </>
+            <CaseStudyBeforeAfter
+              before={shots.dashboardBefore}
+              after={shots.dashboardAfter}
+            />
           }
         >
           <p>
@@ -146,10 +146,10 @@ export default async function CowbellBrokerPortalPage() {
             and bind — with a persistent progress rail so a broker always
             knows where they are and how much is left.
           </p>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <CaseStudyMedia shot={shots.quoteFlowBefore} />
-            <CaseStudyMedia shot={shots.quoteFlowAfter} />
-          </div>
+          <CaseStudyBeforeAfter
+            before={shots.quoteFlowBefore}
+            after={shots.quoteFlowAfter}
+          />
           <p>
             Client search now resolves directly into product eligibility:
             instead of a flat list of name matches, selecting an
@@ -157,19 +157,19 @@ export default async function CowbellBrokerPortalPage() {
             qualifies for, with the recommended option visually distinct
             from the rest — turning a lookup step into a decision step.
           </p>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <CaseStudyMedia shot={shots.clientSearchBefore} />
-            <CaseStudyMedia shot={shots.clientSearchAfter} />
-          </div>
+          <CaseStudyBeforeAfter
+            before={shots.clientSearchBefore}
+            after={shots.clientSearchAfter}
+          />
         </CaseStudySection>
 
         <CaseStudySection
           title="Client profile: surfacing risk, not just records"
           trailVisual={
-            <>
-              <CaseStudyMedia shot={shots.clientProfileBefore} />
-              <CaseStudyMedia shot={shots.clientProfileAfter} />
-            </>
+            <CaseStudyBeforeAfter
+              before={shots.clientProfileBefore}
+              after={shots.clientProfileAfter}
+            />
           }
         >
           <p>
