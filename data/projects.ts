@@ -28,6 +28,16 @@ export const projects: ProjectListItem[] = [
       "The harder edit: deleting a working cook mode, a working swap sheet, and a working prep checklist because real usage data said they weren't earning their place. What survived—Sous—is playable by a stranger with no account, and it's the whole product now.",
   },
   {
+    slug: "cowbell-broker-portal",
+    title: "Broker Portal Redesign",
+    subtitle: "Cyber insurance · dashboard, quoting, client profile",
+    description:
+      "Real, shipped work at Cowbell—redesigning the broker dashboard, quoting flow, and client profile around a simple idea: show what needs a decision now, guide the rest step by step. Password-protected out of respect for my employer; ask me for access.",
+    featuredCard: true,
+    cardTeaser:
+      "A flat client table and a one-page quote form became a triage view and a six-step guided flow—separating what actually needs a broker's attention from what's just available to browse. Gated behind a password since it's genuinely proprietary; the design decisions aren't.",
+  },
+  {
     slug: "signal-work-management",
     title: "Signal Work Management",
     subtitle: "Inbound triage · AI-assisted · workspace scoping",
@@ -59,16 +69,6 @@ export const projects: ProjectListItem[] = [
     featuredCard: true,
     cardTeaser:
       "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
-  },
-  {
-    slug: "cowbell-broker-portal",
-    title: "Broker Portal Redesign",
-    subtitle: "Cyber insurance · dashboard, quoting, client profile",
-    description:
-      "Real, shipped work at Cowbell—redesigning the broker dashboard, quoting flow, and client profile around a simple idea: show what needs a decision now, guide the rest step by step. Password-protected out of respect for my employer; ask me for access.",
-    featuredCard: true,
-    cardTeaser:
-      "A flat client table and a one-page quote form became a triage view and a six-step guided flow—separating what actually needs a broker's attention from what's just available to browse. Gated behind a password since it's genuinely proprietary; the design decisions aren't.",
   },
   {
     slug: "system-sidekick",
