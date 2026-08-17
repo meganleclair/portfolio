@@ -67,6 +67,13 @@ export const projects: ProjectListItem[] = [
     description:
       "Coverage decisions have to be traceable. Threshold is the operational layer for cyber insurance underwriting teams—tracking assessments, breach evaluations, and sublimit reviews with clear ownership and a full audit trail.",
   },
+  {
+    slug: "cowbell-design-system",
+    title: "Design System as a Service",
+    subtitle: "Design system strategy · AI tooling · Cowbell console",
+    description:
+      "Real, active strategy work at Cowbell—turning two years of undocumented design decisions into a token pipeline and AI-readable rules files, so Claude and Cursor generate on-brand UI by default instead of guessing. Password-protected out of respect for my employer; ask me for access.",
+  },
 ];
 
 export const homeFeaturedCards = projects.filter((p) => p.featuredCard);
