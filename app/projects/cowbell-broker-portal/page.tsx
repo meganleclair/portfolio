@@ -136,15 +136,7 @@ export default async function CowbellBrokerPortalPage() {
           </p>
         </CaseStudySection>
 
-        <CaseStudySection
-          title="Quoting: from one form to a guided flow"
-          trailVisual={
-            <>
-              <CaseStudyMedia shot={shots.quoteFlowBefore} />
-              <CaseStudyMedia shot={shots.quoteFlowAfter} />
-            </>
-          }
-        >
+        <CaseStudySection title="Quoting: from one form to a guided flow">
           <p>
             Starting a quote used to be a single page asking for
             organization details, with client search and manual entry
@@ -154,6 +146,10 @@ export default async function CowbellBrokerPortalPage() {
             and bind — with a persistent progress rail so a broker always
             knows where they are and how much is left.
           </p>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <CaseStudyMedia shot={shots.quoteFlowBefore} />
+            <CaseStudyMedia shot={shots.quoteFlowAfter} />
+          </div>
           <p>
             Client search now resolves directly into product eligibility:
             instead of a flat list of name matches, selecting an
@@ -161,7 +157,7 @@ export default async function CowbellBrokerPortalPage() {
             qualifies for, with the recommended option visually distinct
             from the rest — turning a lookup step into a decision step.
           </p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-6 sm:grid-cols-2">
             <CaseStudyMedia shot={shots.clientSearchBefore} />
             <CaseStudyMedia shot={shots.clientSearchAfter} />
           </div>
