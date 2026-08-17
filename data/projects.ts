@@ -66,16 +66,6 @@ export const projects: ProjectListItem[] = [
     liveUrl: "https://threshold-task-tracker.netlify.app",
     description:
       "Coverage decisions have to be traceable. Threshold is the operational layer for cyber insurance underwriting teams—tracking assessments, breach evaluations, and sublimit reviews with clear ownership and a full audit trail.",
-    featuredCard: true,
-    cardTeaser:
-      "Designed around the decision record, not just the task list. When exposure crosses a threshold, it enters the queue—with inline editing, composable filters, and activity logs that show what changed, when, and by whom.",
-  },
-  {
-    slug: "system-sidekick",
-    title: "System Sidekick",
-    description:
-      "An AI design assistant living inside the Figma panel—answers UX and UI questions in context, without leaving your file.",
-    comingSoon: true,
   },
 ];
 

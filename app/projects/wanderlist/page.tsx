@@ -84,7 +84,7 @@ export default function WanderlistPage() {
             </li>
             <li>
               Anonymous users still get full search and recent history — the auth
-              layer adds persistence, it doesn't gate the core experience.
+              layer adds persistence, it doesn&apos;t gate the core experience.
             </li>
           </ul>
         </CaseStudySection>
@@ -114,7 +114,7 @@ export default function WanderlistPage() {
             <li>
               <strong className="font-semibold text-foreground">Auth with row-level security</strong>{" "}
               — Supabase email/password auth with password reset flow. Every
-              private route validates the user's JWT before touching the
+              private route validates the user&apos;s JWT before touching the
               database; RLS policies enforce ownership at the data layer so the
               app is secure even if API logic has a gap.
             </li>
@@ -123,13 +123,13 @@ export default function WanderlistPage() {
               — a 5-question flow that matches users to itineraries by vibe,
               duration, exploration style, landscape, and pace. Results are
               ranked by match score with destination photography, duration, and
-              budget — then immediately copyable into the user's trips.
+              budget — then immediately copyable into the user&apos;s trips.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Discover & curated itineraries</strong>{" "}
               — a pre-built library of trips, filterable by type (City, Country,
               Multi-Country) and interest tag (Culture, Food, Beach, and more).
-              One click clones any itinerary into the user's account, ready to
+              One click clones any itinerary into the user&apos;s account, ready to
               customize — no blank-slate friction.
             </li>
             <li>
@@ -150,7 +150,7 @@ export default function WanderlistPage() {
               <strong className="font-semibold text-foreground">Production hardening</strong>{" "}
               — rate limiting on sensitive routes, input sanitization, JWT
               validation before any trusted Supabase operation. The kind of
-              security setup you'd ship to production at a company, not bolted
+              security setup you&apos;d ship to production at a company, not bolted
               on after the fact.
             </li>
           </ul>
@@ -166,7 +166,7 @@ export default function WanderlistPage() {
             <li>
               <strong className="font-semibold text-foreground">Supabase</strong>{" "}
               — auth, Postgres with RLS, and per-request clients scoped to the
-              user's session for private data.
+              user&apos;s session for private data.
             </li>
             <li>
               <strong className="font-semibold text-foreground">Geoapify</strong>{" "}
@@ -176,7 +176,7 @@ export default function WanderlistPage() {
             <li>
               <strong className="font-semibold text-foreground">Unsplash API</strong>{" "}
               — city hero and per-place photography when configured; the UI
-              degrades gracefully to category-based fallback imagery when it's
+              degrades gracefully to category-based fallback imagery when it&apos;s
               not.
             </li>
             <li>
@@ -201,7 +201,7 @@ export default function WanderlistPage() {
               <span className="font-semibold text-foreground">Search</span>
               <br />
               Client posts a city string → server geocodes it → fires two
-              parallel place queries (categories tuned for "top" vs "gems") →
+              parallel place queries (categories tuned for &quot;top&quot; vs &quot;gems&quot;) →
               normalizes results → optionally enriches with Unsplash photos →
               writes to search history → returns JSON. If the history write
               fails, results still return. The client never sees a partial or
@@ -210,7 +210,7 @@ export default function WanderlistPage() {
             <li>
               <span className="font-semibold text-foreground">Private data</span>
               <br />
-              Every authenticated request carries the user's access token.
+              Every authenticated request carries the user&apos;s access token.
               Server-side route handlers call{" "}
               <code className="text-foreground/90">getUser()</code> before any
               database write; Supabase RLS policies enforce row ownership as a
@@ -273,8 +273,8 @@ export default function WanderlistPage() {
             <li>
               The resilience decisions are deliberate — search results survive a
               failed history write, the app degrades gracefully when third-party
-              APIs don't cooperate, and complexity stays on the server so the
-              client stays predictable. That's production thinking, not
+              APIs don&apos;t cooperate, and complexity stays on the server so the
+              client stays predictable. That&apos;s production thinking, not
               happy-path thinking.
             </li>
             <li>

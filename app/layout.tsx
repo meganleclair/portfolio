@@ -17,7 +17,10 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export const metadata: Metadata = {
+  ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
     default: "Megan LeClair",
     template: "%s — Megan LeClair",

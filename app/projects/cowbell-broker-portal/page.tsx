@@ -161,6 +161,10 @@ export default async function CowbellBrokerPortalPage() {
             qualifies for, with the recommended option visually distinct
             from the rest — turning a lookup step into a decision step.
           </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <CaseStudyMedia shot={shots.clientSearchBefore} />
+            <CaseStudyMedia shot={shots.clientSearchAfter} />
+          </div>
         </CaseStudySection>
 
         <CaseStudySection
